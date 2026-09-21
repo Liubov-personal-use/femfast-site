@@ -1,0 +1,53 @@
+FemFast — live Tilda site metadata
+==================================
+
+STATUS: NOT CAPTURED — the live site could not be reached from the build environment.
+
+Reason
+------
+https://femfast.io is blocked by this environment's network egress policy
+(the proxy returns 403 to CONNECT for every non-allowlisted host). Both a direct
+HTTPS request and a fetch through the assistant's web tooling were refused, so
+neither the homepage HTML nor any Tilda URL could be retrieved.
+
+What is still needed (fill these in by hand)
+--------------------------------------------
+meta title        :
+meta description  :
+og:image URL      :
+
+How to capture them
+-------------------
+From any machine with normal internet access:
+
+  curl -s https://femfast.io/ \
+    | grep -Ei '<title>|name="description"|property="og:image"'
+
+Or: open https://femfast.io/, View Source, and read the three tags from <head>.
+
+Where these values are consumed
+-------------------------------
+src/site.config.mjs  ->  title / description / ogImage
+Those feed the <title>, <meta name="description">, and og:/twitter: tags that
+/scripts/build.mjs writes into every route. Until the real values are supplied,
+the build uses the fallback copy defined in that config file (see the
+`tildaMetaCaptured: false` flag there).
+
+Guard required by the brief
+---------------------------
+If the recovered Tilda title or description contains the words "diet" or
+"weight loss", do NOT copy it across — a replacement must be proposed and
+approved first.
+
+Public URL inventory
+--------------------
+STATUS: NOT CAPTURED — same egress block; the site could not be crawled.
+
+This matters for one thing only: if Tilda served the Privacy Policy or Terms of
+Use at paths other than /privacy/ and /terms/, those old paths need redirects so
+the App Store listing link keeps resolving. /404.html already maps the common
+Tilda spellings (see REDIRECTS in scripts/build.mjs); add any real ones found.
+
+To capture the inventory:
+
+  curl -s https://femfast.io/sitemap.xml

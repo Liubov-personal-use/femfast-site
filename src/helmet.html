@@ -1,0 +1,55 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  @media (max-width: 767px) { [data-hero-cta] { flex-direction: column; align-items: flex-start !important; gap: 16px !important; } }
+  @media (min-width: 768px) { [data-hero-left] { margin-top: -40px; } [data-hero-cta] > a:first-child { flex: 0 0 auto; white-space: nowrap; } }
+  @media (min-width: 1240px) { [data-hero-cta] { flex-wrap: nowrap !important; gap: 20px !important; } [data-hero-cta] a:last-child { white-space: nowrap; } }
+  [data-opt]:focus { outline: none; }
+  [data-opt]:focus-visible { outline: none; border-color: #8D4F83 !important; box-shadow: 0 0 0 3px rgba(141,79,131,0.3) !important; }
+  body { margin: 0; background: #FDF9F6; color: #453748; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: #8D4F83; text-decoration: none; }
+  a:hover { color: #453748; }
+  p { text-wrap: pretty; }
+  @keyframes ff-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes ff-quiz-in { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 767px) { [data-bridge] { top: 0 !important; } #phases { padding-bottom: 209px !important; } #how { padding-top: 209px !important; } }
+  @media (min-width: 1024px) { [data-phase-cols] { flex-direction: row !important; align-items: center !important; gap: 56px !important; } [data-phase-left] { flex: 0 0 45%; } [data-phase-right] { flex: 1 1 55%; min-width: 0; } }
+  @media (max-width: 1024px) {
+    [data-how-label] { flex-basis: 120px !important; }
+    [data-how-why] { flex-basis: 240px !important; }
+  }
+  @media (min-width: 701px) { [data-h1line] { display: block; } }
+  @media (max-width: 767px) {
+    [data-how-overlay] { display: none !important; }
+    [data-how-axis] { display: none !important; }
+    [data-how-row] { flex-direction: column; align-items: stretch !important; }
+    [data-how-row] [data-how-label], [data-how-row] [data-how-why] { flex: 1 1 auto !important; }
+    [data-how-values] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    /* stacked, the disclaimer would land above the findings it disclaims */
+    [data-sci-left] { display: contents; }
+    [data-sci-left] > p:last-of-type { order: 3; margin-top: 40px !important; }
+    [data-sci-findings] { order: 2; }
+  }
+  /* column layout (and the bottom-pinned disclaimer) only once side by side */
+  @media (min-width: 768px) { [data-sci-left] { display: flex; flex-direction: column; } }
+  @keyframes ff-bar-in { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: none; } }
+  @keyframes ff-hero-float { from { transform: translateY(0); } to { transform: translateY(-46px); } }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-hero-float] { animation: ff-hero-float linear both; animation-timeline: scroll(root block); animation-range: 0 720px; }
+  }
+  @keyframes ff-pulse { 0%, 100% { opacity: 0.25; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); } }
+  @keyframes ff-step-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes ff-hint-pulse { 0%, 100% { opacity: 0.62; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { @keyframes ff-hint-pulse { 0%, 100% { opacity: 1; } } }
+  @media (prefers-reduced-motion: reduce) { @keyframes ff-quiz-in { from { opacity: 1; } to { opacity: 1; } } @keyframes ff-step-in { from { opacity: 1; transform: none; } to { opacity: 1; transform: none; } } }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] { animation: ff-rise linear both; animation-timeline: view(); animation-range: entry 2% cover 26%; }
+    [data-reveal-now] { animation: ff-rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+    [data-reveal-now="2"] { animation-delay: .12s; }
+    [data-reveal-now="3"] { animation-delay: .24s; }
+  }
+</style>

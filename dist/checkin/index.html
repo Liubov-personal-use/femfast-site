@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 60-second check-in — FemFast</title>
+<meta name="description" content="Six questions. Then the fasting window, food and training that fit the phase you're in today. Free, no signup, nothing saved.">
+<link rel="canonical" href="https://femfast.io/checkin/">
+<meta name="theme-color" content="#FDF9F6">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FemFast">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://femfast.io/checkin/">
+<meta property="og:title" content="The 60-second check-in — FemFast">
+<meta property="og:description" content="Six questions. Then the fasting window, food and training that fit the phase you're in today. Free, no signup, nothing saved.">
+<meta property="og:image" content="https://femfast.io/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 60-second check-in — FemFast">
+<meta name="twitter:description" content="Six questions. Then the fasting window, food and training that fit the phase you're in today. Free, no signup, nothing saved.">
+<meta name="twitter:image" content="https://femfast.io/assets/og-default.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/outfit-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/outfit.css">
+<style>
+.scp0:hover { background: rgb(243, 231, 225) !important; color: rgb(69, 55, 72) !important; }
+.scp1:hover { color: rgb(69, 55, 72) !important; }
+.scp2:hover { color: rgb(141, 79, 131) !important; }
+.scp3:hover { transform: translateY(-2px) !important; }
+
+html, body { height: 100%; margin: 0px; }
+#dc-root, #dc-root > .sc-host { height: 100%; }
+
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+@media (max-width: 767px) {
+  [data-hero-cta] { flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
+}
+@media (min-width: 768px) {
+  [data-hero-left] { margin-top: -40px; }
+  [data-hero-cta] > a:first-child { flex: 0 0 auto; white-space: nowrap; }
+}
+@media (min-width: 1240px) {
+  [data-hero-cta] { flex-wrap: nowrap !important; gap: 20px !important; }
+  [data-hero-cta] a:last-child { white-space: nowrap; }
+}
+[data-opt]:focus { outline: none; }
+[data-opt]:focus-visible { outline: none; border-color: rgb(141, 79, 131) !important; box-shadow: rgba(141, 79, 131, 0.3) 0px 0px 0px 3px !important; }
+body { margin: 0px; background: rgb(253, 249, 246); color: rgb(69, 55, 72); font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+* { box-sizing: border-box; }
+a { color: rgb(141, 79, 131); text-decoration: none; }
+a:hover { color: rgb(69, 55, 72); }
+p { text-wrap: pretty; }
+@keyframes ff-rise { 
+  0% { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-quiz-in { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@media (max-width: 767px) {
+  [data-bridge] { top: 0px !important; }
+  #phases { padding-bottom: 209px !important; }
+  #how { padding-top: 209px !important; }
+}
+@media (min-width: 1024px) {
+  [data-phase-cols] { flex-direction: row !important; align-items: center !important; gap: 56px !important; }
+  [data-phase-left] { flex: 0 0 45%; }
+  [data-phase-right] { flex: 1 1 55%; min-width: 0px; }
+}
+@media (max-width: 1024px) {
+  [data-how-label] { flex-basis: 120px !important; }
+  [data-how-why] { flex-basis: 240px !important; }
+}
+@media (min-width: 701px) {
+  [data-h1line] { display: block; }
+}
+@media (max-width: 767px) {
+  [data-how-overlay] { display: none !important; }
+  [data-how-axis] { display: none !important; }
+  [data-how-row] { flex-direction: column; align-items: stretch !important; }
+  [data-how-row] [data-how-label], [data-how-row] [data-how-why] { flex: 1 1 auto !important; }
+  [data-how-values] { grid-template-columns: repeat(2, minmax(0px, 1fr)) !important; }
+  [data-sci-left] { display: contents; }
+  [data-sci-left] > p:last-of-type { order: 3; margin-top: 40px !important; }
+  [data-sci-findings] { order: 2; }
+}
+@media (min-width: 768px) {
+  [data-sci-left] { display: flex; flex-direction: column; }
+}
+@keyframes ff-bar-in { 
+  0% { opacity: 0; transform: translateY(100%); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-hero-float { 
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-46px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-hero-float] { animation-duration: auto; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: 1; animation-direction: normal; animation-fill-mode: both; animation-play-state: running; animation-name: ff-hero-float; animation-timeline: scroll(root); animation-range: 0px 720px; }
+}
+@keyframes ff-pulse { 
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes ff-step-in { 
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-hint-pulse { 
+  0%, 100% { opacity: 0.62; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes ff-hint-pulse { 
+  0%, 100% { opacity: 1; }
+}
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes ff-quiz-in { 
+  0% { opacity: 1; }
+  100% { opacity: 1; }
+}
+  @keyframes ff-step-in { 
+  0% { opacity: 1; transform: none; }
+  100% { opacity: 1; transform: none; }
+}
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] { animation-duration: auto; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: 1; animation-direction: normal; animation-fill-mode: both; animation-play-state: running; animation-name: ff-rise; animation-timeline: view(); animation-range: entry 2% cover 26%; }
+  [data-reveal-now] { animation: 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-rise; }
+  [data-reveal-now="2"] { animation-delay: 0.12s; }
+  [data-reveal-now="3"] { animation-delay: 0.24s; }
+}
+</style>
+</head>
+<body>
+
+  <div data-ff="panel" role="dialog" aria-modal="true" aria-label="FemFast 60-second check-in" style="position: fixed; inset: 0px; z-index: 400; background: rgb(253, 249, 246); display: flex; flex-direction: column; overflow-y: auto; animation: 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-quiz-in;">
+    <div style="position: sticky; top: 0px; z-index: 2; background: rgba(253, 249, 246, 0.94); backdrop-filter: blur(10px); border-bottom: 1px solid rgb(243, 231, 225);">
+      <div style="max-width: 720px; margin: 0px auto; padding: 14px clamp(20px, 5vw, 32px); display: flex; align-items: center; gap: 20px;">
+        <picture style="display:block"><source srcset="/assets/femfast-lockup.webp" type="image/webp"><img src="/assets/femfast-lockup.png" alt="FemFast" width="118" height="16" style="display: block; width: 118px; height: 16px; flex: 0 0 auto;"></picture>
+        <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px;">
+          <span data-ff="stepCount" style="align-self: flex-end; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-variant-numeric: tabular-nums; color: rgba(69, 55, 72, 0.6);"><span class="sc-interp">Step 1 of 6</span></span>
+          <div style="height: 5px; border-radius: 100px; background: rgb(243, 231, 225); overflow: hidden;">
+            <div data-ff="progress" style="height: 100%; border-radius: 100px; background: linear-gradient(90deg, rgb(240, 120, 142), rgb(141, 79, 131)); width: 9%; transition: width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);"></div>
+          </div>
+        </div>
+        <button type="button" data-ff="close" aria-label="Close the check-in" class="scp0" style="flex: 0 0 auto; width: 32px; height: 32px; border: none; border-radius: 50%; background: transparent; color: rgb(95, 80, 98); font-size: 19px; line-height: 1; cursor: pointer; transition: background 0.16s, color 0.16s;">×</button>
+      </div>
+    </div>
+
+    <div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-start; max-width: 720px; width: 100%; margin: 0px auto; padding: clamp(22px, 3.5vh, 40px) clamp(20px, 5vw, 32px) 32px;">
+      
+        <div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in;" data-step="0">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">What would you most like to change?</span></h2>
+          <p data-ff="qHelp" style="display: none;"><span class="sc-interp"></span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="weight" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Lose weight that won't shift</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Doing everything right</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="energy" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Have steadier energy</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Fewer crashes, fewer flat weeks</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="cravings" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Stop fighting cravings</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Especially the week before your period</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="strength" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Get stronger without burning out</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Hard when it counts, rest when it doesn't</span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+          </div>
+        </div>
+      
+
+      
+
+      
+    <div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;" data-step="1">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">How does your cycle usually run?</span></h2>
+          <p data-ff="qHelp" style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.6); margin: 0px 0px 24px; max-width: 32em;"><span class="sc-interp">Pick the closest.</span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="regular" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Like clockwork</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Same length every month</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="variable" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">It varies by a few days</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Predictable enough, not exact</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="unpredictable" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Quite unpredictable</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">The length changes a lot month to month</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="untracked" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">I don't track it yet</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">We'll start you somewhere sensible</span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+              <button type="button" data-ff="back" class="scp1" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69, 55, 72, 0.6); cursor: pointer; padding: 10px 0px;">← Back</button>
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+          </div>
+        </div><div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;" data-step="2">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">Where are you in your cycle today?</span></h2>
+          <p data-ff="qHelp" style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.6); margin: 0px 0px 24px; max-width: 32em;"><span class="sc-interp">Not sure is fine.</span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="1" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Day 1–5</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Period</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="6" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Day 6–13</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">After your period, before ovulation</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="14" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Day 14–16</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Around mid-cycle</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="17" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Day 17–28</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">The week or two before your period</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="unsure" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">I'm not sure</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">We'll work it out</span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+              <button type="button" data-ff="back" class="scp1" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69, 55, 72, 0.6); cursor: pointer; padding: 10px 0px;">← Back</button>
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+          </div>
+        </div><div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;" data-step="3">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">Have you fasted before?</span></h2>
+          <p data-ff="qHelp" style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.6); margin: 0px 0px 24px; max-width: 32em;"><span class="sc-interp">Either way is fine.</span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="never" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Never</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">We'll start gently</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="tried" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">I've tried it</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">It didn't quite stick</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="sometimes" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">On and off</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Some weeks are easier than others</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="regular" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">I fast regularly</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">I want it timed better</span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+              <button type="button" data-ff="back" class="scp1" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69, 55, 72, 0.6); cursor: pointer; padding: 10px 0px;">← Back</button>
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+          </div>
+        </div><div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;" data-step="4">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">How often do you move right now?</span></h2>
+          <p data-ff="qHelp" style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.6); margin: 0px 0px 24px; max-width: 32em;"><span class="sc-interp">Honestly, not aspirationally.</span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="0" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Rarely</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">We'll start with walking</span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="1" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Once or twice a week</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="3" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Three or four times a week</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="5" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">●</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Five or more</span></span>
+                  <span data-ff="optNote" style="font-size: 13.5px; color: rgb(110, 93, 112);"><span class="sc-interp">Let's time it to your phases</span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+              <button type="button" data-ff="back" class="scp1" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69, 55, 72, 0.6); cursor: pointer; padding: 10px 0px;">← Back</button>
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+          </div>
+        </div><div data-ff="questionBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;" data-step="5">
+          <h2 tabindex="-1" data-ff="qTitle" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">Anything we should plan your food around?</span></h2>
+          <p data-ff="qHelp" style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.6); margin: 0px 0px 24px; max-width: 32em;"><span class="sc-interp">Any that apply, or skip.</span></p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="veg" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">✓</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Vegetarian or vegan</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="gf" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">✓</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Gluten-free</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="df" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">✓</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Dairy-free</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="lowcarb" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">✓</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Low carb</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+              <button type="button" data-opt="1" data-ff="opt" data-v="none" style="display: flex; align-items: center; gap: 14px; width: 100%; cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px 24px; border-radius: 16px; text-align: left; outline: none; transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgb(255, 255, 255); border: 2px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72);">
+                <span data-ff="optMark" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; line-height: 1; transition: background 0.18s, border-color 0.18s, color 0.18s; background: rgb(255, 255, 255); border: 1.5px solid rgb(220, 201, 214); color: transparent;"><span class="sc-interp">✓</span></span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span data-ff="optLabel" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;"><span class="sc-interp">Nothing in particular</span></span>
+                  <span data-ff="optNote" style="display: none;"><span class="sc-interp"></span></span>
+                </span>
+              </button>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            
+              <button type="button" data-ff="back" class="scp1" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69, 55, 72, 0.6); cursor: pointer; padding: 10px 0px;">← Back</button>
+            
+            
+              <button type="button" data-ff="continue" disabled="" aria-disabled="true" style="border: none; cursor: not-allowed; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: none; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s; opacity: 0.45;">Continue</button>
+            
+            
+              <button type="button" data-ff="skip" class="scp2" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 500; font-size: 15px; color: rgba(69, 55, 72, 0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 10px 0px;">Skip for now</button>
+            
+          </div>
+        </div><div data-ff="buildingBlock" style="animation: 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;">
+          <h2 tabindex="-1" data-ff="buildingHeading" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;">Building your baseline</h2>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 34px; max-width: 32em;">Most advice is built on a male baseline. Yours won't be.</p>
+          <div style="display: grid; gap: 0px; max-width: 32em;">
+            
+              <div style="display: flex; align-items: center; gap: 14px; padding: 15px 0px; border-top: 1px solid rgb(240, 226, 219);">
+                <span data-ff="buildDot" style="flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: rgb(141, 79, 131); animation: 1.5s ease-in-out 0s infinite normal none running ff-pulse;"></span>
+                <span data-ff="buildText" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16px; color: rgb(69, 55, 72);"><span class="sc-interp">Reading your cycle pattern</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: center; gap: 14px; padding: 15px 0px; border-top: 1px solid rgb(240, 226, 219);">
+                <span data-ff="buildDot" style="flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: rgb(141, 79, 131); animation: 1.5s ease-in-out 0.45s infinite normal none running ff-pulse;"></span>
+                <span data-ff="buildText" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16px; color: rgb(69, 55, 72);"><span class="sc-interp">Mapping your phase to today</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: center; gap: 14px; padding: 15px 0px; border-top: 1px solid rgb(240, 226, 219);">
+                <span data-ff="buildDot" style="flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: rgb(141, 79, 131); animation: 1.5s ease-in-out 0.9s infinite normal none running ff-pulse;"></span>
+                <span data-ff="buildText" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16px; color: rgb(69, 55, 72);"><span class="sc-interp">Writing your first day</span></span>
+              </div>
+            
+          </div>
+        </div><div data-ff="resultBlock" style="animation: 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-step-in; display: none;">
+          <h2 tabindex="-1" data-ff="resultHeadline" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: rgb(69, 55, 72); margin: 0px 0px 16px; max-width: 26ch; outline: none;"><span class="sc-interp">Here's your first day, built for a regular cycle</span></h2>
+          <p data-ff="resultBody" style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 32px; max-width: 32em;"><span class="sc-interp">You're in your follicular phase, and you told us the scale won't move even when you do everything right. This week your insulin sensitivity is highest, so the plan leans on it: your longest fast and your higher-carb days land now, while they count. Next week the plan changes, because your body will.</span></p>
+
+          <div style="display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-radius: 16px; background: rgb(254, 240, 232); margin-bottom: 14px;">
+            <picture style="display:block"><source srcset="/assets/phase-follicular.webp" type="image/webp"><img data-ff="resultBadge" src="/assets/phase-follicular.png" alt="" width="52" height="52" style="display: block; width: 52px; height: 52px; flex: 0 0 auto;"></picture>
+            <div style="display: flex; flex-direction: column; gap: 3px;">
+              <span data-ff="resultPhase" style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: rgb(69, 55, 72);"><span class="sc-interp">Follicular phase</span></span>
+              <span data-ff="resultPhaseNote" style="font-size: 14.5px; color: rgb(95, 80, 98);"><span class="sc-interp">Insulin sensitivity is on your side.</span></span>
+            </div>
+          </div>
+
+          
+            <div data-ff="adjustWrap" style="display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 16px;">
+              <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(69, 55, 72, 0.6);">Adjusted for:</span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">your goal</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">first fast</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">your routine</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">vegetarian</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">gluten-free</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">dairy-free</span></span>
+              
+                <span data-ff="chip" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 5px 12px; border-radius: 100px;"><span class="sc-interp">low carb</span></span>
+              
+            </div>
+          
+
+          <div style="display: grid; gap: 1px; background: rgb(243, 231, 225); border-radius: 16px; overflow: hidden; margin-bottom: 26px;">
+            
+              <div data-ff="row" data-row="Fasting" style="background: rgb(255, 255, 255); padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span data-ff="rowLabel" style="flex: 0 0 104px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(95, 80, 98);"><span class="sc-interp">Fasting</span></span>
+                <span data-ff="rowValue" style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: rgb(69, 55, 72);"><span class="sc-interp">14:10 — a gentle start</span></span>
+                <span data-ff="rowTag" style="flex: 0 0 auto; margin-left: auto; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 4px 10px; border-radius: 100px; white-space: nowrap;"><span class="sc-interp">Adjusted for first fast</span></span>
+                <p data-ff="rowNote" style="display: none;"><span class="sc-interp"></span></p>
+              </div>
+            
+              <div data-ff="row" data-row="Food" style="background: rgb(255, 255, 255); padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span data-ff="rowLabel" style="flex: 0 0 104px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(95, 80, 98);"><span class="sc-interp">Food</span></span>
+                <span data-ff="rowValue" style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: rgb(69, 55, 72);"><span class="sc-interp">Higher carb, high fibre, protein at every meal — lentils, tofu, eggs for protein — oats, rice, quinoa</span></span>
+                <span data-ff="rowTag" style="flex: 0 0 auto; margin-left: auto; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 4px 10px; border-radius: 100px; white-space: nowrap;"><span class="sc-interp">Adjusted for your goal, vegetarian, gluten-free</span></span>
+                <p data-ff="rowNote" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 14px; line-height: 1.5; color: rgba(69, 55, 72, 0.6);"><span class="sc-interp">You said low carb. This is the week to bend it, and we'll tell you why in the app.</span></p>
+              </div>
+            
+              <div data-ff="row" data-row="Training" style="background: rgb(255, 255, 255); padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span data-ff="rowLabel" style="flex: 0 0 104px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(95, 80, 98);"><span class="sc-interp">Training</span></span>
+                <span data-ff="rowValue" style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: rgb(69, 55, 72);"><span class="sc-interp">Walking and mobility to start</span></span>
+                <span data-ff="rowTag" style="flex: 0 0 auto; margin-left: auto; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 4px 10px; border-radius: 100px; white-space: nowrap;"><span class="sc-interp">Adjusted for your routine</span></span>
+                <p data-ff="rowNote" style="display: none;"><span class="sc-interp"></span></p>
+              </div>
+            
+              <div data-ff="row" data-row="Supplements" style="background: rgb(255, 255, 255); padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span data-ff="rowLabel" style="flex: 0 0 104px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(95, 80, 98);"><span class="sc-interp">Supplements</span></span>
+                <span data-ff="rowValue" style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: rgb(69, 55, 72);"><span class="sc-interp">B-complex, vitamin D, omega-3, calcium</span></span>
+                <span data-ff="rowTag" style="flex: 0 0 auto; margin-left: auto; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; line-height: 1.3; color: rgb(141, 79, 131); background: rgba(141, 79, 131, 0.1); padding: 4px 10px; border-radius: 100px; white-space: nowrap;"><span class="sc-interp">Adjusted for dairy-free</span></span>
+                <p data-ff="rowNote" style="display: none;"><span class="sc-interp"></span></p>
+              </div>
+            
+          </div>
+
+          <div style="padding: 26px 26px 28px; border-radius: 16px; background: rgb(69, 55, 72); color: rgb(253, 249, 246); margin-bottom: 22px;">
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0px 0px 12px; max-width: 18em;">Tomorrow won't look like this.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: rgb(239, 231, 239); margin: 0px 0px 22px; max-width: 32em;">You've seen one day. FemFast writes the next one every morning.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px 26px; align-items: center;">
+              <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" class="scp3" style="display: block; flex: 0 0 auto; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);">
+                <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="180" height="60" style="display: block; width: 180px; height: 60px;">
+              </a>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.015em;">From $6 a month — risk-free for 5 days</span>
+                <span style="font-size: 14px; color: rgb(231, 207, 226);">Not satisfied? Full refund within five days.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline;">
+            <button type="button" data-ff="restart" class="scp1" style="border: none; background: transparent; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: rgb(95, 80, 98); cursor: pointer; padding: 0px; text-decoration: underline; text-underline-offset: 3px;">Start over</button>
+            <span style="font-size: 13.5px; color: rgb(95, 80, 98);">$17.99 for 3 months · $47.99 for 12 · cancel any time.</span>
+          </div>
+          <p style="font-size: 12.5px; line-height: 1.5; color: rgb(95, 80, 98); margin: 16px 0px 0px; max-width: 40em;">Nothing here was saved. This is general guidance only.</p>
+        </div></div>
+  </div>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail" data-bg-color="#FDF9F6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(600 400)" fill="none" stroke-width="54" stroke-linecap="round">
+      <circle r="200" stroke="#F9A8B3" pathLength="28" stroke-dasharray="5 23" transform="rotate(-90)"></circle>
+      <circle r="200" stroke="#DEEBC4" pathLength="28" stroke-dasharray="8 20" stroke-dashoffset="-5" transform="rotate(-90)"></circle>
+      <circle r="200" stroke="#FDE7C5" pathLength="28" stroke-dasharray="3 25" stroke-dashoffset="-13" transform="rotate(-90)"></circle>
+      <circle r="200" stroke="#C9A0CC" pathLength="28" stroke-dasharray="12 16" stroke-dashoffset="-16" transform="rotate(-90)"></circle>
+    </g>
+    <circle cx="600" cy="200" r="46" fill="#FDF9F6" stroke="#DEEBC4" stroke-width="10"></circle>
+  </svg>
+</template>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  @media (max-width: 767px) { [data-hero-cta] { flex-direction: column; align-items: flex-start !important; gap: 16px !important; } }
+  @media (min-width: 768px) { [data-hero-left] { margin-top: -40px; } [data-hero-cta] > a:first-child { flex: 0 0 auto; white-space: nowrap; } }
+  @media (min-width: 1240px) { [data-hero-cta] { flex-wrap: nowrap !important; gap: 20px !important; } [data-hero-cta] a:last-child { white-space: nowrap; } }
+  [data-opt]:focus { outline: none; }
+  [data-opt]:focus-visible { outline: none; border-color: #8D4F83 !important; box-shadow: 0 0 0 3px rgba(141,79,131,0.3) !important; }
+  body { margin: 0; background: #FDF9F6; color: #453748; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: #8D4F83; text-decoration: none; }
+  a:hover { color: #453748; }
+  p { text-wrap: pretty; }
+  @keyframes ff-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes ff-quiz-in { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 767px) { [data-bridge] { top: 0 !important; } #phases { padding-bottom: 209px !important; } #how { padding-top: 209px !important; } }
+  @media (min-width: 1024px) { [data-phase-cols] { flex-direction: row !important; align-items: center !important; gap: 56px !important; } [data-phase-left] { flex: 0 0 45%; } [data-phase-right] { flex: 1 1 55%; min-width: 0; } }
+  @media (max-width: 1024px) {
+    [data-how-label] { flex-basis: 120px !important; }
+    [data-how-why] { flex-basis: 240px !important; }
+  }
+  @media (min-width: 701px) { [data-h1line] { display: block; } }
+  @media (max-width: 767px) {
+    [data-how-overlay] { display: none !important; }
+    [data-how-axis] { display: none !important; }
+    [data-how-row] { flex-direction: column; align-items: stretch !important; }
+    [data-how-row] [data-how-label], [data-how-row] [data-how-why] { flex: 1 1 auto !important; }
+    [data-how-values] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    /* stacked, the disclaimer would land above the findings it disclaims */
+    [data-sci-left] { display: contents; }
+    [data-sci-left] > p:last-of-type { order: 3; margin-top: 40px !important; }
+    [data-sci-findings] { order: 2; }
+  }
+  /* column layout (and the bottom-pinned disclaimer) only once side by side */
+  @media (min-width: 768px) { [data-sci-left] { display: flex; flex-direction: column; } }
+  @keyframes ff-bar-in { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: none; } }
+  @keyframes ff-hero-float { from { transform: translateY(0); } to { transform: translateY(-46px); } }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-hero-float] { animation: ff-hero-float linear both; animation-timeline: scroll(root block); animation-range: 0 720px; }
+  }
+  @keyframes ff-pulse { 0%, 100% { opacity: 0.25; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); } }
+  @keyframes ff-step-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes ff-hint-pulse { 0%, 100% { opacity: 0.62; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { @keyframes ff-hint-pulse { 0%, 100% { opacity: 1; } } }
+  @media (prefers-reduced-motion: reduce) { @keyframes ff-quiz-in { from { opacity: 1; } to { opacity: 1; } } @keyframes ff-step-in { from { opacity: 1; transform: none; } to { opacity: 1; transform: none; } } }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] { animation: ff-rise linear both; animation-timeline: view(); animation-range: entry 2% cover 26%; }
+    [data-reveal-now] { animation: ff-rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+    [data-reveal-now="2"] { animation-delay: .12s; }
+    [data-reveal-now="3"] { animation-delay: .24s; }
+  }
+</style>
+</helmet>
+
+
+
+<sc-if value="{{ showStickyBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 300; background: rgba(253,249,246,0.96); backdrop-filter: blur(14px); border-top: 1px solid #F0E2DB; box-shadow: 0 -8px 24px -12px rgba(69,55,72,0.18); animation: ff-bar-in .32s cubic-bezier(.2,.7,.2,1) both;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 12px clamp(16px, 4vw, 24px) calc(12px + env(safe-area-inset-bottom));">
+      <div style="flex: 1 1 auto; min-width: 0;">
+        <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.015em; color: #453748;">See today's plan for your phase</div>
+        <div style="font-size: 12.5px; color: #5F5062;">Free check-in · 60 seconds · no signup</div>
+      </div>
+      <a href="#check-in" onClick="{{ openQuiz }}" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 15px; color: #FDF9F6; background: #8D4F83; padding: 14px 22px; border-radius: 16px; box-shadow: 0 10px 20px -10px rgba(141,79,131,0.5);">Start</a>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ quizOpen }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ quizPanelRef }}" role="dialog" aria-modal="true" aria-label="FemFast 60-second check-in" style="position: fixed; inset: 0; z-index: 400; background: #FDF9F6; display: flex; flex-direction: column; overflow-y: auto; animation: ff-quiz-in .42s cubic-bezier(.2,.7,.2,1) both;">
+    <div style="position: sticky; top: 0; z-index: 2; background: rgba(253,249,246,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E1;">
+      <div style="max-width: 720px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 32px); display: flex; align-items: center; gap: 20px;">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="118" height="16" style="display: block; width: 118px; height: 16px; flex: 0 0 auto;">
+        <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px;">
+          <span style="align-self: flex-end; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-variant-numeric: tabular-nums; color: rgba(69,55,72,0.6);">{{ stepCount }}</span>
+          <div style="height: 5px; border-radius: 100px; background: #F3E7E1; overflow: hidden;">
+            <div style="{{ progressStyle }}"></div>
+          </div>
+        </div>
+        <button type="button" onClick="{{ closeQuiz }}" aria-label="Close the check-in" style="flex: 0 0 auto; width: 32px; height: 32px; border: none; border-radius: 50%; background: transparent; color: #5F5062; font-size: 19px; line-height: 1; cursor: pointer; transition: background .16s, color .16s;" style-hover="background: #F3E7E1; color: #453748;">×</button>
+      </div>
+    </div>
+
+    <div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-start; max-width: 720px; width: 100%; margin: 0 auto; padding: clamp(22px, 3.5vh, 40px) clamp(20px, 5vw, 32px) 32px;">
+      <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
+        <div key="{{ stepKey }}" style="animation: ff-step-in .38s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;">{{ qTitle }}</h2>
+          <p style="{{ qHelpStyle }}">{{ qHelp }}</p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            <sc-for list="{{ qOptions }}" as="opt" hint-placeholder-count="4">
+              <button type="button" data-opt="1" onClick="{{ opt.pick }}" style="{{ opt.style }}">
+                <span style="{{ opt.markStyle }}">{{ opt.mark }}</span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;">{{ opt.label }}</span>
+                  <span style="{{ opt.noteStyle }}">{{ opt.note }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ back }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69,55,72,0.6); cursor: pointer; padding: 10px 0;" style-hover="color: #453748;">← Back</button>
+            </sc-if>
+            <sc-if value="{{ showContinue }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{ next }}" disabled="{{ continueDisabled }}" aria-disabled="{{ continueAria }}" style="{{ continueStyle }}">Continue</button>
+            </sc-if>
+            <sc-if value="{{ showSkipLink }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ next }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 500; font-size: 15px; color: rgba(69,55,72,0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 10px 0;" style-hover="color: #8D4F83;">Skip for now</button>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isBuilding }}" hint-placeholder-val="{{ false }}">
+        <div style="animation: ff-step-in .38s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;">Building your baseline</h2>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 34px; max-width: 32em;">Most advice is built on a male baseline. Yours won't be.</p>
+          <div style="display: grid; gap: 0; max-width: 32em;">
+            <sc-for list="{{ buildSteps }}" as="s" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 14px; padding: 15px 0; border-top: 1px solid #F0E2DB;">
+                <span style="{{ s.dotStyle }}"></span>
+                <span style="{{ s.textStyle }}">{{ s.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="animation: ff-step-in .5s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;">{{ resultHeadline }}</h2>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 32px; max-width: 32em;">{{ resultBody }}</p>
+
+          <div style="display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-radius: 16px; background: #FEF0E8; margin-bottom: 14px;">
+            <img ref="{{ resultBadgeRef }}" src="./assets/phase-follicular.png" alt="" width="52" height="52" style="display: block; width: 52px; height: 52px; flex: 0 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 3px;">
+              <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: #453748;">{{ resultPhase }}</span>
+              <span style="font-size: 14.5px; color: #5F5062;">{{ resultPhaseNote }}</span>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasAdjust }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 16px;">
+              <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(69,55,72,0.6);">Adjusted for:</span>
+              <sc-for list="{{ adjustChips }}" as="chip" hint-placeholder-count="2">
+                <span style="{{ chip.style }}">{{ chip.label }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display: grid; gap: 1px; background: #F3E7E1; border-radius: 16px; overflow: hidden; margin-bottom: 26px;">
+            <sc-for list="{{ resultRows }}" as="row" hint-placeholder-count="4">
+              <div style="background: #FFFFFF; padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span style="flex: 0 0 104px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5062;">{{ row.label }}</span>
+                <span style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: #453748;">{{ row.value }}</span>
+                <span style="{{ row.tagStyle }}">{{ row.tag }}</span>
+                <p style="{{ row.noteStyle }}">{{ row.note }}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="padding: 26px 26px 28px; border-radius: 16px; background: #453748; color: #FDF9F6; margin-bottom: 22px;">
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 12px; max-width: 18em;">Tomorrow won't look like this.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: #EFE7EF; margin: 0 0 22px; max-width: 32em;">You've seen one day. FemFast writes the next one every morning.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px 26px; align-items: center;">
+              <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" style="display: block; flex: 0 0 auto; transition: transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="transform: translateY(-2px);">
+                <img src="./assets/app-store-badge.svg" alt="Download on the App Store" width="180" height="60" style="display: block; width: 180px; height: 60px;">
+              </a>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.015em;">From $6 a month — risk-free for 5 days</span>
+                <span style="font-size: 14px; color: #E7CFE2;">Not satisfied? Full refund within five days.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline;">
+            <button type="button" onClick="{{ restart }}" style="border: none; background: transparent; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #5F5062; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px;" style-hover="color: #453748;">Start over</button>
+            <span style="font-size: 13.5px; color: #5F5062;">$17.99 for 3 months · $47.99 for 12 · cancel any time.</span>
+          </div>
+          <p style="font-size: 12.5px; line-height: 1.5; color: #5F5062; margin: 16px 0 0; max-width: 40em;">Nothing here was saved. This is general guidance only.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<div ref="{{ landingRef }}" style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color: #453748; background: #FDF9F6; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(251,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #F9F2EF;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px clamp(20px, 3vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;">
+      <a href="#" style="margin-right: auto; display: block;" aria-label="FemFast">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="158" height="22" style="display: block; width: 158px; height: 22px;">
+      </a>
+      <nav style="{{ navStyle }}">
+        <a href="#why" style="color: #5F5062;">Why timing</a>
+        <a href="#how" style="color: #5F5062;">How it works</a>
+        <a href="#phases" style="color: #5F5062;">Your phases</a>
+        <a href="#assistant" style="color: #5F5062;">Ask anything</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" style="{{ getAppStyle }}" style-hover="color: #8D4F83;">Get the app</a>
+        <a href="#check-in" onClick="{{ openQuiz }}" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: #FDF9F6; background: #8D4F83; padding: 11px 20px; border-radius: 16px; box-shadow: 0 10px 20px -10px rgba(141,79,131,0.5); transition: background .18s, transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="background: #453748; transform: translateY(-1px);">{{ headerCta }}</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="position: relative; isolation: isolate; overflow: hidden; min-height: min(calc(100svh - 58px), 900px); display: flex; align-items: center; background: linear-gradient(160deg, #FDF9F6 0%, #FEF0E8 55%, #FFDDD0 100%);">
+    <canvas ref="{{ shaderRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block;"></canvas>
+    <div style="position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: url(./assets/grain.png); background-size: 220px 220px; opacity: 0.5; mix-blend-mode: multiply;"></div>
+    <div style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 32px 32px 40px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center;">
+      <div data-hero-left="1" data-reveal-now="1" style="flex: 1.08 1 380px; max-width: 620px;">
+        <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 70px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 24px;"><span data-h1line="1">Your hormones run </span><span data-h1line="1">your weight <span style="color: #8D4F83;">more</span> </span><span style="color: #8D4F83;">than calories&nbsp;do.</span></h1>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); max-width: 30em; margin: 0 0 40px;">
+          Every morning FemFast reads your cycle and hands you one plan: when to eat, when to fast, how to train.</p>
+        <div data-hero-cta="1" style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center;">
+          <a href="#check-in" onClick="{{ openQuiz }}" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: #FDF9F6; background: #8D4F83; padding: 17px 30px; border-radius: 16px; box-shadow: 0 14px 28px -12px rgba(141,79,131,0.55); transition: transform .18s cubic-bezier(.2,.7,.2,1), background .18s, box-shadow .18s;" style-hover="background: #453748; transform: translateY(-2px); box-shadow: 0 20px 34px -12px rgba(69,55,72,0.5);">Take the 60-second check-in</a>
+          <a href="#phases" style="font-family: Outfit, sans-serif; font-weight: 500; font-size: 17px; color: #8D4F83; transition: color .16s;" style-hover="color: #453748;">See your plan on any day of your cycle <span aria-hidden="true">↓</span></a>
+        </div>
+        <p style="margin: 16px 0 0; font-size: 15px; line-height: 1.5; color: rgba(69,55,72,0.6);">Free<span aria-hidden="true" style="padding: 0 10px;">·</span>no signup<span aria-hidden="true" style="padding: 0 10px;">·</span><span style="font-weight: 600; color: #8D4F83;">4.8</span> from 2,100+ App Store ratings</p>
+      </div>
+
+      <div data-reveal-now="3" style="flex: 0.95 1 330px; min-width: 292px; display: flex; justify-content: center; align-items: center;">
+        <div>
+          <div ref="{{ heroTiltRef }}" style="perspective: 1700px;">
+            <div data-hero-device="" style="position: relative; width: 318px; height: 618px; border-radius: 54px; padding: 10px; background: linear-gradient(150deg, #4A3C50 0%, #1B1421 34%, #362B3B 62%, #16111C 100%); box-shadow: 0 48px 92px -34px rgba(69,55,72,0.6), 0 4px 10px rgba(69,55,72,0.18), inset 0 0 0 1px rgba(255,255,255,0.16);">
+              <div style="position: absolute; left: -2px; top: 129px; width: 2.5px; height: 35px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; left: -2px; top: 191px; width: 2.5px; height: 60px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; left: -2px; top: 265px; width: 2.5px; height: 60px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; right: -2px; top: 226px; width: 2.5px; height: 88px; border-radius: 0 2px 2px 0; background: #3A2F40;"></div>
+              <div style="position: relative; width: 298px; height: 598px; border-radius: 45px; overflow: hidden; background: #FDF9F6;">
+                <img src="./assets/screen-dashboard.png" alt="The FemFast daily dashboard: today's phase, fasting window, meals, training and supplements" width="298" height="820" style="display: block; width: 298px; height: 820px;">
+                <div style="position: absolute; top: 10px; left: 50%; width: 94px; height: 29px; margin-left: -47px; border-radius: 15px; background: #0B0710;"></div>
+                <div aria-hidden="true" style="position: absolute; left: 123.6px; top: 56px; width: 10.4px; height: 16px; background: #FDF9F6; font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 16px; letter-spacing: -0.01em; text-align: center; color: #453748;">8</div>
+                <div aria-hidden="true" style="position: absolute; left: 105.9px; top: 461px; width: 169px; height: 28px; background: #FFFFFF; font-family: Outfit, sans-serif; font-weight: 400; font-size: 10.4px; line-height: 14px; color: #8A8790; padding-top: 4px;">B-complex, vitamin D, omega-3</div>
+              </div>
+            </div>
+          </div>
+          <p style="margin: 18px 0 0; text-align: center; font-size: 14px; line-height: 1.45; color: rgba(69,55,72,0.55);">Evelyn's Day 8. Yours won't look like this.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FDF9F6; border-top: 1px solid #F3E7E1; border-bottom: 1px solid #F3E7E1;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 40px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: 30px 36px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">28</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">days in a cycle that almost no weight-loss plan accounts for</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">4</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">metabolic phases a month — most plans are written for one of them</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">60s</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">to see your phase and the plan that fits it</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.85 1 300px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Most women don't fail at diets. Diets fail their hormones.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 24em;">Never a willpower problem. A timing problem.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0; border-bottom: 1px solid #F3E7E1;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">You do everything right and the scale holds still.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">Some weeks you have no appetite. Some weeks you can’t stop.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">Your energy for training changes. Your programme doesn’t.</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phases" style="position: relative; background: #FDF9F6; border-top: 1px solid #F0E2DB; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0 calc(clamp(64px, 52.11px + 3.05vw, 96px) + 75px);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px;">
+      <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 40px; max-width: 26ch;">One month is four different bodies. FemFast plans for each one.</h2>
+      <div data-phase-cols="1" style="display: flex; flex-direction: column; gap: 40px;">
+        <div data-phase-left="1" style="display: flex; justify-content: center; min-width: 0;">
+        <div ref="{{ wheelRef }}" style="position: relative; width: 100%; max-width: 420px;">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; pointer-events: none; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 52px); line-height: 1; letter-spacing: -0.03em; color: #453748;">Day {{ day }}</div>
+            <div style="margin-top: 14px; padding: 11px 26px; border-radius: 14px; background: #F5EDF6; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: #8D4F83;">{{ phaseName }}</div>
+            <div style="{{ dragHintStyle }}"><span style="font-size: 14px; line-height: 1;">↺</span>Drag to explore any day</div>
+          </div>
+          <div onPointerDown="{{ onWheelDown }}" onPointerMove="{{ onWheelMove }}" onPointerUp="{{ onWheelUp }}" style="touch-action: none; cursor: grab; display: block; border-radius: 50%;" style-active="cursor: grabbing;">
+            <dc-import name="PhaseWheel" day="{{ day }}" size="420" width="100%" icon="./assets/phase-{phase}.png" hint-size="100%,420px"></dc-import>
+          </div>
+        </div>
+        </div>
+
+        <div data-phase-right="1" style="display: flex; flex-direction: column; gap: 0;">
+        <div role="group" aria-label="Jump to a cycle phase" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 28px;">
+          <sc-for list="{{ legend }}" as="item" hint-placeholder-count="4">
+            <button type="button" onClick="{{ item.select }}" aria-pressed="{{ item.pressed }}" style="{{ item.style }}" style-hover="border-color: #8D4F83;" style-focus-visible="outline: 3px solid rgba(141,79,131,0.3); outline-offset: 2px;">{{ item.label }}</button>
+          </sc-for>
+        </div>
+
+
+        <div style="min-height: 92px; margin-bottom: 40px;">
+          <div style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; letter-spacing: 0.1em; color: #8D4F83; margin-bottom: 8px;">{{ phaseRange }}</div>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #453748; margin: 0; max-width: 34em;">{{ phaseBody }}</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; width: 100%;" data-phase-tiles="">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Fasting</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;">{{ phaseFast }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Food</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;">{{ phaseFood }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Training</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;">{{ phaseTrain }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Supplements</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;">{{ phaseSupp }}</span>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <div style="position: relative; z-index: 3; max-width: 1240px; margin: 0 auto; height: 0;">
+  <div data-bridge="1" style="position: absolute; left: 32px; right: 32px; top: 0; transform: translateY(-50%); min-height: 150px; display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; padding: 30px; border-radius: 16px; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 8px 32px rgba(0,0,0,0.06);">
+        <div style="flex: 1 1 320px;">
+          <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 24em;">Which phase are you in today?</h3>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 34em;">Six questions. Then the fasting window, food and training that fit it.</p>
+        </div>
+        <a href="#check-in" onClick="{{ openQuiz }}" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: #FDF9F6; background: #8D4F83; padding: 17px 30px; border-radius: 16px; box-shadow: 0 14px 28px -12px rgba(141,79,131,0.5); transition: background .18s, transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="background: #453748; transform: translateY(-2px);">Take the check-in</a>
+      </div>
+  </div>
+  <section id="how" style="max-width: 1240px; margin: 0 auto; padding: calc(clamp(64px, 52.11px + 3.05vw, 96px) + 75px) 32px 0;">
+    <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">One plan, rewritten every morning.</h2>
+    <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0 0 40px; max-width: 30em;">Four things move with your phase. Here's the whole month.</p>
+
+    <div data-how-row="" data-how-axis="" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 20px; padding: 22px 0 10px;">
+      <div data-how-label="" style="flex: 0 0 160px;"></div>
+      <div style="flex: 1 1 260px; min-width: 0; display: grid; grid-template-columns: 5fr 8fr 3fr 12fr;">
+        <sc-for list="{{ phaseAxis }}" as="p" hint-placeholder-count="4">
+          <div style="{{ p.cellStyle }}">
+            <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+            <div style="{{ p.rangeStyle }}">{{ p.range }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-how-why="" style="flex: 0 0 300px;"></div>
+    </div>
+
+    <sc-for list="{{ stripRows }}" as="row" hint-placeholder-count="4">
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0; border-top: 1px solid #F0E2DB;">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: #453748;">{{ row.label }}</div>
+
+        <div style="flex: 1 1 260px; min-width: 0;">
+          <sc-if value="{{ row.hasOverlay }}" hint-placeholder-val="{{ true }}">
+            <div data-how-overlay="" style="position: relative; margin-bottom: 4px;">
+            <svg viewBox="0 0 280 48" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 48px;">
+              <sc-for list="{{ row.bars }}" as="b" hint-placeholder-count="4">
+                <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="1.5" fill="{{ b.fill }}"></rect>
+              </sc-for>
+              <sc-if value="{{ row.linePath }}" hint-placeholder-val="{{ false }}">
+                <path d="{{ row.linePath }}" fill="none" stroke="#6E3A66" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+              </sc-if>
+            </svg>
+            <sc-for list="{{ row.series }}" as="s" hint-placeholder-count="0">
+              <span style="{{ s.style }}">{{ s.text }}</span>
+            </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            <sc-for list="{{ ringSegs }}" as="seg" hint-placeholder-count="4">
+              <div style="{{ seg.style }}"></div>
+            </sc-for>
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            <sc-for list="{{ row.spans }}" as="span" hint-placeholder-count="4">
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0;">
+                <span style="{{ span.dotStyle }}"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: #453748;">{{ span.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="{{ row.noteStyle }}">{{ row.note }}</div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: #5F5062;">{{ row.why }}</div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section id="assistant" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px 0;">
+    <div data-reveal="" style="position: relative; overflow: hidden; border-radius: 16px; background: #FEF0E8; color: #453748; padding: clamp(30px, 4vw, 46px);">
+      <div style="position: relative; display: flex; flex-wrap: wrap; gap: 44px 56px; align-items: flex-start;">
+        <div style="flex: 1 1 320px;">
+          <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Ask it anything, any hour.</h2>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0 0 40px; max-width: 30em;">It already knows your phase, so you never explain yourself twice. And it's awake at 2am.</p>
+          <div style="display: grid; gap: 0; margin: 0 0 20px; max-width: 30em;">
+            <sc-for list="{{ asks }}" as="ask" hint-placeholder-count="4">
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-top: 1px solid #F0DCD0;">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: #8D4F83;">{{ ask.time }}</span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: #453748;">{{ ask.q }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.55; color: #5F5062; margin: 0; max-width: 30em;">Ask anything. It won't diagnose — that stays your doctor's job.</p>
+        </div>
+        <div style="flex: 0 1 360px; min-width: 260px; display: flex; justify-content: center;">
+          <div style="width: 100%; max-width: 330px; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 24px 44px -26px rgba(69,55,72,0.4);">
+            <div style="padding: 14px 18px; border-bottom: 1px solid #F3E7E1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+              <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.01em; color: #453748;">Ask FemFast</span>
+              <span style="font-size: 11px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: #8D4F83;">In app</span>
+            </div>
+            <img src="./assets/screen-assistant.png" alt="FemFast AI assistant: it opens by naming her follicular phase, then answers what to eat today with protein suggestions" width="330" height="282" style="display: block; width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="proof" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <h2 data-reveal="" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Women who stopped blaming themselves.</h2>
+    <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 40px;">
+      <span aria-hidden="true" style="display: inline-flex; gap: 3px;">
+        <sc-for list="{{ ratingStars }}" as="star" hint-placeholder-count="5">
+          <span style="{{ star.style }}">★</span>
+        </sc-for>
+      </span>      <span style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6);">{{ ratingLine }}</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <sc-for list="{{ reviewCards }}" as="review" hint-placeholder-count="3">
+        <a href="{{ review.href }}" target="_blank" rel="noopener" data-reveal="" style="display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px; border-radius: 16px; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 1px 2px rgba(69,55,72,0.04); color: #453748; transition: transform .18s cubic-bezier(.2,.7,.2,1), box-shadow .18s, border-color .18s;" style-hover="transform: translateY(-2px); border-color: #E3CFDF; box-shadow: 0 12px 28px -18px rgba(69,55,72,0.4);">
+          <span role="img" aria-label="{{ review.ratingLabel }}" style="{{ review.starsStyle }}">
+            <sc-for list="{{ review.stars }}" as="star" hint-placeholder-count="5">
+              <span aria-hidden="true" style="{{ star.style }}">★</span>
+            </sc-for>
+          </span>
+          <span style="{{ review.nameStyle }}">{{ review.name }}</span>
+          <span style="{{ review.titleStyle }}">{{ review.title }}</span>
+          <span style="font-size: 17px; line-height: 1.55; color: #453748;">{{ review.body }}</span>
+          <span style="margin-top: auto; padding-top: 6px; font-size: 13px; line-height: 1.45; color: rgba(69,55,72,0.6);">{{ review.meta }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <section id="science" style="position: relative; overflow: hidden; background: radial-gradient(120% 160% at 12% -20%, #5C4A60 0%, #453748 55%, #382C3A 100%); color: #FDF9F6; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch;">
+      <div data-sci-left data-reveal="" style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Three findings the calorie model leaves out.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253,249,246,0.78); margin: 0 0 40px; max-width: 28em;">What the research shows, and how sure we are. Every recommendation in the app is sourced.</p>
+        <p style="font-size: 15px; line-height: 1.5; color: rgba(253,249,246,0.65); margin: auto 0 0; padding-top: 24px; border-top: 1px solid rgba(253,249,246,0.15); max-width: 28em;">General guidance only. Your clinician stays your clinician.</p>
+      </div>
+      <div data-sci-findings data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0;">
+        <div style="display: flex; gap: 18px; align-items: flex-start;">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">01</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Insulin sensitivity shifts weekly</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">Higher in week two, lower in week four. So your carbs move with the week.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/20843950" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Yeung et al., J Clin Endocrinol Metab, 2010</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253,249,246,0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">02</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Metabolism rises before your period</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">A little higher, with real hunger to match. Your body is doing more work.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/32658929" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Benton et al., PLoS One, 2020</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253,249,246,0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">03</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Long fasts cost women more</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">Most fasting research was run on men. Early evidence suggests women’s stress response to long fasts differs, so we keep windows shorter.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Emerging</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/15833943" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Heilbronn et al., Obesity Research, 2005</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width: 1240px; margin: 0 auto; padding: clamp(32px, 26.06px + 1.52vw, 48px) 32px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.8 1 280px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Will this work for me?</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 24em;">The honest answers.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.2 1 360px; display: grid; gap: 0;">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="6">
+          <div style="border-top: 1px solid #F0E2DB;">
+            <button type="button" onClick="{{ item.toggle }}" aria-expanded="{{ item.expanded }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: #453748; transition: color .16s;" style-hover="color: #8D4F83;">
+              <span style="flex: 1 1 auto;">{{ item.q }}</span>
+              <span style="{{ item.iconStyle }}">+</span>
+            </button>
+            <div style="{{ item.bodyStyle }}">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 22px; max-width: 36em;">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" ref="{{ planSectionRef }}" style="position: relative; overflow: hidden; isolation: isolate; background-color: #5E3357; background-image: radial-gradient(120% 150% at 78% 0%, #7A4272 0%, #5E3357 55%, #4A2844 100%); color: #FDF9F6; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0 clamp(64px, 52.11px + 3.05vw, 96px);">
+    <div style="position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: url(./assets/grain.png); background-size: 220px 220px; opacity: 0.4; mix-blend-mode: overlay;"></div>
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start;">
+      <div style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Risk-free for five days.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253,249,246,0.7); margin: 0 0 40px; max-width: 26em;">Not for you? Money back in five days. No form, no questions.</p>
+      </div>
+
+      <div ref="{{ planStackRef }}" style="flex: 0 1 420px; min-width: 300px; perspective: 1400px;">
+        <div ref="{{ planTiltRef }}" style="transform-style: preserve-3d;">
+          <div style="display: grid; gap: 16px;">
+            <sc-for list="{{ plans }}" as="plan" hint-placeholder-count="3">
+              <div onPointerEnter="{{ plan.enter }}" onPointerLeave="{{ plan.leave }}" style="{{ plan.style }}">
+                <div ref="{{ plan.glowRef }}" style="{{ plan.glowStyle }}"></div>
+                <div style="position: relative; flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px; text-align: left; min-width: 0;">
+                    <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em;">{{ plan.name }}</span>
+                    <span style="font-size: 13.5px; color: #F3E3EE;">{{ plan.note }}</span>
+                  </div>
+                </div>
+                <div style="position: relative; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; white-space: nowrap;">{{ plan.price }}</span>
+                  <span style="font-size: 12.5px; color: #F3E3EE; white-space: nowrap;">{{ plan.perMonth }}</span>
+                </div>
+                <div style="{{ plan.badgeStyle }}">{{ plan.badge }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px 20px; align-items: center; margin-top: 22px;">
+            <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" style="display: block; flex: 0 0 auto; transition: transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="transform: translateY(-2px);">
+              <img src="./assets/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" style="display: block; width: 150px; height: 50px;">
+            </a>
+            <span style="flex: 1 1 180px; font-size: 13.5px; line-height: 1.5; color: #F3E3EE;">Choose your plan in the app — Apple handles the payment.</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.5; color: #E7CFE2; margin: 18px 0 0;">Hormones take 90+ days. We price for a real run at it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultPlan&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;quarterly&quot;,&quot;annual&quot;,&quot;monthly&quot;],&quot;default&quot;:&quot;quarterly&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Pricing&quot;}}">
+const CYCLE = 28;
+const PHASES = [
+  { id: "menstrual", name: "Menstrual", start: 1, end: 5, color: "#F0788E", ink: "#B8405A", ramp: ["#F995A6", "#F9BBC1"],
+    body: "Estrogen and progesterone bottom out. Recovery is the work this week.",
+    fast: "12:12 — gentle", food: "Iron, warmth, steady carbs", train: "Walking, mobility, light lifts", supp: "Magnesium, iron, omega-3",
+    fastHours: 12, carb: 0.42, protein: 0.50, load: 0.40 },
+  { id: "follicular", name: "Follicular", start: 6, end: 13, color: "#A8CC8A", ink: "#3B7F5E", ramp: ["#D6ECCA", "#E7EBBF"],
+    body: "Insulin sensitivity is on your side. Your longest fast, your hardest sessions.",
+    fast: "16:8 — your longest window", food: "Higher carb, high fibre", train: "Strength and HIIT", supp: "B-complex, vitamin D, omega-3",
+    fastHours: 16, carb: 0.80, protein: 0.55, load: 1.00 },
+  { id: "ovulatory", name: "Ovulatory", start: 14, end: 16, color: "#F4CE7A", ink: "#96610A", ramp: ["#FEF1C2", "#FDDDCE"],
+    body: "Peak output. Three days where a PR is actually likely.",
+    fast: "14:10 — moderate", food: "Protein forward, anti-inflammatory", train: "Heavy strength, sprints", supp: "Omega-3, zinc, vitamin C",
+    fastHours: 14, carb: 0.58, protein: 0.82, load: 1.00 },
+  { id: "luteal", name: "Luteal", start: 17, end: 28, color: "#BB86B2", ink: "#85589E", ramp: ["#EBC5D3", "#BB86B2"],
+    body: "Metabolism runs hotter, cravings turn physiological. Fasting pulls back.",
+    fast: "12:12 — pulled back", food: "More carbs, more salt, magnesium", train: "Steady-state, moderate lifts", supp: "Magnesium glycinate, B6, calcium",
+    fastHours: 12, carb: 0.86, protein: 0.58, load: 0.65 }
+];
+const phaseFor = d => PHASES.find(p => d >= p.start && d <= p.end) || PHASES[0];
+
+const QUESTIONS = [
+  { id: "goal", title: "What would you most like to change?", help: "",
+    options: [
+      { v: "weight", label: "Lose weight that won't shift", note: "Doing everything right" },
+      { v: "energy", label: "Have steadier energy", note: "Fewer crashes, fewer flat weeks" },
+      { v: "cravings", label: "Stop fighting cravings", note: "Especially the week before your period" },
+      { v: "strength", label: "Get stronger without burning out", note: "Hard when it counts, rest when it doesn't" }
+    ] },
+  { id: "cycle", title: "How does your cycle usually run?", help: "Pick the closest.",
+    options: [
+      { v: "regular", label: "Like clockwork", note: "Same length every month" },
+      { v: "variable", label: "It varies by a few days", note: "Predictable enough, not exact" },
+      { v: "unpredictable", label: "Quite unpredictable", note: "The length changes a lot month to month" },
+      { v: "untracked", label: "I don't track it yet", note: "We'll start you somewhere sensible" }
+    ] },
+  { id: "day", title: "Where are you in your cycle today?", help: "Not sure is fine.",
+    options: [
+      { v: "1", label: "Day 1\u20135", note: "Period" },
+      { v: "6", label: "Day 6\u201313", note: "After your period, before ovulation" },
+      { v: "14", label: "Day 14\u201316", note: "Around mid-cycle" },
+      { v: "17", label: "Day 17\u201328", note: "The week or two before your period" },
+      { v: "unsure", label: "I'm not sure", note: "We'll work it out" }
+    ] },
+  { id: "fasting", title: "Have you fasted before?", help: "Either way is fine.",
+    options: [
+      { v: "never", label: "Never", note: "We'll start gently" },
+      { v: "tried", label: "I've tried it", note: "It didn't quite stick" },
+      { v: "sometimes", label: "On and off", note: "Some weeks are easier than others" },
+      { v: "regular", label: "I fast regularly", note: "I want it timed better" }
+    ] },
+  { id: "training", title: "How often do you move right now?", help: "Honestly, not aspirationally.",
+    options: [
+      { v: "0", label: "Rarely", note: "We'll start with walking" },
+      { v: "1", label: "Once or twice a week" },
+      { v: "3", label: "Three or four times a week" },
+      { v: "5", label: "Five or more", note: "Let's time it to your phases" }
+    ] },
+  { id: "diet", title: "Anything we should plan your food around?", help: "Any that apply, or skip.", multi: true, skippable: true,
+    options: [
+      { v: "veg", label: "Vegetarian or vegan" },
+      { v: "gf", label: "Gluten-free" },
+      { v: "df", label: "Dairy-free" },
+      { v: "lowcarb", label: "Low carb" },
+      { v: "none", label: "Nothing in particular" }
+    ] }
+];
+
+
+// Ratings + reviews render from these two constants only. Swap them for the parsed
+// contents of /data/rating.json and /data/featured-reviews.json when the App Store
+// Connect pull lands — the markup below needs no change.
+//
+// A verified entry (from the real pull) carries rating + title + createdDate and
+// renders the star row, the title and the "App Store review" byline. The seeded
+// entries below are the site's existing testimonials: they carry NONE of those
+// fields, so nothing claims an App Store rating or date that was never fetched.
+const RATING = { average: 4.8, count: 2100, url: "https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" };
+
+// Verified entries transcribed from the App Store product page (screenshots supplied
+// by the team, 21 Sep 2026). Text is verbatim — typos and punctuation untouched.
+// Replace wholesale with /data/featured-reviews.json when the ASC pull is wired up.
+const REVIEWS = [
+  { id: "as-moni-ca1863", rating: 5, title: "Exactly what I need",
+    body: "My cycle is crazy irregular but FemFast still gives me clear steps. No other fasting app did that. Total gamechanger.",
+    reviewerNickname: "Moni_ca1863", createdDate: "2025-08-26", territory: "POL" },
+  { id: "as-marilli5", rating: 5, title: "Really nice app!",
+    body: "I have PCOS and it\u2019s tough finding advice that doesn\u2019t make me feel broken. This app is gentle but also science-based. Exactly what I needed.",
+    reviewerNickname: "Marilli5", createdDate: "2025-08-21", territory: "POL" }
+];
+
+
+const FAQS = [
+  { q: "My cycle is irregular. Can I still use it?",
+    a: "Yes \u2014 that's the case we built hardest around. Tell us roughly where you are, or that you don't know. It sharpens over the first six weeks." },
+    { q: "Why does the plan change every week?",
+    a: "Because your body does. A plan that stays flat is wrong three weeks out of four." },
+  { q: "Do I have to fast?",
+    a: "No. Turn it off and FemFast still times your food, training and supplements. The timing is the point." },
+  { q: "Is fasting right for everyone?",
+    a: "No. Not if you're pregnant or breastfeeding, have any history of disordered eating, or take medication that needs food. FemFast asks first and won't suggest it. When in doubt, ask your clinician." },
+  { q: "What do you do with my data?",
+    a: "Nothing on this page is stored. In the app it builds your plan and nothing else \u2014 never sold, never shared. Delete it all in one tap." },
+  { q: "How fast will I see results?",
+    a: "Energy and cravings usually shift within one cycle. Weight follows over two or three." },
+  ];
+
+
+const PHASE_BY_DAY = { "1": "menstrual", "6": "follicular", "14": "ovulatory", "17": "luteal" };
+const CYCLE_COPY = {
+  regular: "a regular cycle",
+  variable: "a cycle that shifts a few days",
+  unpredictable: "an unpredictable cycle",
+  untracked: "a cycle you haven't tracked yet"
+};
+
+
+const FRAG = `precision highp float;
+uniform vec2 u_res; uniform float u_t;
+float silk(vec2 p, float t){
+  float a = sin(p.x * 1.7 + sin(p.y * 1.15 + t * 0.22) * 1.9 + t * 0.17);
+  float b = sin(p.y * 2.1 + sin(p.x * 1.45 - t * 0.15) * 1.7 - t * 0.12);
+  float c = sin((p.x + p.y) * 1.25 + sin((p.x - p.y) * 0.95 + t * 0.09) * 1.5);
+  return (a + b + c) / 3.0 * 0.5 + 0.5;
+}
+void main(){
+  vec2 uv = gl_FragCoord.xy / u_res;
+  vec2 q = vec2(uv.x * (u_res.x / u_res.y), uv.y) * 2.6;
+  float warp = silk(q * 0.55, u_t * 0.7);
+  float n = silk(q + warp * 1.4, u_t);
+  vec3 cream = vec3(0.992, 0.976, 0.965);
+  vec3 blush = vec3(0.996, 0.941, 0.910);
+  vec3 rose  = vec3(0.996, 0.867, 0.816);
+  vec3 lilac = vec3(0.925, 0.659, 0.698);
+  float m = smoothstep(0.18, 0.88, n);
+  vec3 col = mix(cream, blush, smoothstep(0.0, 0.6, m));
+  col = mix(col, rose, smoothstep(0.4, 0.95, m) * 0.5);
+  col = mix(col, lilac, smoothstep(0.55, 1.05, m * 0.7 + uv.x * 0.45) * 0.42);
+  float band = 0.5 + 0.5 * sin((m * 5.2) + warp * 3.0 + u_t * 0.08);
+  col = mix(col, lilac, band * 0.08);
+  float glow = smoothstep(0.7, 0.05, distance(uv, vec2(0.9, 0.9)));
+  col = mix(col, vec3(0.925, 0.659, 0.698), glow * 0.35);
+  col = mix(col, cream, smoothstep(0.55, 0.05, uv.x) * 0.55);
+  col = mix(col, cream, smoothstep(0.4, 0.0, uv.y) * 0.55);
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+
+class Component extends DCLogic {
+  state = { plan: "quarterly", pickedPlan: false, hoverPlan: "", focusPlan: "", day: 6, dragging: false, quizOpen: false, step: 0, answers: {}, building: false, openFaq: 0, stickyBar: false, narrow: false };
+
+  toggleFaq = i => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i }));
+
+  // real 11pm questions, not feature bullets — the timestamp is the argument
+  ASKS = [
+    { time: "07:15", q: "What should I eat today?" },
+    { time: "13:20", q: "Work dinner Thursday — can I move my eating window?" },
+    { time: "18:05", q: "How can I improve my mood?" },
+    { time: "22:40", q: "I'm exhausted. Is this my phase, or is this me?" }
+  ];
+;
+
+  planCards = {};
+  PLAN_ORDER = ["quarterly", "annual", "monthly"];
+
+  // ARIA radiogroup: arrows move and select, wrapping; roving tabindex keeps one tab stop
+  onPlanKey(e, id) {
+    const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+    const dir = keys[e.key];
+    if (dir) {
+      e.preventDefault();
+      const order = this.PLAN_ORDER;
+      const i = order.indexOf(id);
+      const next = order[(i + dir + order.length) % order.length];
+      this.setState({ plan: next, pickedPlan: true }, () => {
+        const el = this.planCards[next];
+        if (el && el.focus) el.focus();
+      });
+      return;
+    }
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      this.setState({ plan: id, pickedPlan: true });
+    }
+  }
+
+  // Sticky bar: narrow viewports only, and only once the hero CTA has scrolled away —
+  // showing it over the hero would just duplicate a button already on screen.
+  initStickyBar() {
+    const read = () => {
+      const narrow = window.innerWidth < 760;
+      const past = window.scrollY > Math.max(320, window.innerHeight * 0.75);
+      const want = narrow && past;
+      if (want !== this.state.stickyBar || narrow !== this.state.narrow) this.setState({ stickyBar: want, narrow: narrow });
+      // keep the footer clear of the bar
+      document.body.style.paddingBottom = want ? "78px" : "";
+    };
+    let queued = false;
+    this.onStickyScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; read(); });
+    };
+    window.addEventListener("scroll", this.onStickyScroll, { passive: true });
+    window.addEventListener("resize", this.onStickyScroll, { passive: true });
+    read();
+  }
+
+  TOTAL = QUESTIONS.length;
+
+  openQuiz = e => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.stopAuto();
+    this.lastFocus = document.activeElement;
+    this.setState({ quizOpen: true, step: 0 }, () => { this.setLandingInert(true); this.focusStep(); });
+    this.syncHash(0);
+    document.documentElement.style.overflow = "hidden";
+  };
+  closeQuiz = e => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ quizOpen: false });
+    this.setLandingInert(false);
+    if (this.lastFocus && this.lastFocus.focus) this.lastFocus.focus();
+    document.documentElement.style.overflow = "";
+    if (location.hash.indexOf("#check-in") === 0) history.replaceState(null, "", location.pathname + location.search);
+  };
+  restart = () => { this.setState({ step: 0, answers: {}, building: false }); this.syncHash(0); };
+  syncHash(step) {
+    try { history.replaceState(null, "", "#check-in/" + (step + 1)); } catch (err) {}
+  }
+  goStep(step) {
+    const s = Math.max(0, Math.min(this.TOTAL, step));
+    const entering = s >= QUESTIONS.length && this.state.step < QUESTIONS.length;
+    this.setState({ step: s, building: entering }, () => {
+      if (this.quizPanel) this.quizPanel.scrollTop = 0;
+      this.focusStep();
+    });
+    this.syncHash(s);
+    clearTimeout(this.buildTimer);
+    if (entering) {
+      const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      this.buildTimer = setTimeout(() => this.setState({ building: false }, () => this.focusStep()), still ? 250 : 2100);
+    }
+  }
+  focusStep() {
+    const h = this.stepHeading;
+    if (h && typeof h.focus === "function") h.focus({ preventScroll: true });
+  }
+  setLandingInert(on) {
+    const el = this.landing;
+    if (!el) return;
+    if (on) { el.setAttribute("inert", ""); el.setAttribute("aria-hidden", "true"); }
+    else { el.removeAttribute("inert"); el.removeAttribute("aria-hidden"); }
+  }
+
+  next = () => this.goStep(this.state.step + 1);
+  back = () => this.goStep(this.state.step - 1);
+
+  pickAnswer(q, v) {
+    const answers = Object.assign({}, this.state.answers);
+    if (q.multi) {
+      const cur = answers[q.id] ? answers[q.id].slice() : [];
+      const i = cur.indexOf(v);
+      if (i > -1) cur.splice(i, 1); else cur.push(v);
+      answers[q.id] = cur;
+      this.setState({ answers: answers });
+    } else {
+      answers[q.id] = v;
+      this.setState({ answers: answers });
+    }
+  }
+
+  onQuizKey = e => {
+    if (!this.state.quizOpen) return;
+    if (e.key === "Escape") this.closeQuiz();
+  };
+
+
+  shaderRef = el => { this.canvas = el; };
+  heroTiltRef = el => { this.tilt = el; };
+
+  planSectionRef = el => { this.planSection = el; };
+  planStackRef = el => { this.planStack = el; };
+  planTiltRef = el => { this.planTilt = el; };
+  glowRefs = {};
+  quizPanelRef = el => { this.quizPanel = el; };
+  stepHeadingRef = el => { this.stepHeading = el; };
+  landingRef = el => { this.landing = el; };
+  wheelBadgeRef = el => { this.wheelBadge = el; this.syncBadges(); };
+  resultBadgeRef = el => { this.resultBadgeEl = el; this.syncBadges(); };
+
+  // bitmap paths are applied post-render: a {{ hole }} on src/href is fetched
+  // literally during the stream pass and 404s before values exist.
+  syncBadges() {
+    const wheel = this.wheelBadge;
+    if (wheel) {
+      const want = "./assets/phase-" + phaseFor(this.state.day).id + ".png";
+      if (wheel.getAttribute("href") !== want) wheel.setAttribute("href", want);
+    }
+    const res = this.resultBadgeEl;
+    if (res && this.state.step >= QUESTIONS.length) {
+      const want = this.resultVals().resultBadge;
+      if (res.getAttribute("src") !== want) res.setAttribute("src", want);
+    }
+  }
+
+  componentDidMount() {
+    this.initShader();
+    this.initTilt();
+    this.initAutoCycle();
+    this.bindPlanPointer(null);
+    this.initStickyBar();
+    window.addEventListener("keydown", this.onQuizKey);
+    if (location.hash.indexOf("#check-in") === 0) this.openQuiz();
+  }
+
+  bindPlanPointer(m) {
+    const sec = this.planSection;
+    if (!sec) return;
+    const tilt = this.planTilt;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let frame = null, pt = null;
+    const apply = () => {
+      frame = null;
+      if (!pt) return;
+      const r = sec.getBoundingClientRect();
+      const nx = (pt.clientX - r.left) / r.width;
+      const ny = 1 - (pt.clientY - r.top) / r.height;
+      if (m) { m.x = Math.min(1.2, Math.max(-0.2, nx)); m.y = Math.min(1.2, Math.max(-0.2, ny)); }
+      // the specular centre follows the cursor on the hovered card only; whether it
+      // shows at all is decided by hover state in renderVals, so the two can't desync.
+      const g = this.glowRefs[this.state.hoverPlan];
+      if (g && g.parentElement) {
+        const b = g.parentElement.getBoundingClientRect();
+        const gx = ((pt.clientX - b.left) / b.width * 100).toFixed(1);
+        const gy = ((pt.clientY - b.top) / b.height * 100).toFixed(1);
+        g.style.backgroundImage = "radial-gradient(200px circle at " + gx + "% " + gy + "%, rgba(255,255,255,0.34), rgba(255,255,255,0.07) 45%, transparent 70%)";
+      }
+    };
+    const move = e => { pt = e; this.planHover = true; if (!frame) frame = requestAnimationFrame(apply); };
+    const leave = () => {
+      this.planHover = false;
+      if (m) { m.x = 0.68; m.y = 0.72; }
+      this.setState({ hoverPlan: "" });
+    };
+    sec.addEventListener("pointermove", move, { passive: true });
+    sec.addEventListener("pointerleave", leave);
+    this.offPlan = () => {
+      sec.removeEventListener("pointermove", move);
+      sec.removeEventListener("pointerleave", leave);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }
+  componentDidUpdate() { this.syncBadges(); }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.io) this.io.disconnect();
+    if (this.offTilt) this.offTilt();
+    clearInterval(this.cycleTimer);
+    clearTimeout(this.resumeTimer);
+    if (this.wheelIO) this.wheelIO.disconnect();
+    if (this.offPlan) this.offPlan();
+    window.removeEventListener("keydown", this.onQuizKey);
+    window.removeEventListener("scroll", this.onStickyScroll);
+    window.removeEventListener("resize", this.onStickyScroll);
+    clearTimeout(this.advanceTimer);
+    clearTimeout(this.buildTimer);
+    document.documentElement.style.overflow = "";
+  }
+
+  quizVals() {
+    const st = this.state;
+    const step = st.step;
+    const done = step >= QUESTIONS.length;
+    const isBuilding = done && st.building;
+    const isResult = done && !st.building;
+    const isQuestion = !done;
+    const q = QUESTIONS[Math.min(step, QUESTIONS.length - 1)];
+    const ans = st.answers[q.id];
+    // never start at zero — a visibly-begun bar reads as progress already made
+    const pct = done ? 100 : Math.round(((step + 0.6) / (this.TOTAL + 0.6)) * 100);
+
+    const btn = (on) => [
+      "display:flex", "align-items:center", "gap:14px", "width:100%", "cursor:pointer",
+      "font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif",
+      "padding:20px 24px", "border-radius:16px", "text-align:left", "outline:none",
+      "transition:background .18s,border-color .18s,box-shadow .18s,transform .18s cubic-bezier(.2,.7,.2,1)",
+      on ? "background:rgba(141,79,131,0.08)" : "background:#FFFFFF",
+      on ? "border:2px solid #8D4F83" : "border:2px solid #F0E2DB",
+      on ? "box-shadow:0 10px 22px -14px rgba(141,79,131,0.45)" : "box-shadow:0 1px 2px rgba(69,55,72,0.04)",
+      on ? "color:#453748" : "color:#453748"
+    ].join(";");
+    const mark = (on) => [
+      "flex:0 0 auto", "width:22px", "height:22px", "border-radius:" + (q.multi ? "6px" : "50%"),
+      "display:flex", "align-items:center", "justify-content:center",
+      "font-size:12px", "font-weight:700", "line-height:1",
+      "transition:background .18s,border-color .18s,color .18s",
+      on ? "background:#8D4F83" : "background:#FFFFFF",
+      on ? "border:1.5px solid #8D4F83" : "border:1.5px solid #DCC9D6",
+      on ? "color:#FDF9F6" : "color:transparent"
+    ].join(";");
+
+    const chosen = v => q.multi ? (ans || []).indexOf(v) > -1 : ans === v;
+    const hasAns = q.multi ? (ans || []).length > 0 : !!ans;
+    const cont = [
+      "border:none", "cursor:pointer", "font-family:Outfit,sans-serif", "font-weight:700",
+      "font-size:16.5px", "color:#FDF9F6", "background:#8D4F83", "padding:17px 30px",
+      "border-radius:16px", "box-shadow:0 14px 28px -12px rgba(141,79,131,0.55)",
+      "transition:transform .18s cubic-bezier(.2,.7,.2,1),background .18s"
+    ].join(";");
+
+    const out = {
+      quizOpen: st.quizOpen,
+      isQuestion: isQuestion,
+      isBuilding: isBuilding,
+      isResult: isResult,
+      openQuiz: this.openQuiz,
+      closeQuiz: this.closeQuiz,
+      restart: this.restart,
+      next: this.next,
+      back: this.back,
+      quizPanelRef: this.quizPanelRef,
+      stepHeadingRef: this.stepHeadingRef,
+      landingRef: this.landingRef,
+      asks: this.ASKS,
+      showStickyBar: this.state.stickyBar && !this.state.quizOpen,
+      // on phones the nav wraps to a second row and eats a quarter of the viewport;
+      // the sticky bar carries the CTA there instead
+      getAppStyle: "font-family:Outfit,sans-serif;font-weight:600;font-size:14.5px;color:#5F5062;transition:color .16s;display:" + (this.state.narrow ? "none" : "block"),
+      headerCta: this.state.narrow ? "Start" : "Take the check-in",
+      navStyle: "display:" + (this.state.narrow ? "none" : "flex") + ";flex-wrap:wrap;gap:8px 22px;font-size:14.5px;font-weight:500;color:#5F5062",
+      faqs: FAQS.map((item, i) => {
+        const open = this.state.openFaq === i;
+        return {
+          q: item.q,
+          a: item.a,
+          expanded: open ? "true" : "false",
+          toggle: () => this.toggleFaq(i),
+          iconStyle: [
+            "flex:0 0 auto", "width:26px", "height:26px", "border-radius:50%",
+            "display:flex", "align-items:center", "justify-content:center",
+            "font-family:Outfit,sans-serif", "font-weight:600", "font-size:17px", "line-height:1",
+            "transition:transform .28s cubic-bezier(.2,.7,.2,1),background .2s,color .2s",
+            open ? "background:#8D4F83" : "background:#F8EDF5",
+            open ? "color:#FDF9F6" : "color:#8D4F83",
+            open ? "transform:rotate(45deg)" : "transform:rotate(0deg)"
+          ].join(";"),
+          bodyStyle: [
+            "overflow:hidden",
+            "transition:max-height .34s cubic-bezier(.2,.7,.2,1),opacity .28s ease",
+            open ? "max-height:340px" : "max-height:0px",
+            open ? "opacity:1" : "opacity:0"
+          ].join(";")
+        };
+      }),
+      ratingLine: RATING.average.toFixed(1) + " \u00b7 " + (Math.floor(RATING.count / 100) * 100).toLocaleString("en-US") + "+ ratings on the App Store",
+      ratingStars: [1, 2, 3, 4, 5].map(i => ({
+        style: "font-size:17px;line-height:1;color:" + (i <= Math.round(RATING.average) ? "#8D4F83" : "rgba(141,79,131,0.25)")
+      })),
+      reviewCards: REVIEWS.map(r => {
+        const verified = !!(r.rating && r.createdDate);
+        let meta = r.meta || r.reviewerNickname;
+        if (verified) {
+          const d = new Date(r.createdDate);
+          const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
+          meta = r.reviewerNickname + " \u00b7 " + month + " " + d.getFullYear() + " \u00b7 App Store review";
+        }
+        return {
+          name: r.reviewerNickname,
+          nameStyle: verified ? "display:none" : "font-family:Outfit,sans-serif;font-weight:700;font-size:18px;line-height:1.3;letter-spacing:-0.01em",
+          title: r.title || "",
+          titleStyle: verified && r.title ? "font-family:Outfit,sans-serif;font-weight:700;font-size:18px;line-height:1.3;letter-spacing:-0.01em" : "display:none",
+          body: r.body.length > 400 ? r.body.slice(0, 400) + " [\u2026]" : r.body,
+          meta: meta,
+          href: RATING.url,
+          ratingLabel: verified ? r.rating + " out of 5" : "",
+          starsStyle: verified ? "display:inline-flex;gap:2px" : "display:none",
+          stars: verified ? [1, 2, 3, 4, 5].map(i => ({
+            style: "font-size:14px;line-height:1;letter-spacing:1px;color:" + (i <= r.rating ? "#8D4F83" : "rgba(141,79,131,0.25)")
+          })) : []
+        };
+      }),
+      wheelBadgeRef: this.wheelBadgeRef,
+      resultBadgeRef: this.resultBadgeRef,
+      stepKey: "s" + step,
+      canGoBack: step > 0,
+      stepCount: isBuilding ? "" : isResult ? "Done" : "Step " + (step + 1) + " of " + this.TOTAL,
+      qHelpStyle: q.help
+        ? "font-size:clamp(17px, 15.89px + 0.29vw, 20px);line-height:1.55;color:rgba(69,55,72,0.6);margin:0 0 24px;max-width:32em"
+        : "display:none",
+      continueStyle: hasAns ? cont : cont + ";opacity:0.45;cursor:not-allowed;box-shadow:none",
+      continueDisabled: !hasAns,
+      continueAria: hasAns ? "false" : "true",
+      showContinue: isQuestion,
+      showSkipLink: isQuestion && q.skippable === true,
+      progressStyle: "height:100%;border-radius:100px;background:linear-gradient(90deg,#F0788E,#8D4F83);width:" + pct + "%;transition:width .45s cubic-bezier(.2,.7,.2,1)",
+
+      qTitle: q.title,
+      qHelp: q.help,
+      buildSteps: ["Reading your cycle pattern", "Mapping your phase to today", "Writing your first day"].map((label, i) => ({
+        label: label,
+        dotStyle: [
+          "flex:0 0 auto", "width:9px", "height:9px", "border-radius:50%",
+          "background:#8D4F83",
+          "animation:ff-pulse 1.5s ease-in-out " + (i * 0.45).toFixed(2) + "s infinite"
+        ].join(";"),
+        textStyle: "font-family:Outfit,sans-serif;font-weight:600;font-size:16px;color:#453748"
+      })),
+      qOptions: q.options.map(o => ({
+        label: o.label,
+        note: o.note || "",
+        noteStyle: o.note ? "font-size:13.5px;color:#6E5D70" : "display:none",
+        mark: q.multi ? "\u2713" : "\u25cf",
+        markStyle: mark(chosen(o.v)),
+        style: btn(chosen(o.v)),
+        pick: () => this.pickAnswer(q, o.v)
+      }))
+    };
+
+    if (isResult) Object.assign(out, this.resultVals());
+    return out;
+  }
+
+  // Unit test: no phase × override combination may produce a fasting window under 12:12.
+  testFastingFloor() {
+    const saved = this.state.answers;
+    const fails = [];
+    const goals = ["weight", "energy", "cravings", "strength"];
+    const fastings = ["never", "tried", "sometimes", "regular"];
+    const trainings = ["0", "1", "3", "5"];
+    const diets = [[], ["veg"], ["gf"], ["df"], ["lowcarb"], ["veg", "gf", "df", "lowcarb"]];
+    for (const p of PHASES) for (const g of goals) for (const f of fastings) for (const t of trainings) for (const d of diets) {
+      this.state.answers = { goal: g, cycle: "regular", day: String(p.start), fasting: f, training: t, diet: d };
+      const v = this.resultVals().resultRows.find(r => r.label === "Fasting").value;
+      const h = parseInt(v, 10);
+      if (!(h >= 12)) fails.push(p.id + "/" + g + "/" + f + " -> " + v);
+    }
+    this.state.answers = saved;
+    if (fails.length) console.error("fasting floor violated", fails);
+    return fails;
+  }
+
+  resultVals() {
+    const a = this.state.answers;
+    const cyc = a.cycle || "regular";
+    const phaseId = PHASE_BY_DAY[a.day] || "follicular";
+    const ph = PHASES.find(p => p.id === phaseId) || PHASES[1];
+    const unsure = a.day === "unsure";
+    const goal = a.goal || "weight";
+    const diet = a.diet || [];
+    const highPhase = phaseId === "follicular" || phaseId === "ovulatory";
+    const phaseName = ph.name.toLowerCase();
+
+    // base plan comes straight from the shared phase object
+    const base = { Fasting: ph.fast, Food: ph.food, Training: ph.train, Supplements: ph.supp };
+    const val = Object.assign({}, base);
+    const tags = { Fasting: [], Food: [], Training: [], Supplements: [] };
+    const chips = [];
+    // a chip records an answered preference; a row tag records a value that actually moved
+    const chip = label => { if (chips.indexOf(label) < 0) chips.push(label); };
+    const addTag = (row, label, changed) => { chip(label); if (changed !== false) tags[row].push(label); };
+    // no fasting window may fall below 12:12, in any phase, through any override
+    const FLOOR = 12;
+    const shortenFast = (label) => {
+      const h0 = ph.fastHours || 14;
+      if (h0 <= FLOOR) return { value: FLOOR + ":" + (24 - FLOOR) + " \u2014 already your gentlest window", floored: true };
+      const h = Math.max(FLOOR, h0 - 2);
+      return { value: h + ":" + (24 - h) + " \u2014 " + label, floored: false };
+    };
+    let energyFloored = false;
+
+    if (goal === "weight") {
+      val.Food = "Higher carb, high fibre, protein at every meal";
+      addTag("Food", "your goal");
+    } else if (goal === "energy") {
+      const f = shortenFast("shortened so you don't hit a wall");
+      val.Fasting = f.value;
+      energyFloored = f.floored;
+      addTag("Fasting", "energy");
+    } else if (goal === "cravings") {
+      const had = /magnesium/i.test(ph.supp);
+      if (!had) val.Supplements = ph.supp + ", magnesium";
+      addTag("Supplements", "cravings", !had);
+    } else if (goal === "strength") {
+      val.Training = ph.train + (highPhase ? " \u2014 this is a build week" : " \u2014 recovery week, don't push");
+      addTag("Training", "strength");
+    }
+
+    // retained questions override the goal on the same row, and take its tag with them
+    const retag = (row, label) => { tags[row] = [label]; chip(label); };
+    if (a.fasting === "never") {
+      val.Fasting = shortenFast("a gentle start").value;
+      retag("Fasting", "first fast");
+    }
+    if (a.training === "0") {
+      val.Training = "Walking and mobility to start";
+      retag("Training", "your routine");
+    }
+
+    let foodNote = "";
+    if (diet.indexOf("veg") > -1) { val.Food = val.Food + " \u2014 lentils, tofu, eggs for protein"; addTag("Food", "vegetarian"); }
+    if (diet.indexOf("gf") > -1) { val.Food = val.Food + " \u2014 oats, rice, quinoa"; addTag("Food", "gluten-free"); }
+    if (diet.indexOf("df") > -1) { const had = /calcium/i.test(val.Supplements); if (!had) val.Supplements = val.Supplements + ", calcium"; addTag("Supplements", "dairy-free", !had); }
+    if (diet.indexOf("lowcarb") > -1) {
+      foodNote = "You said low carb. This is the week to bend it, and we'll tell you why in the app.";
+      chip("low carb");
+    }
+
+    const intro = {
+      weight: "You're in your " + phaseName + " phase, and you told us the scale won't move even when you do everything right. " +
+        (highPhase
+          ? "This week your insulin sensitivity is highest, so the plan leans on it: your longest fast and your higher-carb days land now, while they count."
+          : "This week your body is doing more work, so the plan protects it: a gentler fast and steadier carbs, with the longer window waiting for week two.") +
+        " Next week the plan changes, because your body will.",
+      energy: "You're in your " + phaseName + " phase, and you asked for steadier energy. " +
+        (energyFloored
+          ? "This week your window is already at its gentlest, so the change is in the food: carbs spread across the day, so there's no four o'clock wall."
+          : "Your window is shorter than the phase default and carbs are spread across the day, so there's no four o'clock wall.") +
+        " Next week the plan changes, because your body will.",
+      cravings: "You're in your " + phaseName + " phase, and you told us cravings are the fight. This week they're quiet, so the plan builds a buffer: protein and fibre now, magnesium in your stack before the luteal week arrives. Next week the plan changes, because your body will.",
+      strength: "You're in your " + phaseName + " phase, and you want to get stronger without burning out. " +
+        (highPhase
+          ? "This is a build week: strength and HIIT lead, and your fast is long because you can recover from it."
+          : "This is a recovery week: walking, mobility and lighter lifts, with the heavy work waiting for week two.") +
+        " In week four the plan pulls back before you have to."
+    }[goal];
+
+    const order = ["Fasting", "Food", "Training", "Supplements"];
+
+    const tagStyle = "flex:0 0 auto;margin-left:auto;font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-size:12px;line-height:1.3;color:#8D4F83;background:rgba(141,79,131,0.1);padding:4px 10px;border-radius:100px;white-space:nowrap";
+
+    return {
+      resultHeadline: unsure
+        ? "Here's your first day \u2014 your baseline sharpens from here"
+        : "Here's your first day, built for " + CYCLE_COPY[cyc],
+      resultBody: intro,
+      resultPhase: ph.name + " phase" + (unsure ? " (estimated)" : ""),
+      resultPhaseNote: ph.body.split(".")[0] + ".",
+      resultBadge: "./assets/phase-" + ph.id + ".png",
+      hasAdjust: chips.length > 0,
+      adjustChips: chips.map(c => ({
+        label: c,
+        style: "font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;line-height:1.3;color:#8D4F83;background:rgba(141,79,131,0.1);padding:5px 12px;border-radius:100px"
+      })),
+      resultRows: order.map(k => ({
+        label: k,
+        value: val[k],
+        tag: tags[k].length ? "Adjusted for " + tags[k].join(", ") : "",
+        tagStyle: tags[k].length ? tagStyle : "display:none",
+        note: k === "Food" ? foodNote : "",
+        noteStyle: (k === "Food" && foodNote)
+          ? "flex:1 1 100%;margin:2px 0 0;font-size:14px;line-height:1.5;color:rgba(69,55,72,0.6)"
+          : "display:none"
+      }))
+    };
+  }
+
+  // Ambient auto-advance: one day at a time, ~31s for a full rotation — slow
+  // enough that the day number is readable, quick enough that a phase change
+  // arrives while you are still looking. Pauses the moment the user takes
+  // over, resumes after they have been idle a while.
+  STEP = 1100;
+  RESUME_AFTER = 12000;
+
+  initAutoCycle() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = this.wheel;
+    if (!el) return;
+    this.wheelIO = new IntersectionObserver(es => {
+      if (es[0].isIntersecting) this.startAuto(); else this.stopAuto();
+    }, { threshold: 0.35 });
+    this.wheelIO.observe(el);
+  }
+  startAuto() {
+    if (this.cycleTimer) return;
+    this.cycleTimer = setInterval(() => {
+      this.setState(s => ({ day: s.day >= CYCLE ? 1 : s.day + 1 }));
+    }, this.STEP);
+  }
+  stopAuto() {
+    clearInterval(this.cycleTimer);
+    this.cycleTimer = null;
+  }
+  takeOver = () => {
+    this.stopAuto();
+    clearTimeout(this.resumeTimer);
+    this.resumeTimer = setTimeout(() => this.startAuto(), this.RESUME_AFTER);
+  };
+  wheelRef = el => { this.wheel = el; };
+
+  initShader() {
+    const cv = this.canvas;
+    if (!cv) return;
+    const gl = cv.getContext("webgl", { antialias: false, alpha: true, premultipliedAlpha: false, preserveDrawingBuffer: true, powerPreference: "low-power" });
+    if (!gl) { cv.style.background = "linear-gradient(160deg,#FDF9F6,#FEF0E8 55%,#FFDDD0)"; return; }
+    const mk = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, mk(gl.VERTEX_SHADER, "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }"));
+    gl.attachShader(prog, mk(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { cv.style.background = "linear-gradient(160deg,#FDF9F6,#FEF0E8 55%,#FFDDD0)"; return; }
+    gl.useProgram(prog);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, "p");
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const uRes = gl.getUniformLocation(prog, "u_res");
+    const uT = gl.getUniformLocation(prog, "u_t");
+
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const SCALE = 0.42;
+    const size = () => {
+      const w = Math.max(1, Math.round(cv.clientWidth * SCALE));
+      const h = Math.max(1, Math.round(cv.clientHeight * SCALE));
+      if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+      gl.viewport(0, 0, cv.width, cv.height);
+      gl.uniform2f(uRes, cv.width, cv.height);
+    };
+    const draw = t => { size(); gl.uniform1f(uT, t); gl.drawArrays(gl.TRIANGLES, 0, 3); };
+
+    draw(12);                       // guarantee a painted frame up front
+    if (still) return;
+    let visible = true, last = 0;
+    this.io = new IntersectionObserver(es => {
+      visible = es[0].isIntersecting;
+      if (visible && !this.raf) this.raf = requestAnimationFrame(loop);
+    }, { threshold: 0 });
+    this.io.observe(cv);
+    const loop = now => {
+      this.raf = null;
+      if (!visible) return;
+      if (now - last > 33) { last = now; draw(now / 1000); }
+      this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+
+  initTilt() {
+    const el = this.tilt;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const inner = el.querySelector("[data-hero-device]") || el.firstElementChild;
+    if (!inner) return;
+    inner.style.transition = "transform .5s cubic-bezier(.2,.7,.2,1)";
+    inner.style.transformStyle = "preserve-3d";
+    let frame = null;
+    const move = e => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+        const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+        inner.style.transition = "transform .12s linear";
+        inner.style.transform = "rotateY(" + (x * 11).toFixed(2) + "deg) rotateX(" + (-y * 8).toFixed(2) + "deg) translateZ(22px)";
+      });
+    };
+    const leave = () => {
+      inner.style.transition = "transform .6s cubic-bezier(.2,.7,.2,1)";
+      inner.style.transform = "rotateY(0deg) rotateX(0deg) translateZ(0)";
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    el.addEventListener("pointerleave", leave);
+    this.offTilt = () => { window.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); if (frame) cancelAnimationFrame(frame); };
+  }
+
+  dayFromEvent(e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    let a = Math.atan2(dx, -dy) * 180 / Math.PI;
+    if (a < 0) a += 360;
+    return Math.min(CYCLE, Math.floor(a / 360 * CYCLE) + 1);
+  }
+  onWheelDown = e => {
+    e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
+    this.takeOver();
+    if (!this.state.wheelTouched) this.setState({ wheelTouched: true });
+    this.setState({ dragging: true, day: this.dayFromEvent(e) });
+  };
+  onWheelMove = e => { if (this.state.dragging) this.setState({ day: this.dayFromEvent(e) }); };
+  onWheelUp = () => this.setState({ dragging: false });
+
+  renderVals() {
+    const rows = [
+      { id: "quarterly", name: "3 months", note: "Try a full reset", price: "$17.99", perMonth: "$6.00 / month", badge: "Most popular", badgeKind: "popular" },
+      { id: "annual", name: "12 months", note: "Support every phase, all year", price: "$47.99", perMonth: "$4.00 / month", badge: "Biggest saving", badgeKind: "saving" },
+      { id: "monthly", name: "1 month", note: "Explore FemFast", price: "$9.99", perMonth: "$9.99 / month", badge: "", badgeKind: "" }
+    ];
+    const sel = this.state.pickedPlan ? this.state.plan : (this.props.defaultPlan ?? this.state.plan);
+    const day = this.state.day;
+    const ph = phaseFor(day);
+    const op = id => (ph.id === id ? 1 : 0.78);
+    return Object.assign(this.quizVals(), {
+      day,
+      phaseName: ph.name,
+      phaseUpper: ph.name.toUpperCase(),
+      phaseRange: "DAY " + ph.start + "\u2013" + ph.end + " OF " + CYCLE,
+      phaseBody: ph.body,
+      phaseFast: ph.fast,
+      phaseFood: ph.food,
+      phaseTrain: ph.train,
+      phaseSupp: ph.supp,
+      o1: op("menstrual"), o2: op("follicular"), o3: op("ovulatory"), o4: op("luteal"),
+      markerColor: ph.color,
+      dotDash: "0.9 18.847 ".repeat(ph.end - ph.start + 1) + "0 " + ((CYCLE - (ph.end - ph.start + 1)) * 19.747).toFixed(2),
+      dotOffset: -((ph.start - 1) * 19.747 + 9.4).toFixed(2),
+      markerTransform: "rotate(" + ((day - 0.5) / CYCLE * 360) + " 140 140)",
+      shaderRef: this.shaderRef,
+      wheelRef: this.wheelRef,
+      heroTiltRef: this.heroTiltRef,
+      onWheelDown: this.onWheelDown,
+      onWheelMove: this.onWheelMove,
+      onWheelUp: this.onWheelUp,
+      // the wheel's ring, cut at day 1 and laid flat: same four spans, same
+      // day proportions, same two-stop ramps. Every row of the table gets it,
+      // so the table and the dial are visibly one object.
+      ringSegs: PHASES.map(p => ({
+        style: "flex:" + (p.end - p.start + 1) + " 1 0;border-radius:7px;background:linear-gradient(90deg," +
+          p.ramp[0] + "," + p.ramp[1] + ")"
+      })),
+      // the hint pulses until the dial is first touched, then retires for good
+      dragHintStyle: "display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:7px 14px;border-radius:100px;font-size:12.5px;color:#5F5062;background:rgba(255,255,255,0.82);border:1px solid #EFDCD3;"
+        + (this.state.wheelTouched
+            ? "opacity:0.55;transition:opacity .4s ease"
+            : "animation:ff-hint-pulse 2.6s ease-in-out infinite"),
+      legend: PHASES.map(p => {
+        const on = p.id === ph.id;
+        return {
+          label: p.name,
+          select: () => { this.takeOver(); this.setState({ day: p.start, wheelTouched: true }); },
+          pressed: on ? "true" : "false",
+          style: [
+            "cursor:pointer", "font-family:'SF Pro Text',-apple-system,sans-serif", "font-size:14px",
+            "font-weight:600", "padding:11px 18px", "min-height:44px", "border-radius:100px",
+            "transition:background .2s,color .2s,border-color .2s",
+            // secondary to the dial: hairline by default, phase fill only when active
+            on ? "border:1px solid " + p.ink : "border:1px solid #EFDCD3",
+            on ? "background:" + p.ink : "background:transparent",
+            on ? "color:#FDF9F6" : "color:#5F5062"
+          ].join(";")
+        };
+      }),
+      selectedLine: (function () {
+        const r = rows.find(x => x.id === sel) || rows[0];
+        return "You picked " + r.name + " \u2014 " + r.price + ", refundable for 5 days";
+      })(),
+      planSectionRef: this.planSectionRef,
+      planStackRef: this.planStackRef,
+      planTiltRef: this.planTiltRef,
+      // every number below is derived from PHASES — the same object the dial,
+      // the hero phone and the quiz result read. Nothing is hardcoded in markup.
+      phaseAxis: PHASES.map(p => {
+        // a span under ~5 days cannot hold its own label, so it rides one line higher
+        return {
+          name: p.name,
+          range: "Day " + p.start + "\u2013" + p.end,
+          cellStyle: "min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;",
+          nameStyle: "font-family:Outfit,sans-serif;font-weight:700;font-size:14px;line-height:1.3;white-space:nowrap;padding:0 6px;color:" + p.ink,
+          rangeStyle: "font-size:12px;line-height:1.3;color:#5F5062;white-space:nowrap"
+        };
+      }),
+      stripRows: (function () {
+        const X = p => ((p.start - 1) / CYCLE) * 280;
+        const W = p => ((p.end - p.start + 1) / CYCLE) * 280;
+        const MID = p => X(p) + W(p) / 2;
+        const maxFast = Math.max.apply(null, PHASES.map(p => p.fastHours));
+        const H = 48;
+
+        // fasting: stepped bars, height ∝ fasting hours
+        const fastBars = PHASES.map(p => {
+          const h = (p.fastHours / maxFast) * (H - 8);
+          return { x: X(p) + 1, w: W(p) - 2, y: H - h, h: h, fill: p.color };
+        });
+        // training: two-level step, build weeks high
+        const trainBars = PHASES.map(p => {
+          const h = p.load * (H - 8);
+          return { x: X(p) + 1, w: W(p) - 2, y: H - h, h: h, fill: p.color };
+        });
+        // food: a carb curve over a protein band, both from the same numbers
+        const yOf = v => H - 6 - v * (H - 16);
+        const carbPts = PHASES.map(p => [MID(p), yOf(p.carb)]);
+        let line = "M 0 " + yOf(PHASES[0].carb).toFixed(1);
+        carbPts.forEach((pt, i) => {
+          const prev = i ? carbPts[i - 1] : [0, yOf(PHASES[0].carb)];
+          const cx = (prev[0] + pt[0]) / 2;
+          line += " C " + cx.toFixed(1) + " " + prev[1].toFixed(1) + ", " + cx.toFixed(1) + " " + pt[1].toFixed(1) + ", " + pt[0].toFixed(1) + " " + pt[1].toFixed(1);
+        });
+        const lastC = carbPts[carbPts.length - 1];
+        line += " L 280 " + lastC[1].toFixed(1);
+
+        const defs = [
+          { key: "fast",  label: "Fasting",     bars: fastBars,  line: "", band: "",
+            why: "Your longest window lands where insulin sensitivity is highest. It shortens before cravings peak." },
+          { key: "food",  label: "Food",        bars: [],        line: line, band: "",
+            series: [
+              { text: "Carbs", top: (yOf(PHASES[PHASES.length - 1].carb) / H) * 100 }
+            ],
+            why: "Targets move with your phase. Nothing is banned." },
+          { key: "train", label: "Training",    bars: trainBars, line: "", band: "",
+            why: "Build weeks two and three. Weeks one and four are for recovery." },
+          { key: "supp",  label: "Supplements", bars: [],        line: "", band: "",
+            note: "Omega-3 daily, all month.",
+            why: "What to take and when, each with its source in the app." }
+        ];
+        return defs.map(r => ({
+          label: r.label,
+          why: r.why,
+          hasOverlay: r.key !== "supp",
+          bars: r.bars,
+          linePath: r.line,
+          bandPath: r.band,
+          note: r.note || "",
+          noteStyle: r.note ? "margin-top:10px;font-size:13px;line-height:1.4;color:#5F5062" : "display:none",
+          series: (r.series || []).map(s => ({
+            text: s.text,
+            style: "position:absolute;right:4px;top:" + s.top.toFixed(1) + "%;transform:translateY(-135%);font-size:12px;font-weight:500;white-space:nowrap;color:#5F5062"
+          })),
+          spans: PHASES.map(p => ({
+            value: r.key === "supp"
+              ? (function (t) { return t.charAt(0).toUpperCase() + t.slice(1); })(p.supp.split(",").map(s => s.trim()).filter(s => !/omega-3/i.test(s)).join(", "))
+              : p[r.key],
+            barStyle: "background-color:" + p.color + "99",
+            dotStyle: "flex:0 0 auto;width:8px;height:8px;margin-top:5px;border-radius:50%;background:" + p.ink
+          }))
+        }));
+      })(),
+      plans: rows.map(r => {
+        const on = r.badgeKind === "popular";
+        const hov = this.state.hoverPlan === r.id;
+        const foc = false;
+        return {
+          ...r,
+          enter: () => this.setState({ hoverPlan: r.id }),
+          leave: () => this.setState(s => (s.hoverPlan === r.id ? { hoverPlan: "" } : null)),
+          glowRef: el => { this.glowRefs[r.id] = el; },
+          glowStyle: "position:absolute;inset:0;overflow:hidden;border-radius:16px;pointer-events:none;transition:opacity .25s ease;opacity:" + (hov ? "1" : "0"),
+          style: [
+            "position:relative", "isolation:isolate",
+            "display:flex", "align-items:center", "justify-content:space-between",
+            "gap:16px", "width:100%", "text-align:left",
+            "font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif",
+            "padding:27px 22px 17px", "border-radius:16px", "color:#FDF9F6",
+            "transform-style:preserve-3d",
+            "backdrop-filter:blur(14px) saturate(1.15)",
+            "outline:none",
+            "transition:background .22s,border-color .22s,box-shadow .22s,transform .22s cubic-bezier(.2,.7,.2,1)",
+            on && hov ? "background:rgba(38,26,40,0.60)" : on ? "background:rgba(38,26,40,0.54)" : hov ? "background:rgba(38,26,40,0.50)" : "background:rgba(38,26,40,0.42)",
+            on ? "border:1.5px solid #FDF9F6" : hov ? "border:1.5px solid rgba(253,249,246,0.52)" : "border:1.5px solid rgba(253,249,246,0.2)",
+            "box-shadow:" + (foc ? "0 0 0 3px rgba(253,249,246,0.92), " : "") + (
+              on && hov ? "0 30px 56px -20px rgba(0,0,0,0.62), inset 0 1px 0 rgba(255,255,255,0.46)"
+              : on ? "0 26px 50px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.38)"
+              : hov ? "0 20px 38px -18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.24)"
+              : "0 8px 20px -18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12)"
+            ),
+            on && hov ? "transform:translateY(-5px) scale(1.018)" : on ? "transform:translateY(-3px)" : hov ? "transform:translateY(-2px)" : "transform:none"
+          ].join(";"),
+          badgeStyle: r.badge ? [
+            "position:absolute", "top:0", "right:0", "z-index:1",
+            "font-family:Outfit,sans-serif", "font-weight:700", "font-size:10.5px",
+            "letter-spacing:0.08em", "text-transform:uppercase",
+            "padding:5px 12px 6px", "border-radius:0 16px 0 16px",
+            "pointer-events:none", "color:#4A2244",
+            r.badgeKind === "saving" ? "background:#FEC2AB" : "background:#F9BDC2"
+          ].join(";") : "display:none"
+        };
+      })
+    });
+  }
+}
+</script>
+</body>
+</html>

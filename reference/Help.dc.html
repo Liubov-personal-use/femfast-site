@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  html { -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #FDF9F6; color: #453748; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: #8D4F83; text-decoration: none; }
+  a:hover { color: #453748; }
+  p { text-wrap: pretty; }
+</style>
+</helmet>
+
+<div style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color: #453748; background: #FDF9F6; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(253,249,246,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid #F3E7E1;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 16px clamp(20px, 5vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;">
+      <a href="./index.html" aria-label="FemFast home" style="margin-right: auto; display: block;">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="134" height="18" style="display: block; width: 134px; height: 18px;" />
+      </a>
+      <a href="./index.html" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: #5F5062;" style-hover="color: #8D4F83;">&larr; Back to FemFast</a>
+    </div>
+  </header>
+
+  <main style="max-width: 900px; margin: 0 auto; padding: clamp(36px, 6vh, 64px) clamp(20px, 5vw, 32px) 48px;">
+    <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 48px); line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 16px;">Help</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: #5F5062; margin: 0 0 40px; max-width: 34em;">The answers we're asked for most. If yours isn't here, write to us — a person reads every message.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 52px;">
+      <a href="mailto:support@femfast.io" style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: #FDF9F6; background: #8D4F83; padding: 16px 28px; border-radius: 16px; box-shadow: 0 14px 28px -12px rgba(141,79,131,0.5); transition: transform .18s cubic-bezier(.2,.7,.2,1), background .18s;" style-hover="background: #453748; transform: translateY(-2px);">Email support@femfast.io</a>
+      <a href="./Contacts.dc.html" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: #453748; padding: 16px 22px; border-radius: 16px; border: 1.5px solid #EBD9E4; transition: border-color .18s, color .18s;" style-hover="border-color: #8D4F83; color: #8D4F83;">All contact details</a>
+    </div>
+
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+      <section style="margin-bottom: 44px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(20px, 2.1vw, 25px); line-height: 1.2; letter-spacing: -0.025em; margin: 0 0 6px;">{{ g.title }}</h2>
+        <div style="display: grid; gap: 0;">
+          <sc-for list="{{ g.items }}" as="item" hint-placeholder-count="4">
+            <div style="border-top: 1px solid #F0E2DB;">
+              <button type="button" onClick="{{ item.toggle }}" aria-expanded="{{ item.expanded }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 19px 0; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.015em; color: #453748; transition: color .16s;" style-hover="color: #8D4F83;">
+                <span style="flex: 1 1 auto;">{{ item.q }}</span>
+                <span style="{{ item.iconStyle }}">+</span>
+              </button>
+              <div style="{{ item.bodyStyle }}">
+                <p style="font-size: 16px; line-height: 1.65; color: #5F5062; margin: 0 0 20px; max-width: 38em;"><sc-for list="{{ item.parts }}" as="part" hint-placeholder-count="1"><sc-if value="{{ part.isLink }}" hint-placeholder-val="{{ false }}"><a href="{{ part.href }}" style="color: #8D4F83; text-decoration: underline; text-underline-offset: 2px;" style-hover="color: #453748;">{{ part.text }}</a></sc-if><sc-if value="{{ part.isText }}" hint-placeholder-val="{{ true }}"><span>{{ part.text }}</span></sc-if></sc-for></p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+
+    <section style="margin-top: 8px; padding: 26px 26px 28px; border-radius: 16px; background: #FEF0E8;">
+      <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 10px;">Still stuck?</h2>
+      <p style="font-size: 16px; line-height: 1.6; color: #5F5062; margin: 0 0 18px; max-width: 34em;">Email us with your account email and what you were doing when it went wrong — screenshots help. We answer within two business days.</p>
+      <a href="mailto:support@femfast.io" style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 16px; color: #8D4F83;" style-hover="color: #453748;">support@femfast.io &rarr;</a>
+    </section>
+  </main>
+
+  <dc-import name="SiteFooter" home="./index.html" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const GROUPS = [
+  { title: "Getting started", items: [
+    { q: "How does FemFast build my plan?",
+      a: "You answer a short check-in about your goal, how your cycle usually runs, roughly where you are in it, and how much time and movement you can realistically give. FemFast uses that to time your fasting window, food, training and supplements to the phase you're in — then adjusts as you log." },
+    { q: "I don't track my cycle. Can I still use it?",
+      a: "Yes. Tell us you're not sure and FemFast starts you somewhere sensible and corrects itself as you log. Logging the first day of your next period is the single most useful thing you can do — after that, accuracy sharpens over the first six weeks." },
+    { q: "Do I have to fast?",
+      a: "No. Turn fasting off and FemFast still times your food, training and supplements to your phases — the timing is the point, not the fasting. If you keep it on, it starts gentle and lengthens only when you're ready." },
+    { q: "Which devices does FemFast work with?",
+      a: "FemFast is available for iPhone on the App Store. You can optionally connect Apple Health so weight, activity, heart rate and sleep import automatically instead of being logged by hand." }
+  ] },
+  { title: "Your plan", items: [
+    { q: "Why does my plan change every week?",
+      a: "Because your physiology does. Insulin sensitivity, resting metabolism and appetite all shift across a cycle, so a plan that stays flat is wrong for roughly three weeks out of four. Yours moves the fasting window, the carbs and the training intensity to match." },
+    { q: "My cycle day looks wrong. How do I fix it?",
+      a: "Log or edit the start of your period in the app and the phase recalculates immediately, along with today's plan. If your cycle length has changed, FemFast picks that up over the next couple of cycles." },
+    { q: "Can I change my dietary preferences later?",
+      a: "Any time, in settings. Food suggestions and protein and fibre targets update from the next day onward." },
+    { q: "How fast will I see results?",
+      a: "Energy and cravings usually shift within one cycle. Weight follows over two or three." }
+  ] },
+  { title: "Subscription and billing", items: [
+    { q: "What does FemFast cost?",
+      a: "The check-in on our website is free and needs no signup. The app itself is a subscription: $9.99 for one month, $17.99 for three months (our most popular), or $47.99 for twelve months — about $4 a month. There's no free tier and no trial, but every plan carries a five-day money-back guarantee, so you can try it properly and get a full refund if it isn't for you." },
+    { q: "How do I cancel?",
+      a: "Cancel any time in your App Store account settings; you keep access until the end of the period you've paid for. If you bought directly from us, email support@femfast.io from your account email and we'll cancel it. Cancelling stops future charges but doesn't refund the current period." },
+    { q: "Can I get a refund?",
+      a: "Yes — within five days of buying, for any reason. Email support@femfast.io from your account address and we'll refund you in full. After five days, purchases made through the App Store are handled by Apple's own refund policy via its \"Report a Problem\" page." },
+    { q: "My subscription isn't showing after I paid",
+      a: "Open the app, go to settings and tap Restore Purchases while signed in to the same Apple ID you bought with. If it still doesn't appear, email us with the Apple receipt and we'll sort it." }
+  ] },
+  { title: "Account and data", items: [
+    { q: "How do I delete my account and data?",
+      a: "Open My Account, scroll to Legal and tap Revoke my Consent & Delete Account. That withdraws your consent and removes your account and the data attached to it — no email required, nothing to wait for. We keep only what the law obliges us to keep, as set out in the Privacy Policy." },
+    { q: "Can I export my data?",
+      a: "Yes. Request a portable copy from app settings or by emailing support@femfast.io, and we'll send it in a machine-readable format." },
+    { q: "Is my health data private?",
+      a: "Yes. Cycle, symptom and nutrition entries are treated as special-category data and processed only with your explicit consent. They're never sold and never shared with advertisers. The Privacy Policy sets out exactly who processes what on our behalf." },
+    { q: "Can I turn off tracking or AI features?",
+      a: "Device tracking, yes — decline the prompt, or turn it off later in Settings › Privacy › Tracking on your device. The AI is not optional: it is what builds and rewrites your plan each day, so there is no version of FemFast without it. If you would rather it did not process your data at all, the way out is My Account › Legal › Revoke my Consent & Delete Account. What we process, and why, is set out in the Privacy Policy." }
+  ] }
+];
+
+const PAGE_LINKS = { "Privacy Policy": "./Privacy.dc.html", "Terms of Use": "./Terms.dc.html" };
+function linkify(text) {
+  const names = Object.keys(PAGE_LINKS);
+  const re = new RegExp("(" + names.join("|") + ")", "g");
+  return text.split(re).filter(x => x !== "").map(chunk => {
+    const href = PAGE_LINKS[chunk];
+    return { text: chunk, href: href || "", isLink: !!href, isText: !href };
+  });
+}
+
+class Component extends DCLogic {
+  state = { open: "0-0" };
+  toggle(key) { this.setState(s => ({ open: s.open === key ? "" : key })); }
+  renderVals() {
+    return {
+      groups: GROUPS.map((g, gi) => ({
+        title: g.title,
+        items: g.items.map((item, ii) => {
+          const key = gi + "-" + ii;
+          const open = this.state.open === key;
+          return {
+            q: item.q,
+            a: item.a,
+            parts: linkify(item.a),
+            expanded: open ? "true" : "false",
+            toggle: () => this.toggle(key),
+            iconStyle: [
+              "flex:0 0 auto", "width:26px", "height:26px", "border-radius:50%",
+              "display:flex", "align-items:center", "justify-content:center",
+              "font-family:Outfit,sans-serif", "font-weight:600", "font-size:17px", "line-height:1",
+              "transition:transform .28s cubic-bezier(.2,.7,.2,1),background .2s,color .2s",
+              open ? "background:#8D4F83" : "background:#F8EDF5",
+              open ? "color:#FDF9F6" : "color:#8D4F83",
+              open ? "transform:rotate(45deg)" : "transform:rotate(0deg)"
+            ].join(";"),
+            bodyStyle: [
+              "overflow:hidden",
+              "transition:max-height .34s cubic-bezier(.2,.7,.2,1),opacity .28s ease",
+              open ? "max-height:360px" : "max-height:0px",
+              open ? "opacity:1" : "opacity:0"
+            ].join(";")
+          };
+        })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

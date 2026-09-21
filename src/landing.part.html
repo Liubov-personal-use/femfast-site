@@ -1,0 +1,386 @@
+<div ref="{{ landingRef }}" style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color: #453748; background: #FDF9F6; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(251,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #F9F2EF;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px clamp(20px, 3vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;">
+      <a href="#" style="margin-right: auto; display: block;" aria-label="FemFast">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="158" height="22" style="display: block; width: 158px; height: 22px;">
+      </a>
+      <nav data-ff="nav" style="{{ navStyle }}">
+        <a href="#why" style="color: #5F5062;">Why timing</a>
+        <a href="#how" style="color: #5F5062;">How it works</a>
+        <a href="#phases" style="color: #5F5062;">Your phases</a>
+        <a href="#assistant" style="color: #5F5062;">Ask anything</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" data-ff="getApp" style="{{ getAppStyle }}" style-hover="color: #8D4F83;">Get the app</a>
+        <a href="#check-in" onClick="{{ openQuiz }}" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: #FDF9F6; background: #8D4F83; padding: 11px 20px; border-radius: 16px; box-shadow: 0 10px 20px -10px rgba(141,79,131,0.5); transition: background .18s, transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="background: #453748; transform: translateY(-1px);" data-ff="headerCta">{{ headerCta }}</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="position: relative; isolation: isolate; overflow: hidden; min-height: min(calc(100svh - 58px), 900px); display: flex; align-items: center; background: linear-gradient(160deg, #FDF9F6 0%, #FEF0E8 55%, #FFDDD0 100%);">
+    <canvas data-ff="shader" ref="{{ shaderRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block;"></canvas>
+    <div style="position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: url(./assets/grain.png); background-size: 220px 220px; opacity: 0.5; mix-blend-mode: multiply;"></div>
+    <div style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 32px 32px 40px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center;">
+      <div data-hero-left="1" data-reveal-now="1" style="flex: 1.08 1 380px; max-width: 620px;">
+        <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 70px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 24px;"><span data-h1line="1">Your hormones run </span><span data-h1line="1">your weight <span style="color: #8D4F83;">more</span> </span><span style="color: #8D4F83;">than calories&nbsp;do.</span></h1>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); max-width: 30em; margin: 0 0 40px;">
+          Every morning FemFast reads your cycle and hands you one plan: when to eat, when to fast, how to train.</p>
+        <div data-hero-cta="1" style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center;">
+          <a href="#check-in" onClick="{{ openQuiz }}" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: #FDF9F6; background: #8D4F83; padding: 17px 30px; border-radius: 16px; box-shadow: 0 14px 28px -12px rgba(141,79,131,0.55); transition: transform .18s cubic-bezier(.2,.7,.2,1), background .18s, box-shadow .18s;" style-hover="background: #453748; transform: translateY(-2px); box-shadow: 0 20px 34px -12px rgba(69,55,72,0.5);">Take the 60-second check-in</a>
+          <a href="#phases" style="font-family: Outfit, sans-serif; font-weight: 500; font-size: 17px; color: #8D4F83; transition: color .16s;" style-hover="color: #453748;">See your plan on any day of your cycle <span aria-hidden="true">↓</span></a>
+        </div>
+        <p style="margin: 16px 0 0; font-size: 15px; line-height: 1.5; color: rgba(69,55,72,0.6);">Free<span aria-hidden="true" style="padding: 0 10px;">·</span>no signup<span aria-hidden="true" style="padding: 0 10px;">·</span><span style="font-weight: 600; color: #8D4F83;">{{ heroRatingAvg }}</span> from {{ heroRatingCount }}+ App Store ratings</p>
+      </div>
+
+      <div data-reveal-now="3" style="flex: 0.95 1 330px; min-width: 292px; display: flex; justify-content: center; align-items: center;">
+        <div>
+          <div data-ff="heroTilt" ref="{{ heroTiltRef }}" style="perspective: 1700px;">
+            <div data-hero-device="" style="position: relative; width: 318px; height: 618px; border-radius: 54px; padding: 10px; background: linear-gradient(150deg, #4A3C50 0%, #1B1421 34%, #362B3B 62%, #16111C 100%); box-shadow: 0 48px 92px -34px rgba(69,55,72,0.6), 0 4px 10px rgba(69,55,72,0.18), inset 0 0 0 1px rgba(255,255,255,0.16);">
+              <div style="position: absolute; left: -2px; top: 129px; width: 2.5px; height: 35px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; left: -2px; top: 191px; width: 2.5px; height: 60px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; left: -2px; top: 265px; width: 2.5px; height: 60px; border-radius: 2px 0 0 2px; background: #3A2F40;"></div>
+              <div style="position: absolute; right: -2px; top: 226px; width: 2.5px; height: 88px; border-radius: 0 2px 2px 0; background: #3A2F40;"></div>
+              <div style="position: relative; width: 298px; height: 598px; border-radius: 45px; overflow: hidden; background: #FDF9F6;">
+                <img src="./assets/screen-dashboard.png" alt="The FemFast daily dashboard: today's phase, fasting window, meals, training and supplements" width="298" height="820" style="display: block; width: 298px; height: 820px;">
+                <div style="position: absolute; top: 10px; left: 50%; width: 94px; height: 29px; margin-left: -47px; border-radius: 15px; background: #0B0710;"></div>
+                <div aria-hidden="true" style="position: absolute; left: 123.6px; top: 56px; width: 10.4px; height: 16px; background: #FDF9F6; font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 16px; letter-spacing: -0.01em; text-align: center; color: #453748;">{{ heroDay }}</div>
+                <div aria-hidden="true" style="position: absolute; left: 105.9px; top: 461px; width: 169px; height: 28px; background: #FFFFFF; font-family: Outfit, sans-serif; font-weight: 400; font-size: 10.4px; line-height: 14px; color: #8A8790; padding-top: 4px;">{{ heroSupp }}</div>
+              </div>
+            </div>
+          </div>
+          <p style="margin: 18px 0 0; text-align: center; font-size: 14px; line-height: 1.45; color: rgba(69,55,72,0.55);">Evelyn's Day 8. Yours won't look like this.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FDF9F6; border-top: 1px solid #F3E7E1; border-bottom: 1px solid #F3E7E1;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 40px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: 30px 36px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">28</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">days in a cycle that almost no weight-loss plan accounts for</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">4</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">metabolic phases a month — most plans are written for one of them</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: #8D4F83;">60s</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: #5F5062;">to see your phase and the plan that fits it</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.85 1 300px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Most women don't fail at diets. Diets fail their hormones.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 24em;">Never a willpower problem. A timing problem.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0; border-bottom: 1px solid #F3E7E1;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">You do everything right and the scale holds still.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">Some weeks you have no appetite. Some weeks you can’t stop.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0; border-top: 1px solid #F3E7E1;">
+          <div style="flex: 1 1 240px; min-width: 0;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 6px;">Your energy for training changes. Your programme doesn’t.</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phases" style="position: relative; background: #FDF9F6; border-top: 1px solid #F0E2DB; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0 calc(clamp(64px, 52.11px + 3.05vw, 96px) + 75px);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px;">
+      <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 40px; max-width: 26ch;">One month is four different bodies. FemFast plans for each one.</h2>
+      <div data-phase-cols="1" style="display: flex; flex-direction: column; gap: 40px;">
+        <div data-phase-left="1" style="display: flex; justify-content: center; min-width: 0;">
+        <div ref="{{ wheelRef }}" style="position: relative; width: 100%; max-width: 420px;">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; pointer-events: none; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 52px); line-height: 1; letter-spacing: -0.03em; color: #453748;" data-ff="day">Day {{ day }}</div>
+            <div style="margin-top: 14px; padding: 11px 26px; border-radius: 14px; background: #F5EDF6; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: #8D4F83;" data-ff="phasePill">{{ phaseName }}</div>
+            <div data-ff="dragHint" style="{{ dragHintStyle }}"><span style="font-size: 14px; line-height: 1;">↺</span>Drag to explore any day</div>
+          </div>
+          <div data-ff="wheelDrag" onPointerDown="{{ onWheelDown }}" onPointerMove="{{ onWheelMove }}" onPointerUp="{{ onWheelUp }}" style="touch-action: none; cursor: grab; display: block; border-radius: 50%;" style-active="cursor: grabbing;">
+            <dc-import name="PhaseWheel" day="{{ day }}" size="420" width="100%" icon="./assets/phase-{phase}.png" hint-size="100%,420px"></dc-import>
+          </div>
+        </div>
+        </div>
+
+        <div data-phase-right="1" style="display: flex; flex-direction: column; gap: 0;">
+        <div role="group" aria-label="Jump to a cycle phase" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 28px;">
+          <sc-for list="{{ legend }}" as="item" hint-placeholder-count="4">
+            <button type="button" data-ff="legend" data-phase="{{ item.id }}" onClick="{{ item.select }}" aria-pressed="{{ item.pressed }}" style="{{ item.style }}" style-hover="border-color: #8D4F83;" style-focus-visible="outline: 3px solid rgba(141,79,131,0.3); outline-offset: 2px;">{{ item.label }}</button>
+          </sc-for>
+        </div>
+
+
+        <div style="min-height: 92px; margin-bottom: 40px;">
+          <div style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; letter-spacing: 0.1em; color: #8D4F83; margin-bottom: 8px;" data-ff="phaseRange">{{ phaseRange }}</div>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #453748; margin: 0; max-width: 34em;" data-ff="phaseBody">{{ phaseBody }}</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; width: 100%;" data-phase-tiles="">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Fasting</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;" data-ff="fast">{{ phaseFast }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Food</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;" data-ff="food">{{ phaseFood }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Training</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;" data-ff="train">{{ phaseTrain }}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0 0; border-top: 1px solid #EFDCD3;">
+            <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8D4F83;">Supplements</span>
+            <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: #453748;" data-ff="supp">{{ phaseSupp }}</span>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <div style="position: relative; z-index: 3; max-width: 1240px; margin: 0 auto; height: 0;">
+  <div data-bridge="1" style="position: absolute; left: 32px; right: 32px; top: 0; transform: translateY(-50%); min-height: 150px; display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; padding: 30px; border-radius: 16px; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 8px 32px rgba(0,0,0,0.06);">
+        <div style="flex: 1 1 320px;">
+          <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 24em;">Which phase are you in today?</h3>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 34em;">Six questions. Then the fasting window, food and training that fit it.</p>
+        </div>
+        <a href="#check-in" onClick="{{ openQuiz }}" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: #FDF9F6; background: #8D4F83; padding: 17px 30px; border-radius: 16px; box-shadow: 0 14px 28px -12px rgba(141,79,131,0.5); transition: background .18s, transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="background: #453748; transform: translateY(-2px);">Take the check-in</a>
+      </div>
+  </div>
+  <section id="how" style="max-width: 1240px; margin: 0 auto; padding: calc(clamp(64px, 52.11px + 3.05vw, 96px) + 75px) 32px 0;">
+    <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">One plan, rewritten every morning.</h2>
+    <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0 0 40px; max-width: 30em;">Four things move with your phase. Here's the whole month.</p>
+
+    <div data-how-row="" data-how-axis="" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 20px; padding: 22px 0 10px;">
+      <div data-how-label="" style="flex: 0 0 160px;"></div>
+      <div style="flex: 1 1 260px; min-width: 0; display: grid; grid-template-columns: 5fr 8fr 3fr 12fr;">
+        <sc-for list="{{ phaseAxis }}" as="p" hint-placeholder-count="4">
+          <div style="{{ p.cellStyle }}">
+            <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+            <div style="{{ p.rangeStyle }}">{{ p.range }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-how-why="" style="flex: 0 0 300px;"></div>
+    </div>
+
+    <sc-for list="{{ stripRows }}" as="row" hint-placeholder-count="4">
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0; border-top: 1px solid #F0E2DB;">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: #453748;">{{ row.label }}</div>
+
+        <div style="flex: 1 1 260px; min-width: 0;">
+          <sc-if value="{{ row.hasOverlay }}" hint-placeholder-val="{{ true }}">
+            <div data-how-overlay="" style="position: relative; margin-bottom: 4px;">
+            <svg viewBox="0 0 280 48" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 48px;">
+              <sc-for list="{{ row.bars }}" as="b" hint-placeholder-count="4">
+                <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="1.5" fill="{{ b.fill }}"></rect>
+              </sc-for>
+              <sc-if value="{{ row.linePath }}" hint-placeholder-val="{{ false }}">
+                <path d="{{ row.linePath }}" fill="none" stroke="#6E3A66" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+              </sc-if>
+            </svg>
+            <sc-for list="{{ row.series }}" as="s" hint-placeholder-count="0">
+              <span style="{{ s.style }}">{{ s.text }}</span>
+            </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            <sc-for list="{{ ringSegs }}" as="seg" hint-placeholder-count="4">
+              <div style="{{ seg.style }}"></div>
+            </sc-for>
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            <sc-for list="{{ row.spans }}" as="span" hint-placeholder-count="4">
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0;">
+                <span style="{{ span.dotStyle }}"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: #453748;">{{ span.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="{{ row.noteStyle }}">{{ row.note }}</div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: #5F5062;">{{ row.why }}</div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section id="assistant" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px 0;">
+    <div data-reveal="" style="position: relative; overflow: hidden; border-radius: 16px; background: #FEF0E8; color: #453748; padding: clamp(30px, 4vw, 46px);">
+      <div style="position: relative; display: flex; flex-wrap: wrap; gap: 44px 56px; align-items: flex-start;">
+        <div style="flex: 1 1 320px;">
+          <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Ask it anything, any hour.</h2>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0 0 40px; max-width: 30em;">It already knows your phase, so you never explain yourself twice. And it's awake at 2am.</p>
+          <div style="display: grid; gap: 0; margin: 0 0 20px; max-width: 30em;">
+            <sc-for list="{{ asks }}" as="ask" hint-placeholder-count="4">
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-top: 1px solid #F0DCD0;">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: #8D4F83;">{{ ask.time }}</span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: #453748;">{{ ask.q }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.55; color: #5F5062; margin: 0; max-width: 30em;">Ask anything. It won't diagnose — that stays your doctor's job.</p>
+        </div>
+        <div style="flex: 0 1 360px; min-width: 260px; display: flex; justify-content: center;">
+          <div style="width: 100%; max-width: 330px; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 24px 44px -26px rgba(69,55,72,0.4);">
+            <div style="padding: 14px 18px; border-bottom: 1px solid #F3E7E1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+              <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.01em; color: #453748;">Ask FemFast</span>
+              <span style="font-size: 11px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: #8D4F83;">In app</span>
+            </div>
+            <img src="./assets/screen-assistant.png" alt="FemFast AI assistant: it opens by naming her follicular phase, then answers what to eat today with protein suggestions" width="330" height="282" style="display: block; width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="proof" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <h2 data-reveal="" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Women who stopped blaming themselves.</h2>
+    <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 40px;">
+      <span aria-hidden="true" style="display: inline-flex; gap: 3px;">
+        <sc-for list="{{ ratingStars }}" as="star" hint-placeholder-count="5">
+          <span style="{{ star.style }}">★</span>
+        </sc-for>
+      </span>      <span style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6);">{{ ratingLine }}</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <sc-for list="{{ reviewCards }}" as="review" hint-placeholder-count="3">
+        <a href="{{ review.href }}" target="_blank" rel="noopener" data-reveal="" style="display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px; border-radius: 16px; background: #FFFFFF; border: 1px solid #F0E2DB; box-shadow: 0 1px 2px rgba(69,55,72,0.04); color: #453748; transition: transform .18s cubic-bezier(.2,.7,.2,1), box-shadow .18s, border-color .18s;" style-hover="transform: translateY(-2px); border-color: #E3CFDF; box-shadow: 0 12px 28px -18px rgba(69,55,72,0.4);">
+          <span role="img" aria-label="{{ review.ratingLabel }}" style="{{ review.starsStyle }}">
+            <sc-for list="{{ review.stars }}" as="star" hint-placeholder-count="5">
+              <span aria-hidden="true" style="{{ star.style }}">★</span>
+            </sc-for>
+          </span>
+          <span style="{{ review.nameStyle }}">{{ review.name }}</span>
+          <span style="{{ review.titleStyle }}">{{ review.title }}</span>
+          <span style="font-size: 17px; line-height: 1.55; color: #453748;">{{ review.body }}</span>
+          <span style="margin-top: auto; padding-top: 6px; font-size: 13px; line-height: 1.45; color: rgba(69,55,72,0.6);">{{ review.meta }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <section id="science" style="position: relative; overflow: hidden; background: radial-gradient(120% 160% at 12% -20%, #5C4A60 0%, #453748 55%, #382C3A 100%); color: #FDF9F6; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch;">
+      <div data-sci-left data-reveal="" style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Three findings the calorie model leaves out.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253,249,246,0.78); margin: 0 0 40px; max-width: 28em;">What the research shows, and how sure we are. Every recommendation in the app is sourced.</p>
+        <p style="font-size: 15px; line-height: 1.5; color: rgba(253,249,246,0.65); margin: auto 0 0; padding-top: 24px; border-top: 1px solid rgba(253,249,246,0.15); max-width: 28em;">General guidance only. Your clinician stays your clinician.</p>
+      </div>
+      <div data-sci-findings data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0;">
+        <div style="display: flex; gap: 18px; align-items: flex-start;">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">01</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Insulin sensitivity shifts weekly</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">Higher in week two, lower in week four. So your carbs move with the week.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/20843950" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Yeung et al., J Clin Endocrinol Metab, 2010</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253,249,246,0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">02</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Metabolism rises before your period</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">A little higher, with real hunger to match. Your body is doing more work.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/32658929" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Benton et al., PLoS One, 2020</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253,249,246,0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253,249,246,0.5); padding-top: 4px;">03</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 8px;">Long fasts cost women more</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: #EFE7EF; margin: 0 0 12px; max-width: 32em;">Most fasting research was run on men. Early evidence suggests women’s stress response to long fasts differs, so we keep windows shorter.</p>
+            <p style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,249,246,0.6); margin: 0 0 6px;">Emerging</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/15833943" target="_blank" rel="noopener" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253,249,246,0.6); text-decoration: none;" style-hover="text-decoration: underline;">Heilbronn et al., Obesity Research, 2005</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width: 1240px; margin: 0 auto; padding: clamp(32px, 26.06px + 1.52vw, 48px) 32px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.8 1 280px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Will this work for me?</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69,55,72,0.6); margin: 0; max-width: 24em;">The honest answers.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.2 1 360px; display: grid; gap: 0;">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="6">
+          <div style="border-top: 1px solid #F0E2DB;">
+            <button type="button" data-ff="faqBtn" data-i="{{ item.i }}" onClick="{{ item.toggle }}" aria-expanded="{{ item.expanded }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: #453748; transition: color .16s;" style-hover="color: #8D4F83;">
+              <span style="flex: 1 1 auto;">{{ item.q }}</span>
+              <span style="{{ item.iconStyle }}">+</span>
+            </button>
+            <div style="{{ item.bodyStyle }}">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 22px; max-width: 36em;">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" ref="{{ planSectionRef }}" style="position: relative; overflow: hidden; isolation: isolate; background-color: #5E3357; background-image: radial-gradient(120% 150% at 78% 0%, #7A4272 0%, #5E3357 55%, #4A2844 100%); color: #FDF9F6; padding: clamp(32px, 26.06px + 1.52vw, 48px) 0 clamp(64px, 52.11px + 3.05vw, 96px);">
+    <div style="position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: url(./assets/grain.png); background-size: 220px 220px; opacity: 0.4; mix-blend-mode: overlay;"></div>
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start;">
+      <div style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; max-width: 26ch;">Risk-free for five days.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253,249,246,0.7); margin: 0 0 40px; max-width: 26em;">Not for you? Money back in five days. No form, no questions.</p>
+      </div>
+
+      <div ref="{{ planStackRef }}" style="flex: 0 1 420px; min-width: 300px; perspective: 1400px;">
+        <div ref="{{ planTiltRef }}" style="transform-style: preserve-3d;">
+          <div style="display: grid; gap: 16px;">
+            <sc-for list="{{ plans }}" as="plan" hint-placeholder-count="3">
+              <div onPointerEnter="{{ plan.enter }}" onPointerLeave="{{ plan.leave }}" style="{{ plan.style }}">
+                <div ref="{{ plan.glowRef }}" style="{{ plan.glowStyle }}"></div>
+                <div style="position: relative; flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px; text-align: left; min-width: 0;">
+                    <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em;">{{ plan.name }}</span>
+                    <span style="font-size: 13.5px; color: #F3E3EE;">{{ plan.note }}</span>
+                  </div>
+                </div>
+                <div style="position: relative; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; white-space: nowrap;">{{ plan.price }}</span>
+                  <span style="font-size: 12.5px; color: #F3E3EE; white-space: nowrap;">{{ plan.perMonth }}</span>
+                </div>
+                <div style="{{ plan.badgeStyle }}">{{ plan.badge }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px 20px; align-items: center; margin-top: 22px;">
+            <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" style="display: block; flex: 0 0 auto; transition: transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="transform: translateY(-2px);">
+              <img src="./assets/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" style="display: block; width: 150px; height: 50px;">
+            </a>
+            <span style="flex: 1 1 180px; font-size: 13.5px; line-height: 1.5; color: #F3E3EE;">Choose your plan in the app — Apple handles the payment.</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.5; color: #E7CFE2; margin: 18px 0 0;">Hormones take 90+ days. We price for a real run at it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>

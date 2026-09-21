@@ -1,0 +1,107 @@
+{
+  "_comment": "Single source of truth for every cycle-phase value on the site. The wheel, the timeline section, the hero phone mockup and the check-in result all read from this file. Do not hardcode any of these values in HTML or JS.",
+  "cycleLength": 28,
+  "phases": [
+    {
+      "id": "menstrual",
+      "name": "Menstrual",
+      "start": 1,
+      "end": 5,
+      "color": "#F0788E",
+      "ink": "#B8405A",
+      "ramp": [
+        "#F995A6",
+        "#F9BBC1"
+      ],
+      "body": "Estrogen and progesterone bottom out. Recovery is the work this week.",
+      "fast": "12:12 — gentle",
+      "food": "Iron, warmth, steady carbs",
+      "train": "Walking, mobility, light lifts",
+      "supp": "Magnesium, iron, omega-3",
+      "fastHours": 12,
+      "carb": 0.42,
+      "protein": 0.5,
+      "load": 0.4
+    },
+    {
+      "id": "follicular",
+      "name": "Follicular",
+      "start": 6,
+      "end": 13,
+      "color": "#A8CC8A",
+      "ink": "#3B7F5E",
+      "ramp": [
+        "#D6ECCA",
+        "#E7EBBF"
+      ],
+      "body": "Insulin sensitivity is on your side. Your longest fast, your hardest sessions.",
+      "fast": "16:8 — your longest window",
+      "food": "Higher carb, high fibre",
+      "train": "Strength and HIIT",
+      "supp": "B-complex, vitamin D, omega-3",
+      "fastHours": 16,
+      "carb": 0.8,
+      "protein": 0.55,
+      "load": 1
+    },
+    {
+      "id": "ovulatory",
+      "name": "Ovulatory",
+      "start": 14,
+      "end": 16,
+      "color": "#F4CE7A",
+      "ink": "#96610A",
+      "ramp": [
+        "#FEF1C2",
+        "#FDDDCE"
+      ],
+      "body": "Peak output. Three days where a PR is actually likely.",
+      "fast": "14:10 — moderate",
+      "food": "Protein forward, anti-inflammatory",
+      "train": "Heavy strength, sprints",
+      "supp": "Omega-3, zinc, vitamin C",
+      "fastHours": 14,
+      "carb": 0.58,
+      "protein": 0.82,
+      "load": 1
+    },
+    {
+      "id": "luteal",
+      "name": "Luteal",
+      "start": 17,
+      "end": 28,
+      "color": "#BB86B2",
+      "ink": "#85589E",
+      "ramp": [
+        "#EBC5D3",
+        "#BB86B2"
+      ],
+      "body": "Metabolism runs hotter, cravings turn physiological. Fasting pulls back.",
+      "fast": "12:12 — pulled back",
+      "food": "More carbs, more salt, magnesium",
+      "train": "Steady-state, moderate lifts",
+      "supp": "Magnesium glycinate, B6, calcium",
+      "fastHours": 12,
+      "carb": 0.86,
+      "protein": 0.58,
+      "load": 0.65
+    }
+  ],
+  "heroMockup": {
+    "_comment": "The phone screenshot in the hero shows one specific day. These two overlays are drawn on top of the PNG and must match the phase that day falls in.",
+    "day": 8
+  },
+  "planOverrides": {
+    "_comment": "Plan values the check-in substitutes when an answer overrides the phase default. Held here so no plan copy is hardcoded in JS. Changing these changes the check-in result; the 12:12 fasting floor is enforced in code and cannot be raised or lowered from this file.",
+    "foodForWeightGoal": "Higher carb, high fibre, protein at every meal",
+    "trainingForNoRoutine": "Walking and mobility to start",
+    "supplementForCravings": "magnesium",
+    "supplementForDairyFree": "calcium",
+    "foodSuffixVegetarian": " — lentils, tofu, eggs for protein",
+    "foodSuffixGlutenFree": " — oats, rice, quinoa",
+    "trainingSuffixBuildWeek": " — this is a build week",
+    "trainingSuffixRecoveryWeek": " — recovery week, don't push",
+    "lowCarbNote": "You said low carb. This is the week to bend it, and we'll tell you why in the app.",
+    "fastingFloorHours": 12
+  }
+}

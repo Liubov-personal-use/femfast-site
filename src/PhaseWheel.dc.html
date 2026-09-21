@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg viewBox="0 0 100 100" aria-hidden="true" style="{{ svgStyle }}">
+  <defs>
+    <sc-for list="{{ arcs }}" as="arc" hint-placeholder-count="4">
+      <linearGradient id="{{ arc.gradId }}" gradientUnits="userSpaceOnUse" x1="{{ arc.gx1 }}" y1="{{ arc.gy1 }}" x2="{{ arc.gx2 }}" y2="{{ arc.gy2 }}">
+        <stop offset="0" stop-color="{{ arc.light }}"></stop>
+        <stop offset="1" stop-color="{{ arc.base }}"></stop>
+      </linearGradient>
+    </sc-for>
+  </defs>
+  <g transform="rotate(-90 50 50)" fill="none">
+    <circle cx="50" cy="50" r="30" stroke="{{ dotTrackColor }}" stroke-width="2" stroke-linecap="round" stroke-dasharray="{{ dotDash }}" style="{{ dotStyle }}"></circle>
+    <g stroke-width="{{ ringWidth }}" stroke-linecap="round">
+      <sc-for list="{{ arcs }}" as="arc" hint-placeholder-count="4">
+        <circle cx="50" cy="50" r="42" stroke="{{ arc.stroke }}" stroke-dasharray="{{ arc.dash }}" stroke-dashoffset="{{ arc.offset }}" stroke-opacity="{{ arc.opacity }}" style="transition: stroke-opacity .4s ease;"></circle>
+      </sc-for>
+    </g>
+  </g>
+  <g transform="{{ markerTransform }}" style="{{ markerStyle }}">
+    <circle cx="50" cy="8" r="{{ badgeR }}" fill="{{ badgeFill }}" stroke="{{ badgeRing }}" stroke-width="{{ badgeStroke }}"></circle>
+    <sc-if value="{{ hasIcon }}" hint-placeholder-val="{{ false }}">
+      <g transform="{{ iconUpright }}">
+        <image href="{{ iconHref }}" x="{{ iconX }}" y="{{ iconY }}" width="{{ iconSize }}" height="{{ iconSize }}" style="transition: opacity .35s ease;"></image>
+      </g>
+    </sc-if>
+    <sc-if value="{{ plainDot }}" hint-placeholder-val="{{ true }}">
+      <circle cx="50" cy="8" r="{{ dotR }}" fill="{{ markerColor }}"></circle>
+    </sc-if>
+  </g>
+</svg>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:300,&quot;height&quot;:300},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:240,&quot;min&quot;:16,&quot;max&quot;:520,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Geometry&quot;},&quot;day&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:1,&quot;max&quot;:28,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;State&quot;},&quot;phase&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;menstrual&quot;,&quot;follicular&quot;,&quot;ovulatory&quot;,&quot;luteal&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;State&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marker&quot;},&quot;marker&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marker&quot;},&quot;flat&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Geometry&quot;},&quot;onDark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Geometry&quot;},&quot;width&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;svgExtra&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+const CYCLE = DATA.phases.cycleLength;
+// One token set. `base` is the accessible value used for bars, dots and icons;
+// `light` is the pastel head of the arc gradient, so the wheel keeps the soft
+// ramp of the original artwork without losing value at small sizes.
+// Sampled pixel-for-pixel from the source artwork (Main Content.png): every
+// phase is a two-stop ramp, and each ramp's tail hands off to the next phase's
+// head, which is what makes the ring read as one rotation.
+// `base` is a deepened value used ONLY for dots and sub-24px marks, where a
+// pastel would vanish; nothing large ever uses it.
+const PALETTE = DATA.phases.phases.reduce((m, p) => (m[p.id] = { light: p.ramp[0], mid: p.ramp[1], base: p.color }, m), {});
+const SPANS = DATA.phases.phases.map(p => ({ id: p.id, start: p.start, end: p.end }));
+let UID = 0;
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.uid = "fw" + (++UID);
+  }
+  renderVals() {
+    const size = Number(this.props.size ?? 240);
+    const day = Number(this.props.day ?? 8);
+    const active = this.props.phase ?? "";
+    const onDark = this.props.onDark === true || this.props.onDark === "true";
+    const showMarker = this.props.marker !== false && this.props.marker !== "false";
+    const flat = this.props.flat === true || this.props.flat === "true";
+
+    // every length below is a viewBox constant, so each variant is the same
+    // drawing scaled — never a redraw
+    const R = 42;
+    const ringWidth = 9.5;
+    const showDots = size >= 44;
+    const C = 2 * Math.PI * R;
+    const perDay = C / CYCLE;
+    // round caps overhang by half the stroke, so the gap must clear the cap on
+    // both sides for the phase break to actually be visible
+    const gap = ringWidth + 2.2;
+
+    const phaseOf = d => {
+      for (const s of SPANS) if (d >= s.start && d <= s.end) return s;
+      return SPANS[0];
+    };
+    const cur = active ? (SPANS.find(s => s.id === active) || phaseOf(day)) : phaseOf(day);
+    const dimmed = !!active;
+    const pt = (aDeg, r) => {
+      const a = (aDeg - 90) * Math.PI / 180;
+      return [50 + r * Math.cos(a), 50 + r * Math.sin(a)];
+    };
+
+    const arcs = SPANS.map(s => {
+      const days = s.end - s.start + 1;
+      const len = Math.max(days * perDay - gap, 0.6);
+      const a0 = ((s.start - 1) / CYCLE) * 360;
+      const a1 = (s.end / CYCLE) * 360;
+      const p0 = pt(a0, R), p1 = pt(a1, R);
+      const tone = PALETTE[s.id];
+      return {
+        gradId: this.uid + "-" + s.id,
+        light: tone.light, base: tone.mid,
+        gx1: p0[0].toFixed(2), gy1: p0[1].toFixed(2),
+        gx2: p1[0].toFixed(2), gy2: p1[1].toFixed(2),
+        stroke: flat ? tone.base : "url(#" + this.uid + "-" + s.id + ")",
+        dash: len.toFixed(2) + " " + (C - len).toFixed(2),
+        offset: (-(s.start - 1) * perDay - gap / 2).toFixed(2),
+        opacity: dimmed ? (s.id === cur.id ? 1 : 0.3) : 1
+      };
+    });
+
+    const dotPer = (2 * Math.PI * 30) / CYCLE;
+    // the marker orbits on a rotated group so the move can be transitioned;
+    // the glyph counter-rotates so it never tilts
+    const deg = ((day - 0.5) / CYCLE) * 360;
+    const hasIcon = !!this.props.icon;
+    // the badge is the shared marker: white disc, tinted ring, phase glyph —
+    // the same object that rides the unrolled bars
+    // the PNG IS the badge (disc, ring and glyph), so it needs no backing circle
+    const badgeR = 7;
+    const iconSize = 15.7;
+
+    return {
+      svgStyle: "display:block;width:" + (this.props.width ?? (size + "px")) + ";height:auto;overflow:visible;" + (this.props.svgExtra ?? ""),
+      ringWidth: ringWidth,
+      arcs: arcs,
+      dotDash: "0.9 " + (dotPer - 0.9).toFixed(2),
+      dotTrackColor: onDark ? "rgba(253,249,246,0.34)" : "#E2D2DC",
+      dotStyle: showDots ? "" : "display:none",
+      // no overshoot: a spring reads as fussy when it fires once per day-step
+      markerStyle: showMarker ? "transition: transform .55s cubic-bezier(.33,0,.15,1)" : "display:none",
+      markerTransform: "rotate(" + deg.toFixed(2) + " 50 50)",
+      iconUpright: "rotate(" + (-deg).toFixed(2) + " 50 8)",
+      badgeR: badgeR,
+      badgeFill: hasIcon ? "none" : (onDark ? "#453748" : "#FDF9F6"),
+      badgeRing: "none",
+      badgeStroke: 0,
+      plainDot: !hasIcon,
+      dotR: 5,
+      markerColor: PALETTE[cur.id].base,
+      hasIcon: hasIcon,
+      iconHref: hasIcon ? String(this.props.icon).replace("{phase}", cur.id) : "",
+      iconSize: iconSize,
+      iconX: (50 - iconSize / 2).toFixed(2),
+      iconY: (8 - iconSize / 2).toFixed(2)
+    };
+  }
+}
+
+</script>
+</body>
+</html>

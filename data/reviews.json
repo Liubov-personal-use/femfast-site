@@ -1,0 +1,23 @@
+{
+  "_comment": "Static App Store reviews rendered verbatim on the landing page. Edit this file to change what the reviews section shows - no HTML changes needed. Text is verbatim from the App Store product page (screenshots supplied by the team, 21 Sep 2026); typos and punctuation are intentionally untouched. Cards render in source order. With fewer than 3 entries the grid collapses to the number present, with no empty slot.",
+  "reviews": [
+    {
+      "id": "as-moni-ca1863",
+      "rating": 5,
+      "title": "Exactly what I need",
+      "body": "My cycle is crazy irregular but FemFast still gives me clear steps. No other fasting app did that. Total gamechanger.",
+      "reviewerNickname": "Moni_ca1863",
+      "createdDate": "2025-08-26",
+      "territory": "POL"
+    },
+    {
+      "id": "as-marilli5",
+      "rating": 5,
+      "title": "Really nice app!",
+      "body": "I have PCOS and it’s tough finding advice that doesn’t make me feel broken. This app is gentle but also science-based. Exactly what I needed.",
+      "reviewerNickname": "Marilli5",
+      "createdDate": "2025-08-21",
+      "territory": "POL"
+    }
+  ]
+}

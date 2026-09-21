@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  html { -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #FDF9F6; color: #453748; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: #8D4F83; text-decoration: none; }
+  a:hover { color: #453748; }
+  p { text-wrap: pretty; }
+</style>
+</helmet>
+
+<div style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color: #453748; background: #FDF9F6; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(253,249,246,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid #F3E7E1;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 16px clamp(20px, 5vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;">
+      <a href="./index.html" aria-label="FemFast home" style="margin-right: auto; display: block;">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="134" height="18" style="display: block; width: 134px; height: 18px;" />
+      </a>
+      <a href="./index.html" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: #5F5062;" style-hover="color: #8D4F83;">&larr; Back to FemFast</a>
+    </div>
+  </header>
+
+  <main style="max-width: 800px; margin: 0 auto; padding: clamp(36px, 6vh, 64px) clamp(20px, 5vw, 32px) 48px;">
+    <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 48px); line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 30px;">Terms of Use</h1>
+    <sc-for list="{{ lines }}" as="l" hint-placeholder-count="30">
+      <p style="font-size: 16px; line-height: 1.7; color: #5F5062; margin: 0 0 15px;">{{ l }}</p>
+    </sc-for>
+  </main>
+
+  <dc-import name="SiteFooter" home="./index.html" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const TEXT = `Last updated: May 5, 2025
+
+These Terms of Use applies to Vladimir Vassilevski, conducting business activity under the name "V-Tree Consult Vladimir Vassilevski", registered in CEIDG (Centralna Ewidencja i Informacja o Działalności Gospodarczej), NIP: 9512602793, REGON: 529395569 referred to as either "FemFast", "we", "us" or "our" in these Terms of Use.
+We operate a wellness guidance software: the website https://femfast.io (the "Site"), the mobile application FemFast (the "App"), as well as any other related products and services that refer or link to these Terms of Use https://femfast.io/terms-of-use (the "Terms") (collectively, the "Services").
+FemFast does not diagnose, treat, or prevent any medical condition. All content and suggestions provided by FemFast is for informational purposes only and do not constitute medical advice. Always consult with a healthcare provider before making changes to your health routine.
+You can contact us by email at support@femfast.io.
+
+PLEASE CAREFULLY READ THE BINDING ARBITRATION CLAUSE AND CLASS ACTION WAIVER IN SECTION 15. IT AFFECTS HOW DISPUTES ARE RESOLVED BETWEEN YOU AND FEMFAST AND INFORMS YOU OF YOUR OPT-OUT RIGHTS.
+
+NOTE: Depending on where your location, you may have rights under applicable local laws that cannot be waived. Nothing in this Agreement limits any such rights under those laws.
+
+These Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and FemFast, concerning your access to and use of the Services.
+You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Terms.
+
+IF YOU DO NOT AGREE WITH ALL OF THESE TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+
+Besides these Terms, we also publish the Privacy Policy. We encourage you to read it to better understand how you can update, manage, export, and delete your information.
+Supplemental terms and conditions or documents that may be posted on the Services from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms from time to time. We will alert you about any changes by updating the "Last updated" date of these Terms, and you waive any right to receive specific notice of each such change. It is your responsibility to periodically review these Terms to stay informed of updates. You will be subject to and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms by your continued use of the Services after the date such revised Terms are posted.
+The Services are intended for users who are at least 18 years old. Persons under the age of 18 are not permitted to use or register for the Services.
+We recommend that you print a copy of these Terms for your records. By accepting this Terms, you affirm that you:
+(a) have read this Terms and agree to abide by its terms and the other terms incorporated into it by reference; and
+(b) have reviewed and consent to the Privacy Policy https://femfast.io/privacy-policy;
+(c) agree not to use FemFast's services and content for any other purposes as described in these Terms.
+
+1. OUR SERVICES
+General
+The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Services from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.
+HIPAA Disclaimer
+FemFast is not a "covered entity" or "business associate" under HIPAA. We do not store or share medical records. FemFast does not replace professional healthcare advice. Always consult a physician before making health decisions.
+You agree not to:
+use the Services in place of professional medical advice
+share offensive or false information
+copy, resell or reverse-engineer the Site, the App, its features
+You are solely responsible for how you use the Services and interpret its recommendations.
+FemFast's Disclaimers
+FemFast and its Services are not intended to provide medical advice, diagnosis, or treatment.
+FEMFAST IS NOT A LICENSED MEDICAL CARE PROVIDER AND THE SERVICES ARE NOT INTENDED TO REPLACE PROFESSIONAL MEDICAL ADVICE OR DIAGNOSE, TREAT OR MANAGE ANY ILLNESS OR MEDICAL CONDITION, OR SERVE AS A BIRTH CONTROL METHOD OR CONTRACEPTION. PLEASE CONSULT WITH A LICENSED PHYSICIAN OR OTHER QUALIFIED HEALTHCARE PROVIDER BEFORE MAKING ANY DECISIONS OR TAKING ANY ACTIONS THAT MAY AFFECT YOUR HEALTH AND SAFETY OR THAT OF YOUR FAMILY OR FOETUS. NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY IN SEEKING IT BECAUSE OF SOMETHING YOU HAVE READ IN CONNECTION WITH THE SERVICES. ALWAYS CONSULT WITH YOUR HEALTHCARE PROFESSIONAL IF YOU HAVE ANY QUESTIONS OR CONCERNS ABOUT YOUR HEALTH OR CONDITION OR EXPERIENCE ANY CHANGES IN YOUR CONDITION OR HEALTH STATUS. IF YOU THINK YOU HAVE A MEDICAL EMERGENCY, CALL EMERGENCY SERVICES OR GO TO THE NEAREST OPEN EMERGENCY ROOM IMMEDIATELY.
+WE DISCLAIM LIABILITY FOR ANY ERRORS OR OMISSIONS, OR FOR UNINTENDED TECHNICAL INACCURACIES, OR TYPOGRAPHICAL ERRORS IN THE PROVIDED MATERIALS, AS WELL AS ANY VIOLATION OF ANY ETHICAL OR MORAL STANDARDS APPLICABLE IN YOUR COMMUNITY TO SEXUAL EDUCATION AND RELATED MATERIALS.
+SOME TRANSLATIONS ON FEMFAST'S APP OR SITE ARE POWERED BY MACHINE LEARNING AND ARTIFICIAL INTELLIGENCE. FEMFAST DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES FOR FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+2. INTELLECTUAL PROPERTY RIGHTS
+Our intellectual property
+We are the owner or the licensee of all intellectual property rights in our Services, including all content, visuals, algorithms, source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein (the "Marks").
+Our Content and Marks are protected by copyright and trademark laws (and various other intellectual property rights and unfair competition laws) and treaties in the United States and around the world.
+The Content and Marks are provided in or through the Services "AS IS" for your personal, non-commercial use only.
+Your use of our Services
+Subject to your compliance with these Terms, including the "PROHIBITED ACTIVITIES" section below, we grant you a non-exclusive, non-transferable, revocable license to:
+• access the Services; and
+• download or print a copy of any portion of the Content to which you have properly gained access, solely for your personal, non-commercial use.
+Except as set out in this section or elsewhere in our Terms, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.
+If you wish to make any use of the Services, Content, or Marks other than as set out in this section or elsewhere in our Terms, please address your request to: support@femfast.io. If we ever grant you the permission to post, reproduce, or publicly display any part of our Services or Content, you must identify us as the owners or licensors of the Services, Content, or Marks and ensure that any copyright or proprietary notice appears or is visible on posting, reproducing, or displaying our Content.
+We reserve all rights not expressly granted to you in and to the Services, Content, and Marks.
+Any breach of these Intellectual Property Rights will constitute a material breach of our Terms and your right to use our Services will terminate immediately.
+Your submissions
+Please review this section and the "PROHIBITED ACTIVITIES" section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services.
+Submissions: By directly sending us any question, comment, suggestion, idea, feedback, or other information about the Services ("Submissions"), you agree to assign to us all intellectual property rights in such Submission. You agree that we shall own this Submission and be entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you.
+You are responsible for what you post or upload: By sending us Submissions through any part of the Services you:
+confirm that you have read and agree with our "PROHIBITED ACTIVITIES" and will not post, send, publish, upload, or transmit through the Services any Submission that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or misleading;
+to the extent permissible by applicable law, waive any and all moral rights to any such Submission; warrant that any such Submission are original to you or that you have the necessary rights and licenses to submit such Submissions and that you have full authority to grant us the above-mentioned rights in relation to your Submissions; and warrant and represent that your Submissions do not constitute confidential information.
+You are solely responsible for your Submissions and you expressly agree to reimburse us for any and all losses that we may suffer because of your breach of (a) this section, (b) any third party's intellectual property rights, or (c) applicable law.
+
+3. USER REPRESENTATIONS
+Your representation and warranties
+By using the Services, you represent and warrant that:
+(1) all registration information you submit will be true, accurate, current, and complete;
+(2) you will maintain the accuracy of such information and promptly update such registration information as necessary;
+(3) you have the legal capacity and you agree to comply with these Terms;
+(4) you are not a minor in the jurisdiction in which you reside;
+(5) you will not access the Services through automated or non-human means, whether through a bot, script or otherwise;
+(6) you will not use the Services for any illegal or unauthorized purpose; and
+(7) your use of the Services will not violate any applicable law or regulation.
+If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Services (or any portion thereof).
+
+4. USER REGISTRATION
+Account
+To use the Services, you may be required to create or update an account ("Account") and will be asked to provide certain personal information, which may include your name, birth date, and e-mail address.
+All information provided during Account creation must be accurate. You will update that information promptly after it changes.
+This information will be held and used in accordance with our Privacy Policy https://femfast.io/privacy-policy.
+You agree to keep your password confidential and will be responsible for all use of your Account and password.
+We reserve the right to remove, reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.
+Passwords
+You are responsible for taking all reasonable steps to ensure that no unauthorised person shall have access to your App or Site passwords or account.
+It is your sole responsibility to
+(1) control the dissemination and use of sign-in name, screen name and passwords;
+(2) authorise, monitor, and control access to and use of your App or Site account and password;
+(3) promptly inform FemFast if you believe your account or password has been compromised or if there is any other reason you need to deactivate a password. Send us an email at support@femfast.io.
+You grant FemFast and all other persons or entities involved in the operation of the App or the Site the right to transmit, monitor, retrieve, store, and use your information in connection with the operation of the App or the Site. You further acknowledge and agree that the App, the Site and account are designed and intended for personal use on an individual basis and you should not share your account and/or password details with another individual.
+FemFast cannot and does not assume any responsibility or liability for any information you submit, or your or third parties' use or misuse of information transmitted or received arising from the using the App or the Site, and shall not be responsible for any losses arising out of the unauthorised use of your account or information resulting from you not following these rules.
+Use of mobile devices
+Please note that your carrier's normal rates and fees, such as text messaging and data charges, will still apply if you are using the App on a mobile device.
+
+5. SUBSCRIPTIONS AND BILLING
+Subscriptions
+We may offer you the opportunity to purchase subscriptions that provide access to certain content, products or services for a specified period of time. Your subscription will continue and automatically renew unless canceled. We charge you on-going fees automatically on a regular basis until cancelled. You consent to our charging your payment method on a recurring basis without requiring your prior approval for each recurring charge, until such time as you cancel the subscription.
+Certain content, products or services included in subscription may change from time to time, as we introduce new features, develop our existing offering and sometimes retire features that aren't working out as planned. The features and content contained in the Services may differ by country, language, relevant store, version or device.
+By accessing the Services, you agree that your purchases are not contingent on the provision of any future functionality or features, or dependent on any oral or written public statements, and comments made by FemFast regarding such functionality or features.
+The App is available via the third-party platform operator Apple App Store. Therefore, when you make a purchase, you may additionally enter into a separate contract with Apple App Store, whose terms and conditions may apply. Depending on the third-party platform operator's terms and conditions, you may need to exercise your rights of cancellation and revocation with this platform operator.
+Billing
+You may purchase the subscription on a recurring basis disclosed to you prior to your purchase directly from the App or the Site or through a third party by paying a subscription fee plus applicable taxes in advance.
+FemFast may from time to time make changes to subscription, including recurring subscription fees and will communicate any price changes to you in advance. Price changes will take effect at the start of the next subscription period following the date of the price change and, by continuing to use the subscription after the price change takes effect, you will have accepted the new price. If you don't agree to a price change, you can reject the change by unsubscribing from the applicable subscription prior to the price change going into effect.
+We reserve the right to correct any errors or mistakes in pricing, even if we have already requested or received payment. If we discover an error in the price of items you have purchased, we will contact you. You will have the option of either reconfirming your order at the correct price or canceling it. If we are unable to contact you, your purchase will be automatically cancelled.
+Tax rates or other fees are based on the rates applicable at the time of your monthly charge. These amounts can change over time with local tax requirements in your country, state, territory, county, or city. Any change in tax rate will be automatically applied based on the account information you provide.
+You agree to pay all charges at the prices then in effect for your purchases and any applicable shipping fees, and you authorize us to charge your chosen payment provider for any such amounts upon placing your order.
+We reserve the right to limit or prohibit subscription that, in our sole judgment, appear to be paid by dealers, resellers, or distributors.
+Trial
+Some of our subscriptions include a trial period, where you can experience the Services for a specified period at no cost or at a reduced price ("Trial"). Trial will automatically convert into ongoing paid subscription at the end of the trial period. At the end of the Trial, your account will be charged according to your chosen subscription. To avoid being charged, you must cancel your subscription prior to the expiration of the Trial.
+Renewal
+Your payment to FemFast or the third party through which you purchased the subscription will automatically renew at the end of the subscription period, unless you cancel your subscription before the end of the then-current subscription period.
+Cancellation
+You must cancel your subscription or Trial before it renews to avoid the billing of the fees for the next subscription period. If you purchase your subscription through FemFast, you can cancel the renewal of your subscription at any time by contacting us by email support@femfast.io and specify the email you used to register your account at FemFast.
+You also can use this cancellation form:
+"Subject - cancel subscription
+To FemFast support team,
+I hereby give notice that I cancel my subscription.
+the email I used to register my account at FemFast - *specify here*"
+If you purchase your subscription through a third party, contact them for information about billing, cancellation and refunds.
+Your cancellation will take effect at the end of the current paid term.
+Contact our Support team support@femfast.io and follow the instructions on how to cancel your subscription.
+All sales are final and no refund will be issued.
+Promotional offers
+From time to time, you may have the opportunity to purchase a subscription in the form of promotional offer. Promotional offers may be for new users only and/or not be valid for all users and are only available for a limited time. Other restrictions may apply. After the promotional period, subscription automatically continues at the then-current regular price (subject to change), unless cancelled, plus applicable taxes.
+
+6. PROHIBITED ACTIVITIES
+Any content you submit through the Services is governed by our Privacy Policy https://femfast.io/privacy-policy. If you submit a question or response, you are solely responsible for your own communications, the consequences of posting those communications, and your reliance on any communications found in the public areas. FemFast and its licensors are not responsible for the consequences of any communications in the public areas. In cases where you feel threatened or you believe someone else is in danger, you should contact your local law enforcement agency immediately. If you think you may have a medical emergency, call your doctor or emergency services immediately. As a condition of using the Services, you agree not to use the Services for any purpose that is prohibited by these Terms. You are responsible for all of your activity in connection with the Services and you shall abide by all local, state, national, and international laws and regulations and any applicable regulatory codes.
+You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.
+You agree that if you take any of the following actions, you will be materially breaching these Terms, and you agree that you SHALL NOT:
+Systematically retrieve data or other content from the Services to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.
+Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.
+Circumvent, disable, or otherwise interfere with security-related features of the Services, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Services and/or the Content contained therein.
+Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Services.
+Use any information obtained from the Services in order to harass, abuse, or harm another person.
+Make improper use of our support services or submit false reports of abuse or misconduct.
+Use the Services in a manner inconsistent with any applicable laws or regulations.
+Engage in unauthorized framing of or linking to the Services.
+Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital letters and spamming (continuous posting of repetitive text), that interferes with any party's uninterrupted use and enjoyment of the Services or modifies, impairs, disrupts, alters, or interferes with the use, features, functions, operation, or maintenance of the Services.
+Engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.
+Delete the copyright or other proprietary rights notice from any Content.
+Attempt to impersonate another user or person or use the username of another user.
+Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or active information collection or transmission mechanism, including without limitation, clear graphics interchange formats ("gifs"), 1×1 pixels, web bugs, cookies, or other similar devices (sometimes referred to as "spyware" or "passive collection mechanisms" or "pcms").
+Interfere with, disrupt, or create an undue burden on the Services or the networks or services connected to the Services.
+Harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Services to you.
+Attempt to bypass any measures of the Services designed to prevent or restrict access to the Services, or any portion of the Services.
+Copy or adapt the Services' software, including but not limited to Flash, PHP, HTML, JavaScript, or other code.
+Except as permitted by applicable law, decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way making up a part of the Services.
+Except as may be the result of standard search engine or Internet browser usage, use, launch, develop, or distribute any automated system, including without limitation, any spider, robot, cheat utility, scraper, or offline reader that accesses the Services, or use or launch any unauthorized script or other software.
+Use a buying agent or purchasing agent to make purchases on the Services.
+Make any unauthorized use of the Services, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses.
+Use the Services as part of any effort to compete with us or otherwise use the Services and/or the Content for any revenue-generating endeavor or commercial enterprise.
+Use the Services to advertise or offer to sell goods and services.
+Sell or otherwise transfer your Account.
+Use the predicted fertile windows or ovulation estimates as a form of birth control or to facilitate conception.
+Use data, content, or features from the Services to diagnose, treat, or mitigate any health conditions.
+Any such forbidden use shall immediately terminate your license to use the Services. FemFast is granting you permission to use the Services, but with the condition that you use it in accordance with these Terms. If you violate these Terms by engaging in a forbidden use, the permission granted you to use the Services will be revoked, and you will no longer be authorized to use it.
+
+7. SANCTIONS CONTROL
+Export and economic sanctions control
+The software that supports the Services may be subject to export and re-export control laws and regulations, including the Export Administration Regulations ("EAR") maintained by the U.S. Department of Commerce, trade and economic sanctions maintained by the Treasury Department's Office of Foreign Assets Control ("OFAC"), and the International Traffic in Arms Regulations ("ITAR") maintained by the Department of State.
+You represent and warrant that you are
+(1) not located in any country or region that is subject to government embargo, and (2) are not a denied party as specified in the regulations listed above.
+You agree to comply with all export laws and regulations to ensure that neither the Services nor any technical data related thereto nor any direct product or products derived from or based on such technology received from FemFast under these Terms thereof is exported or re-exported directly or indirectly in violation of, or used for any purposes prohibited by, such laws and regulations.
+
+8. MOBILE APP LICENSE
+Limited License to the App
+If you access the Services via the App, then we grant you a personal, revocable, non-exclusive, non-transferable, limited right to install and use the App on wireless electronic devices owned or controlled by you, and to access and use the App on such devices strictly for personal and non-commercial purposes in accordance with the terms and conditions of this mobile application license contained in these Terms.
+You SHALL NOT:
+(1) except as permitted by applicable law, decompile, reverse engineer, disassemble, attempt to derive the source code of, or decrypt the App;
+(2) make any modification, adaptation, improvement, enhancement, translation, or derivative work from the App;
+(3) violate any applicable laws, rules, or regulations in connection with your access or use of the App;
+(4) remove, alter, or obscure any proprietary notice (including any notice of copyright or trademark) posted by us or the licensors of the App;
+(5) use the App for any revenue-generating endeavor, commercial enterprise, or other purpose for which it is not designed or intended;
+(6) make the App available over a network or other environment permitting access or use by multiple devices or users at the same time;
+(7) use the App for creating a product, service, or software that is, directly or indirectly, competitive with or in any way a substitute for the App;
+(8) use the App to send automated queries to any website or to send any unsolicited commercial email; or
+(9) use any proprietary information or any of our interfaces or our other intellectual property in the design, development, manufacture, licensing, or distribution of any applications, accessories, or devices for use with the App.
+Except as expressly and unambiguously provided herein, we do not grant you any express or implied rights, and all rights in and to the App and the Content are retained by us.
+Apple Devices
+The following terms apply when you use the App obtained from the Apple Store (the "App Distributor") to access the Services:
+(1) the license granted to you for our App is limited to a non-transferable license to use the application on a device that utilizes the Apple iOS operating systems, as applicable, and in accordance with the usage rules set forth in the App Distributor's terms of service;
+(2) we are responsible for providing any maintenance and support services with respect to the App as specified in the terms and conditions of this mobile application license contained in these Terms or as otherwise required under applicable law, and you acknowledge that the App Distributor has no obligation whatsoever to furnish any maintenance and support services with respect to the App;
+(3) in the event of any failure of the App to conform to any applicable warranty, you may notify the App Distributor, and the App Distributor, in accordance with its terms and policies, may refund the purchase price, if any, paid for the App, and to the maximum extent permitted by applicable law, the App Distributor will have no other warranty obligation whatsoever with respect to the App;
+(4) you represent and warrant that (i) you are not located in a country that is subject to a US government embargo, or that has been designated by the US government as a "terrorist supporting" country and (ii) you are not listed on any US government list of prohibited or restricted parties;
+(5) you must comply with applicable third-party terms of agreement when using the App, e.g., if you have a VoIP application, then you must not be in violation of their wireless data service agreement when using the App; and
+(6) you acknowledge and agree that the App Distributor is a third-party beneficiary of the terms and conditions in this mobile application license contained in these Terms, and that the App Distributor will have the right (and will be deemed to have accepted the right) to enforce the terms and conditions in this mobile application license contained in these Terms against you as a third-party beneficiary thereof.
+
+9. THIRD-PARTY SERVICES
+Third-Party Services and links
+The App or the Site may give you access to links to third-party websites, apps, or other products or services ("Third Party Services"). FemFast does not control Third Party Services in any manner and, accordingly, FemFast is not responsible for the privacy practices of such Third Party Services and does not assume any liability associated with such Third Party Services.
+Your linking to or use of any Third Party Services other than the App or the Site is at your own risk. FemFast's inclusion of links to Third Party Services does not imply any endorsement of any kind by FemFast of the material located on or linked to by such Third Party Services and should not be deemed as such by any user of the App or the Site.
+FemFast disclaims any responsibility for the products or services offered or the information contained on any Third Party Services. You need to take appropriate steps to determine whether accessing a Third Party Service is appropriate, including protecting your personal information and privacy in using any such Third Party Services and complying with relevant agreements.
+You shall not link to our App, Site or Services in a way that is:
+(i) illegal,
+(ii) suggests any form of association, approval or endorsement with or by us where none exists,
+(iii) damages our reputation or takes advantage of it, or
+(iv) is unfair.
+ADVERTISERS
+We allow advertisers to display their advertisements and other information in certain areas of the Services, such as sidebar advertisements or banner advertisements. We simply provide the space to place such advertisements, and we have no other relationship with advertisers.
+
+10. SERVICES MANAGEMENT
+We reserve the right, but not the obligation, to:
+(1) monitor the Services for violations of these Terms;
+(2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Terms, including without limitation, reporting such user to law enforcement authorities;
+(3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) your Account or any portion of the Services;
+(4) in our sole discretion and without limitation, notice, or liability, to remove from the Services or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems; and
+(5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate the proper functioning of the Services.
+
+11. PRIVACY POLICY
+We care about data privacy and security. Please review Privacy Policy https://femfast.io/privacy-policy. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Terms.
+Please be advised the Services are hosted in the Republic of Poland.
+If you access the Services from any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the Republic of Poland, then through your continued use of the Services, you are transferring your data to the Republic of Poland, and you expressly consent to have your data transferred to and processed in the Republic of Poland.
+You can revoke the consent anytime in the App settings or by contacting us support@femfast.io.
+If you connect your wearable device or Apple Health, you grant us permission to access and process selected health metrics for personalization purposes.
+
+12. TERM AND TERMINATION
+These Terms shall remain in full force and effect while you use the Services.
+WITHOUT LIMITING ANY OTHER PROVISION OF THESE TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.
+If we terminate or suspend your Account for any reason, you are prohibited from registering and creating a new Account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party.
+In addition to terminating or suspending your Account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.
+Upon termination of these Terms, all provisions of these Terms that by their nature, should survive termination, shall survive termination, including, without limitation, the provisions on dispute resolution and arbitration, all ownership provisions, warranty disclaimers, and limitations of liability.
+
+13. MODIFICATIONS AND INTERRUPTIONS
+We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. However, we have no obligation to update any information on our Services. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services.
+We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Services, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, discontinue, or otherwise modify the Services at any time or for any reason without notice to you.
+You agree that we have no liability whatsoever for any loss, damage, or inconvenience caused by your inability to access or use the Services during any downtime or discontinuance of the Services. Nothing in these Terms will be construed to obligate us to maintain and support the Services or to supply any corrections, updates, or releases in connection therewith.
+
+14. GOVERNING LAW
+These Terms are governed by and interpreted following the laws of the Republic of Poland, and the use of the United Nations Convention of Contracts for the International Sales of Goods is expressly excluded.
+If your habitual residence is in the EU, and you are a consumer, you additionally possess the protection provided to you by obligatory provisions of the law in your country to residence.
+All the parties irrevocably agree to submit to the non-exclusive jurisdiction of the courts of Warsaw, the Republic of Poland, which means that you may make a claim to defend your consumer protection rights in regard to these Terms in the Republic of Poland, or in the EU country in which you reside.
+
+15. DISPUTE RESOLUTION
+Binding Arbitration
+Any dispute arising from the relationships between the Parties to these Terms shall be determined by one arbitrator who will be chosen in accordance with the Arbitration and Internal Rules of the European Court of Arbitration being part of the European Centre of Arbitration having its seat in Strasbourg, and which are in force at the time the application for arbitration is filed, and of which adoption of this clause constitutes acceptance.
+The seat of arbitration shall be Warsaw, the Republic of Poland.
+The language of the proceedings shall be English.
+Applicable rules of substantive law shall be the law of the Republic of Poland.
+Restrictions
+The Parties agree that any arbitration shall be limited to the dispute between the Parties individually. To the full extent permitted by law,
+(a) no arbitration shall be joined with any other proceeding;
+(b) there is no right or authority for any dispute to be arbitrated on a class-action basis or to utilize class action procedures; and
+(c) there is no right or authority for any dispute to be brought n a purported representative capacity on behalf of the general public or any other persons.
+Exceptions to Arbitration
+The Parties agree that the following disputes are not subject to the above provisions concerning binding arbitration:
+(a) any disputes seeking to enforce or protect, or concerning the validity of, any of the intellectual property rights of a Party;
+(b) any dispute related to, or arising from, allegations of theft, piracy, invasion of privacy, or unauthorized use; and
+(c) any claim for injunctive relief.
+If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any dispute falling within that portion of this provision found to be illegal or unenforceable and such dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court.
+
+16. CORRECTIONS
+There may be information on the Services that contains typographical errors, inaccuracies, or omissions, including descriptions, pricing, availability, and various other information. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Services at any time, without prior notice.
+
+17. DISCLAIMERS
+General Disclaimers
+THE SERVICES ARE PROVIDED "AS IS", "AS AVAILABLE" AND ARE PROVIDED WITHOUT ANY REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE, AND ANY WARRANTIES IMPLIED BY ANY COURSE OF PERFORMANCE OR USAGE OF TRADE, ALL OF WHICH ARE EXPRESSLY DISCLAIMED, SAVE TO THE EXTENT REQUIRED BY LAW. NEITHER FEMFAST, NOR ANY OF ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AFFILIATES, REPRESENTATIVES, SUPPLIERS, PARTNERS, ADVERTISERS OR CONTENT PROVIDERS WARRANTS, AND EACH OF THEM HEREBY EXPRESSLY DISCLAIMS, THAT: (A) THE SERVICES WILL BE SECURE OR AVAILABLE AT ANY PARTICULAR TIME OR LOCATION; (B) ANY DEFECTS OR ERRORS WILL BE CORRECTED; (C) ANY CONTENT OR SOFTWARE AVAILABLE AT OR THROUGH THE APP OR THE SITE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS; (D) THE RESULTS OF USING THE SERVICES WILL MEET YOUR REQUIREMENTS. OR (E) THE ACCURACY, RELIABILITY, OR COMPLETENESS OF THE CONTENT, TEXT, IMAGES, SOFTWARE, GRAPHICS, OR COMMUNICATIONS PROVIDED BY THIRD PARTIES ON OR THROUGH THE SERVICES.
+WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICES, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.
+YOUR USE OF THE APP OR THE SITE IS SOLELY AT YOUR OWN RISK. SOME STATES, COUNTRIES DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES, SO SOME OR ALL OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+THE INFORMATION WITHIN THE SERVICES DOES NOT INCITE, INDUCE OR OTHERWISE PROMOTE ANY SEXUAL BEHAVIOR OR ACTIVITY AMONG MINORS AND DOES NOT DIRECT THE CONTENT OF COMMUNICATION TO ANY PARTICULAR PERSON. ALL INFORMATION PROVIDED WITHIN THE SERVICES IS FOR GENERAL EDUCATIONAL PURPOSES ONLY.
+FemFast makes no representation that the Services are appropriate or available for use in all locations. The App, the Site or certain features of it may not be available in your location or may vary across locations.
+Use at your own risk
+Our goal is to help make certain health-related information more readily available and useful to you. However, FemFast cannot and does not guarantee health-related improvements or outcomes.
+Your use of the App or the Site and any information, predictions, or suggestions provided in the App, or the Site are at your sole risk. We make no representation or warranty of any kind as to the accuracy of data, information, estimates, and predictions that we may provide to you through the App, or the Site and you agree and understand that FemFast is not intended to match or serve the same purpose as a medical or scientific device or healthcare provider.
+
+18. LIMITATIONS OF LIABILITY
+IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR LIABILITY TO YOU FOR ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE LESSER OF THE AMOUNT PAID, IF ANY, BY YOU TO US DURING THE SIX (6) MONTH PERIOD PRIOR TO ANY CAUSE OF ACTION ARISING OR $100.00 USD. CERTAIN US STATE LAWS AND INTERNATIONAL LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU, AND YOU MAY HAVE ADDITIONAL RIGHTS.
+
+19. INDEMNIFICATION
+You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys' fees and expenses, made by any third party due to or arising out of:
+(1) use of the Services;
+(2) breach of these Terms;
+(3) any breach of your representations and warranties set forth in these Terms;
+(4) your violation of the rights of a third party, including but not limited to intellectual property rights; or
+(5) any overt harmful act toward any other user of the Services with whom you connected via the Services.
+Notwithstanding the foregoing, we reserve the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate, at your expense, with our defense of such claims. We will use reasonable efforts to notify you of any such claim, action, or proceeding which is subject to this indemnification upon becoming aware of it.
+
+20. USER DATA
+We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data.
+We welcome your feedback about the Services. Unless otherwise expressly declared, any communications you send to us or publish in app stores are deemed to be submitted on a non-confidential basis. You agree that we may decide to publicise such contents at our own discretion. You agree to authorise us to make use of such contents for free, and revise, modify, adjust and change it contextually, or make any other changes, in each case as we deem appropriate.
+
+21. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES
+Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications, and you agree that all agreements, notices, disclosures, and other communications we provide to you electronically, via email and on the Services, satisfy any legal requirement that such communication be in writing.
+YOU HEREBY AGREE TO THE USE OF ELECTRONIC SIGNATURES, CONTRACTS, ORDERS, AND OTHER RECORDS, AND TO ELECTRONIC DELIVERY OF NOTICES, POLICIES, AND RECORDS OF TRANSACTIONS INITIATED OR COMPLETED BY US OR VIA THE SERVICES.
+You hereby waive any rights or requirements under any statutes, regulations, rules, ordinances, or other laws in any jurisdiction which require an original signature or delivery or retention of non-electronic records, or to payments or the granting of credits by any means other than electronic means.
+
+22. CALIFORNIA USERS AND RESIDENTS
+If any complaint with us is not satisfactorily resolved, you can contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 North Market Blvd., Suite N 112, Sacramento, California 95834 or by telephone at (800) 952-5210 or (916) 445-1254.
+
+23. MISCELLANEOUS
+These Terms and any policies or operating rules posted by us on the Services or in respect to the Services constitute the entire agreement and understanding between you and us.
+Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision.
+These Terms operate to the fullest extent permissible by law.
+We may assign any or all of our rights and obligations to others at any time.
+We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control.
+If any provision or part of a provision of these Terms is determined to be unlawful, void, or unenforceable, that provision or part of the provision is deemed severable from these Terms and does not affect the validity and enforceability of any remaining provisions.
+There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Terms or use of the Services.
+You agree that these Terms will not be construed against us by virtue of having drafted them. You hereby waive any and all defenses you may have based on the electronic form of these Terms and the lack of signing by the parties hereto to execute these Terms.
+
+24. CONTACT US
+In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us:
+(1) via email: support@femfast.io
+(2) business address: Vladimir Vassilevski, woj. MAZOWIECKIE, pow. Warszawa, gm. Warszawa, miejsc. Warszawa, ul. Królowej Marysieńki, nr 38, 02-954`;
+
+class Component extends DCLogic {
+  renderVals() {
+    return { lines: TEXT.split("\n").map(s => s.trim()).filter(s => s.length) };
+  }
+}
+</script>
+</body>
+</html>

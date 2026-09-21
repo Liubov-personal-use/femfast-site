@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  html { -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #FDF9F6; color: #453748; font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: #8D4F83; text-decoration: none; }
+  a:hover { color: #453748; }
+  p { text-wrap: pretty; }
+</style>
+</helmet>
+
+<div style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; color: #453748; background: #FDF9F6; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(253,249,246,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid #F3E7E1;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 16px clamp(20px, 5vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;">
+      <a href="./index.html" aria-label="FemFast home" style="margin-right: auto; display: block;">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="134" height="18" style="display: block; width: 134px; height: 18px;" />
+      </a>
+      <a href="./index.html" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: #5F5062;" style-hover="color: #8D4F83;">&larr; Back to FemFast</a>
+    </div>
+  </header>
+
+  <main style="max-width: 800px; margin: 0 auto; padding: clamp(36px, 6vh, 64px) clamp(20px, 5vw, 32px) 48px;">
+    <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 48px); line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 30px;">Privacy Policy</h1>
+    <sc-for list="{{ lines }}" as="l" hint-placeholder-count="30">
+      <p style="font-size: 16px; line-height: 1.7; color: #5F5062; margin: 0 0 15px;">{{ l }}</p>
+    </sc-for>
+  </main>
+
+  <dc-import name="SiteFooter" home="./index.html" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const TEXT = `Last updated: May 05, 2025
+
+At FemFast, the privacy and security of your data is our top priority. This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of your information when You use the Service and tells You about your privacy rights and how the law protects You.
+
+This Privacy Policy applies to FemFast, which is operated by Vladimir Vassilevski, conducting business activity under the name "V-Tree Consult Vladimir Vassilevski", registered in CEIDG (Centralna Ewidencja i Informacja o Działalności Gospodarczej), NIP: 9512602793, REGON: 529395569 with its business address at woj. MAZOWIECKIE, pow. Warszawa, gm. Warszawa, miejsc. Warszawa, ul. Królowej Marysieńki, nr 38, 02-954, referred to as either "We", "Us" or "Our" in this Privacy Policy.
+
+FemFast handles the processing and storage of personal data within the EU and any other region, including but not limited to the USA, and can at any time confirm compliance with the EU and the USA legislation, as well as the principles set forth in this Policy.
+If you do not accept this Privacy Policy, please do not consent and do not use the Service.
+Interpretation, Definitions and Principles
+Interpretation
+The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
+
+Definitions
+For the purposes of this Privacy Policy:
+Account means a unique account created for You to access our Service or parts of our Service.
+AI service providers refers to trusted AI service providers such as OpenAI. With your consent, we may share anonymized and limited user data solely for the purpose of generating contextual, personalized responses within the App. These providers are contractually obligated not to use or store this data beyond real-time processing.
+Application (or App) refers to FemFast, the software program provided by FemFast.
+Consent is freely given, specific, informed and unambiguous indication of yours wishes by which You, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to You.
+Cookies are small files that are placed on your computer, mobile device or any other device by a website, containing the details of your browsing history on that website among its many uses.
+Country refers to: Poland
+Device means any device that can access the Service such as a computer, a cellphone or a digital tablet.
+FemFast (referred to as either "We", "Us" or "Our" in this Privacy Policy) refers to "V-Tree Consult Vladimir Vassilevski", registered in CEIDG (Centralna Ewidencja i Informacja o Działalności Gospodarczej), NIP: 9512602793, REGON: 529395569 with its business address at woj. MAZOWIECKIE, pow. Warszawa, gm. Warszawa, miejsc. Warszawa, ul. Królowej Marysieńki, nr 38, 02-954.
+User applies to You and other individuals unser unique Accounts created to access our Service.
+Personal Data is any information that relates to an identified or identifiable individual.
+Service refers to the Application or the Website or both. FemFast is a wellness guidance Application or the Website. The content and suggestions provided are for informational purposes only and do not constitute medical advice. Always consult with a healthcare provider before making changes to your health routine.
+Service Provider means any natural or legal person who processes the data on behalf of FemFast. It refers to third-party companies or individuals employed by FemFast to facilitate the Service, to provide the Service on behalf of FemFast, to perform services related to the Service or to assist FemFast in analyzing how the Service is used.
+Third-party services (including wearables) information: with your consent, you may also allow us to connect to third-party services, such as Apple HealthKit, Google Health Connect, Terra, FitBit. This enables us to import information about your health and activities into the Application without the need for you to log it yourself. This imported data may include fitness activities, weight, height, body mass index (BMI), calories burned, heart rate, number of steps/distance traveled, body temperature, sleep and any other activity data synced from Apple HealthKit, Google Health Connect, Terra, FitBit. We will process this data in order to provide you with Application functionality and features. Importing this data is subject to the Apple HealthKit, Google Health Connect, Terra, FitBit privacy policies and terms. Please also check the applicable terms and privacy policies of the wearable devices that you may use to connect to the Application. Your wearable provider may collect usage data relating to your connection for its own business purposes, including to improve its services. This data provides you with general insights into your activities and helps us to make better predictions regarding your cycle.
+Usage Data refers to Application interactions, completed surveys, feedback, preferences as well as data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).
+Website refers to FemFast, accessible from https://femfast.io/
+Well-being information means weight; height; body mass index (BMI); body; menstrual cycle dates; pregnancy and details relating to your pregnancy (if you select the pregnancy mode); other symptoms and stages that are related to your menstrual cycle; general well-being and health; symptoms, which may include information relating to your dietary preferences, physical activity level, metabolic type, steps, heart rate, sleep data / duration, workouts, or other information synced from Third-party services (including wearables).
+You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
+Principles
+FemFast Privacy Policy is based on the following principles:
+Processing of personal data must be carried out in a lawful, conscientious and transparent manner;
+The collection of personal data must be carried out only for established, unambiguous and legitimate purposes and does not provide for additional processing of data incompatible with these purposes;
+The collection of personal data must be appropriate and limited to information that is necessary for the purposes in which these data are collected;
+Personal data must be accurate and updated if necessary;
+All reasonable measures must be taken to ensure that inaccurate personal data, depending on the purpose of their processing, will be immediately deleted or corrected;
+Personal data must be stored in such a way that the data subject can be identified no longer than is required to achieve the purposes in which the data was collected;
+All personal data must be stored in such a way as to ensure their confidentiality and safety;
+Personal data should not be transferred to third parties, except when necessary to provide services on the basis of the contract;
+Data subjects should have the right to access personal data, to modify or delete data, to limit processing, to object to it, and to transfer data.
+Collection and use of your Personal Data
+Types of Data Collected
+Personal Data
+While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You.
+Personally identifiable information may include, but is not limited to:
+Email address
+First name and last name
+Phone number
+Address, State, Province, ZIP/Postal code, City
+Usage Data
+Information Collected while Using the Application
+While using Our Application, in order to provide Services and features of Our Application, We may collect, with your prior permission:
+Email address
+First name and last name
+Phone number
+Address, State, Province, ZIP/Postal code, City
+Well-being information
+Third-party services (including wearables) information
+Usage Data
+We use this information to provide Services and features of Our Service as well as to improve and customize Our Service. The information may be uploaded to FemFast's servers and/or a Service Provider's server or it may be simply stored on your device.
+You can enable or disable access to this information at any time, through your Device and Application settings.
+
+Usage Data
+Usage Data is collected automatically when using the Service.
+Usage Data may include information such as your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
+When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, your mobile device unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.
+We may also collect information that your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.
+Tracking Technologies and Cookies
+We use Cookies and similar tracking technologies to track the activity on Our Website and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:
+Cookies or Browser Cookies. A cookie is a small file placed on your Device. You can instruct your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted your browser setting so that it will refuse Cookies, our Service may use Cookies.
+Web Beacons. Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit FemFast, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).
+Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close your web browser.
+We use both Session and Persistent Cookies for the purposes set out below:
+Necessary / Essential Cookies
+Type: Session Cookies
+Administered by: Us
+Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.
+Cookies Policy / Notice Acceptance Cookies
+Type: Persistent Cookies
+Administered by: Us
+Purpose: These Cookies identify if users have accepted the use of cookies on the Website.
+Functionality Cookies
+Type: Persistent Cookies
+Administered by: Us
+Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.
+If you want to delete or block any cookies, please refer to the help and support area on your internet browser for instructions on how to locate the file or directory that stores cookies. Information on deleting or controlling cookies is also available at www.aboutcookie.org (note that this website is not own by FemFast, and we therefore cannot ensure its accuracy, completeness or availability).
+Deleting our cookies or disabling future cookies or tracking technologies may prevent you from accessing certain areas or features of our Services or may otherwise adversely affect your user experience.
+Google Analytics: to collect information on how visitors and registered user use the Service. We use the information to compile reports and to help us improve the Site. The cookies collect information, including the number of visitors to the Site, where visitors have come to the Site from. For more information about Google's privacy policy, please visit http://www.google.com/intl/en/policies/. If you do not wish to allow the use of Google Analytics cookies at all, Google provides an opt-out plug-in for most common website browsers http://tools.google.com/dlpage/gaoptout.
+
+App Tracking Transparency (ATT)
+In accordance with Apple's App Tracking Transparency (ATT) framework, FemFast will request your explicit permission before enabling third-party tracking technologies, such as advertising SDKs (e.g., Meta SDK).
+This prompt will appear when you first open the app and will inform you of the data being collected and how it may be used.
+You may opt out of tracking at any time via your device settings under Settings > Privacy > Tracking.
+If you decline tracking, FemFast will not use your data for advertising or share it with third-party advertising platforms.
+
+Artificial Intelligence (AI) Services
+With your consent, to enhance your experience and provide personalized wellness recommendations, FemFast may utilize third-party AI services such as OpenAI (ChatGPT API). These services may process certain user inputs such as your goals, symptoms, and activity data in order to generate tailored responses, suggestions, and plans.
+All data sent to AI providers is transmitted securely and, where possible, is anonymized and stripped of directly identifying personal information. These AI tools do not store or retain your personal data beyond the scope of the request and response cycle.
+By using features that rely on AI-generated content, you acknowledge and consent to the processing of your relevant data for this purpose. If you prefer not to use these AI-powered features, you may disable them in your settings or contact us directly.
+
+How we use your Personal Data
+FemFast may use Personal Data for the following legal bases and for the following processing purposes:
+Your consent: You can give us permission to process your health data to provide the Services.
+To enhance data security and fraud prevention capabilities.
+To contact You: To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.
+To fulfill our contractual obligations to You to provide the Services to You: we may process your personal data to fulfill our contractual obligation to you for activities such as management of your Flo account and other administrative purposes.
+To provide AI-powered wellness insights: We may use anonymized user inputs to generate personalized fasting, nutrition, training, and supplement recommendations via third-party AI providers such as OpenAI.
+To manage your requests: To attend and manage your requests to Us.
+Legitimate interest: we may process your personal data based on our legitimate interests in order to manage our Services better. For example, we may use your personal data in order to:
+provide and maintain our Service, including to monitor the usage of our Service.
+manage your Account: to manage your registration as a user of the Service (the Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user).
+provide You with a personalized wellness experience as well as to adapt fasting, nutrition, workout and supplement plans based on your cycle.
+improve the App's performance, user experience and features.
+provide You with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.
+For business transfers: We may use your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.
+For other purposes: We may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.
+
+We may share your personal information in the following situations:
+With Service Providers: we may share your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.
+For business transfers: we may share or transfer your personal information in connection with, or during negotiations of, any merger, sale of FemFast assets, financing, or acquisition of all or a portion of Our business to another company.
+With business partners: we may share your information with Our business partners to offer You certain products, services or promotions as well as with independent attorneys to apply for compensation or technology companies to process or provide systems and technologies that extend our products and services.
+With other users: when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.
+With your consent: we may disclose your personal information for any other purpose with Your consent.
+
+Your privacy rights
+Only You or a person legally authorized to act on your behalf may make a verifiable request related to your personal data. We reserve the right to perform reasonable checks to confirm a person's authorization.
+Your privacy rights in accordance with GDPR (General Data Protection Regulation) and CCPA (California Consumer Privacy Act) in relation to your personal data:
+Correction of your personal data: if You believe that your personal data is inaccurate, You have the right to contact us and ask us to correct such personal data.
+Restriction of processing: You have the right to request that the processing of your personal data be restricted in some circumstances. If you wish to opt out of AI-based features or prevent the processing of your data by third-party AI systems, you can do so by disabling the relevant features within the Application settings or by contacting us directly via email.
+Access to your personal data: You have the right to request information about what personal data we process about You, to access all your personal data and to receive a copy of it.
+Right to data portability: You have the right to request your personal data in a portable form which enables You to, for instance, reuse your data for your individual purposes or different services.
+Deletion of your personal data: You have the right to request that we erase your personal data at any time. Please be aware that deleting some personal data may affect your experience using certain features of the Services that rely on your data.
+Objection to the processing of your personal data: You have the right to object to the processing of your personal data.
+
+Use of your Personal Data to promote our Services
+Once You become an Application or Website user, and with your consent, we start sharing the following personal data with AppsFlyer and its integrated partners to promote the Services:
+technical identifiers: IP address (which may also provide general location information), user agent, identifier for advertisers (IDFA), Android ID (in Android devices), Google advertising ID, customer-issued user ID, and other similar unique technical identifiers
+your age group;
+your subscription status; and
+the fact of App launch.
+
+Advertising and Analytics
+We use third-party tools such as the Facebook SDK to collect data about your use of the app in order to show you personalized advertising and improve our services.
+This may include collecting information such as your device identifier (IDFA), app usage data, and interaction events.
+This data may be used for delivering targeted ads across other apps and websites.
+You can opt out of personalized advertising at any time via your device settings.
+FemFast sends your personal data to AppsFlyer, which analyzes it and provides us reports and insights on how to optimize our promotional campaigns.
+At the same time, FemFast sends your personal data to some of its integrated partners (e.g., Pinterest, Google Ads, Apple Search Ads, Meta Audience and others) to find You or people like You on different platforms, including social media websites.
+These integrated partners analyze your personal data and show relevant information about FemFast to people who might be potentially interested in it or remind you about revisiting the App if you stopped using it a while ago.
+Read more about how AppsFlyer works (https://www.appsflyer.com/company/about/) and how its partners work (https://www.appsflyer.com/solutions/partners/).
+Opt-out options: You can withdraw your consent or opt out from the sharing of your personal data with AppsFlyer for marketing purposes in accordance with this subsection anytime by adjusting your device settings in iOS or Android.
+Note that we also use AppsFlyer to integrate data between the Website and App in connection with onboarding users. You are not able to opt out of AppsFlyer's processing of your personal data for these purposes.
+
+Meta SDK Integration
+FemFast uses the Meta SDK (Facebook Software Development Kit) to measure app performance, track installs, and deliver personalized advertising campaigns on Meta platforms.
+This SDK may collect anonymized information such as:
+your device ID (e.g., IDFA or GAID)
+app open/install events
+limited app usage data (e.g., onboarding completion)
+technical specs like OS version, screen size
+The Meta SDK is only activated after you have explicitly granted permission via Apple's ATT prompt and/or the in-app consent form. No data is sent to Meta until you provide this consent.
+You can withdraw your consent at any time through the app settings or by contacting us at support@femfast.io.
+For more details on how Meta uses data, please visit https://www.facebook.com/privacy/policy
+
+Retention of your Personal Data
+FemFast will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
+FemFast will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.
+Transfer of your Personal Data
+Your information, including Personal Data, is processed at FemFast's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
+FemFast will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.
+
+Delete your Personal Data
+You have the right to delete or request that We assist in deleting the Personal Data that We have collected about You.
+Our Service may give You the ability to delete certain information about You from within the Service.
+You may update, amend, or delete your information at any time by signing in to your Account, if you have one, and visiting the account settings section that allows you to manage your personal information. You may also contact Us to request access to, correct, or delete any personal information that You have provided to Us.
+Please note, however, that We may need to retain certain information when we have a legal obligation or lawful basis to do so.
+Disclosure of your Personal Data
+Business Transactions
+If FemFast is involved in a merger, acquisition or asset sale, your Personal Data may be transferred. We will provide notice before your Personal Data is transferred and becomes subject to a different Privacy Policy.
+Law enforcement
+Under certain circumstances, FemFast may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
+Other legal requirements
+FemFast may disclose your Personal Data in the good faith belief that such action is necessary to:
+Comply with a legal obligations;
+Protect and defend the rights or property of FemFast;
+Prevent or investigate possible wrongdoing in connection with the Service.
+
+Security of your Personal Data
+We implement technical and organizational measures in an effort to protect personal data from loss, theft, misuse, and unauthorized access, disclosure, alteration, and destruction, taking into account the nature of the personal data that we process and risks associated with special categories of personal data we collect. This includes:
+end-to-end encryption of your personal data in transit and in rest;
+systematic vulnerability scanning and penetration testing;
+protection of data integrity;
+secure servers (AWS / Firebase);
+anonymized data for analytical use;
+access controls and authentication;
+organizational and legal measures: For example, our employees have different levels of access to your personal data and only access your personal data for limited and necessary purposes required for the operation of the Services. We impose strict responsibility on our employees for any disclosure, unauthorized access, alteration, destruction, or misuse of your personal data; and
+conducting periodical data protection impact assessments in order to ensure that the Services fully adhere to the principles of privacy by design, privacy by default, and others. We also commit to undertake a privacy audit in the event of FemFast's merger or takeover.
+Please protect your password. Do not share it with others or allow anyone to use your Device.
+The security of your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect your Personal Data, We cannot guarantee its absolute security. No security system is perfect.
+
+Children's Privacy
+General age limitation: our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If You are a parent or guardian and You are aware that your child has provided Us with Personal Data, please contact Us via support@femfast.io. If We become aware that We have collected Personal Data from anyone under the age of 16 without verification of parental consent, We take steps to remove that information from Our servers.
+If We need to rely on consent as a legal basis for processing your information and your country requires consent from a parent, We may require your parent's consent before We collect and use that information.
+
+Links to Other Websites
+Our Service may contain links to other websites that are not operated by Us. If You click on a third-party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.
+We have no control over and assume no responsibility for the content, privacy policies or practices of any third-party sites or services.
+
+Changes to this Privacy Policy
+We may update Our Privacy Policy from time to time. We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.
+If the changes are material, we will notify you by email or through the App. If permitted by law, your continued use of the Services after this policy has been updated indicates your acceptance of changes made. In some cases, you will be given a choice to accept changes to this policy.
+You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+
+Contact Us
+If you have any questions about this Privacy Policy, You can contact us:
+via email: support@femfast.io
+business address: Vladimir Vassilevski, woj. MAZOWIECKIE, pow. Warszawa, gm. Warszawa, miejsc. Warszawa, ul. Królowej Marysieńki, nr 38, 02-954.`;
+
+class Component extends DCLogic {
+  renderVals() {
+    return { lines: TEXT.split("\n").map(s => s.trim()).filter(s => s.length) };
+  }
+}
+</script>
+</body>
+</html>

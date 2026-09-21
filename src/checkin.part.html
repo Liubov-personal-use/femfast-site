@@ -1,0 +1,117 @@
+<sc-if value="{{ quizOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-ff="panel" ref="{{ quizPanelRef }}" role="dialog" aria-modal="true" aria-label="FemFast 60-second check-in" style="position: fixed; inset: 0; z-index: 400; background: #FDF9F6; display: flex; flex-direction: column; overflow-y: auto; animation: ff-quiz-in .42s cubic-bezier(.2,.7,.2,1) both;">
+    <div style="position: sticky; top: 0; z-index: 2; background: rgba(253,249,246,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E1;">
+      <div style="max-width: 720px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 32px); display: flex; align-items: center; gap: 20px;">
+        <img src="./assets/femfast-lockup.png" alt="FemFast" width="118" height="16" style="display: block; width: 118px; height: 16px; flex: 0 0 auto;">
+        <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px;">
+          <span style="align-self: flex-end; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-variant-numeric: tabular-nums; color: rgba(69,55,72,0.6);" data-ff="stepCount">{{ stepCount }}</span>
+          <div style="height: 5px; border-radius: 100px; background: #F3E7E1; overflow: hidden;">
+            <div data-ff="progress" style="{{ progressStyle }}"></div>
+          </div>
+        </div>
+        <button type="button" data-ff="close" onClick="{{ closeQuiz }}" aria-label="Close the check-in" style="flex: 0 0 auto; width: 32px; height: 32px; border: none; border-radius: 50%; background: transparent; color: #5F5062; font-size: 19px; line-height: 1; cursor: pointer; transition: background .16s, color .16s;" style-hover="background: #F3E7E1; color: #453748;">×</button>
+      </div>
+    </div>
+
+    <div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-start; max-width: 720px; width: 100%; margin: 0 auto; padding: clamp(22px, 3.5vh, 40px) clamp(20px, 5vw, 32px) 32px;">
+      <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
+        <div data-ff="questionBlock" key="{{ stepKey }}" style="animation: ff-step-in .38s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;" data-ff="qTitle">{{ qTitle }}</h2>
+          <p data-ff="qHelp" style="{{ qHelpStyle }}">{{ qHelp }}</p>
+          <div style="display: grid; gap: 16px; max-width: 640px;">
+            <sc-for list="{{ qOptions }}" as="opt" hint-placeholder-count="4">
+              <button type="button" data-opt="1" data-ff="opt" data-v="{{ opt.v }}" onClick="{{ opt.pick }}" style="{{ opt.style }}">
+                <span data-ff="optMark" style="{{ opt.markStyle }}">{{ opt.mark }}</span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left; flex: 1 1 auto;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;" data-ff="optLabel">{{ opt.label }}</span>
+                  <span data-ff="optNote" style="{{ opt.noteStyle }}">{{ opt.note }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
+            <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+              <button type="button" data-ff="back" onClick="{{ back }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69,55,72,0.6); cursor: pointer; padding: 10px 0;" style-hover="color: #453748;">← Back</button>
+            </sc-if>
+            <sc-if value="{{ showContinue }}" hint-placeholder-val="{{ true }}">
+              <button type="button" data-ff="continue" onClick="{{ next }}" disabled="{{ continueDisabled }}" aria-disabled="{{ continueAria }}" style="{{ continueStyle }}">Continue</button>
+            </sc-if>
+            <sc-if value="{{ showSkipLink }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ next }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 500; font-size: 15px; color: rgba(69,55,72,0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 10px 0;" style-hover="color: #8D4F83;" data-ff="skip">Skip for now</button>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isBuilding }}" hint-placeholder-val="{{ false }}">
+        <div data-ff="buildingBlock" style="animation: ff-step-in .38s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" data-ff="buildingHeading" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;">Building your baseline</h2>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 34px; max-width: 32em;">Most advice is built on a male baseline. Yours won't be.</p>
+          <div style="display: grid; gap: 0; max-width: 32em;">
+            <sc-for list="{{ buildSteps }}" as="s" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 14px; padding: 15px 0; border-top: 1px solid #F0E2DB;">
+                <span data-ff="buildDot" style="{{ s.dotStyle }}"></span>
+                <span data-ff="buildText" style="{{ s.textStyle }}">{{ s.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div data-ff="resultBlock" style="animation: ff-step-in .5s cubic-bezier(.2,.7,.2,1) both;">
+          <h2 ref="{{ stepHeadingRef }}" tabindex="-1" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; color: #453748; margin: 0 0 16px; max-width: 26ch; outline: none;" data-ff="resultHeadline">{{ resultHeadline }}</h2>
+          <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: #5F5062; margin: 0 0 32px; max-width: 32em;" data-ff="resultBody">{{ resultBody }}</p>
+
+          <div style="display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-radius: 16px; background: #FEF0E8; margin-bottom: 14px;">
+            <img data-ff="resultBadge" ref="{{ resultBadgeRef }}" src="./assets/phase-follicular.png" alt="" width="52" height="52" style="display: block; width: 52px; height: 52px; flex: 0 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 3px;">
+              <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: #453748;" data-ff="resultPhase">{{ resultPhase }}</span>
+              <span data-ff="resultPhaseNote" style="font-size: 14.5px; color: #5F5062;">{{ resultPhaseNote }}</span>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasAdjust }}" hint-placeholder-val="{{ false }}">
+            <div data-ff="adjustWrap" style="display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 16px;">
+              <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(69,55,72,0.6);">Adjusted for:</span>
+              <sc-for list="{{ adjustChips }}" as="chip" hint-placeholder-count="2">
+                <span data-ff="chip" style="{{ chip.style }}">{{ chip.label }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display: grid; gap: 1px; background: #F3E7E1; border-radius: 16px; overflow: hidden; margin-bottom: 26px;">
+            <sc-for list="{{ resultRows }}" as="row" hint-placeholder-count="4">
+              <div data-ff="row" data-row="{{ row.label }}" style="background: #FFFFFF; padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;">
+                <span style="flex: 0 0 104px; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5062;" data-ff="rowLabel">{{ row.label }}</span>
+                <span style="flex: 1 1 180px; font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: #453748;" data-ff="rowValue">{{ row.value }}</span>
+                <span data-ff="rowTag" style="{{ row.tagStyle }}">{{ row.tag }}</span>
+                <p data-ff="rowNote" style="{{ row.noteStyle }}">{{ row.note }}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="padding: 26px 26px 28px; border-radius: 16px; background: #453748; color: #FDF9F6; margin-bottom: 22px;">
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 12px; max-width: 18em;">Tomorrow won't look like this.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: #EFE7EF; margin: 0 0 22px; max-width: 32em;">You've seen one day. FemFast writes the next one every morning.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px 26px; align-items: center;">
+              <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" style="display: block; flex: 0 0 auto; transition: transform .18s cubic-bezier(.2,.7,.2,1);" style-hover="transform: translateY(-2px);">
+                <img src="./assets/app-store-badge.svg" alt="Download on the App Store" width="180" height="60" style="display: block; width: 180px; height: 60px;">
+              </a>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.015em;">From $6 a month — risk-free for 5 days</span>
+                <span style="font-size: 14px; color: #E7CFE2;">Not satisfied? Full refund within five days.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline;">
+            <button type="button" data-ff="restart" onClick="{{ restart }}" style="border: none; background: transparent; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #5F5062; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px;" style-hover="color: #453748;">Start over</button>
+            <span style="font-size: 13.5px; color: #5F5062;">$17.99 for 3 months · $47.99 for 12 · cancel any time.</span>
+          </div>
+          <p style="font-size: 12.5px; line-height: 1.5; color: #5F5062; margin: 16px 0 0; max-width: 40em;">Nothing here was saved. This is general guidance only.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
