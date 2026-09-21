@@ -364,6 +364,40 @@ async function prerender(captures) {
 
 /* ------------------------------------------------------------------ emit - */
 
+/**
+ * The header CTA reads "Take the check-in" wide and "Start" narrow. Swapping
+ * the text in JS resizes the button after paint, so both labels ship and CSS
+ * picks one.
+ */
+function splitHeaderCta(html) {
+  // the label arrives wrapped in the runtime's interpolation span, so match
+  // the whole inner markup and take its text
+  const re = /(<a[^>]*data-ff="headerCta"[^>]*>)([\s\S]*?)(<\/a>)/;
+  if (!re.test(html)) throw new Error('header CTA not found — cannot split its label');
+  return html.replace(re, (m, open, inner, close) => {
+    const text = inner.replace(/<[^>]*>/g, '').trim();
+    if (!text) throw new Error('header CTA has no label text');
+    // "Start" on its own is not descriptive out of context, which both a
+    // screen reader and Lighthouse's link-text audit object to
+    const labelled = open.includes('aria-label')
+      ? open
+      : open.replace('<a', `<a aria-label="${CTA_LABEL}"`);
+    return `${labelled}<span data-ff="ctaWide">${text}</span>` +
+           `<span data-ff="ctaNarrow">Start</span>${close}`;
+  });
+}
+
+const CTA_LABEL = 'Take the 60-second check-in';
+
+/** Same problem in the sticky bar, whose only label is the word "Start". */
+function labelStickyCta(html) {
+  return html.replace(
+    /(<div data-ff="stickyBar"[\s\S]*?)(<a )([^>]*href="\/checkin\/")/,
+    (m, before, tag, attrs) =>
+      attrs.includes('aria-label') ? m : `${before}${tag}aria-label="${CTA_LABEL}" ${attrs}`
+  );
+}
+
 function cleanMarkup(html) {
   return html
     .replace(/ data-dc-tpl="\d+"/g, '')            // runtime bookkeeping
@@ -389,7 +423,26 @@ function wrapPictures(html, webpSet) {
   });
 }
 
-function head({ route, css, data }) {
+/**
+ * On phones the header nav is dropped and the CTA shortens. The export decided
+ * that in JavaScript from window.innerWidth, which is fine when the whole page
+ * is drawn client-side — but the static build ships one prerendered document
+ * for every width, so doing it in JS means the header is drawn wide and then
+ * collapses, shoving the page up by ~86px. That was a 0.31 CLS.
+ *
+ * The same rule as CSS applies before first paint, so there is no shift. The
+ * `!important` is what lets it win against the prerendered inline styles.
+ */
+const NARROW_HEADER_CSS = `
+  [data-ff="ctaNarrow"] { display: none; }
+  @media (max-width: 759px) {
+    [data-ff="nav"], [data-ff="getApp"] { display: none !important; }
+    [data-ff="ctaWide"] { display: none; }
+    [data-ff="ctaNarrow"] { display: inline; }
+  }
+`;
+
+function head({ route, css, data, fontCss }) {
   const { site } = data.config;
   const url = site.origin + route.path;
   const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -415,17 +468,22 @@ function head({ route, css, data }) {
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/outfit-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/fonts/outfit.css">
+<link rel="preload" href="/assets/fonts/outfit-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+${route.preloadImage ? `<link rel="preload" as="image" href="${route.preloadImage}" type="image/webp" fetchpriority="high">` : ''}
 <style>
+${fontCss}
+
+${NARROW_HEADER_CSS}
+
 ${css}
 </style>`;
 }
 
-function page({ route, bodyHtml, css, data }) {
+function page({ route, bodyHtml, css, data, fontCss }) {
   return `<!DOCTYPE html>
 <html lang="${data.config.site.locale}">
 <head>
-${head({ route, css, data })}
+${head({ route, css, data, fontCss })}
 </head>
 <body>
 ${bodyHtml}
@@ -568,15 +626,19 @@ async function buildAssets({ usedAssets }) {
 
     // The App Store badge is an SVG and Apple's guidelines say ship it as-is.
     //
-    // Lossless, deliberately. These are product screenshots and brand marks;
-    // lossy WebP puts visible artefacts on the phone mockup's edges, which
-    // showed up as a real (not anti-aliasing) diff against the export.
-    // Lossless still lands under half the PNG size.
+    // Two policies. The brand lockup, phase icons and grain are flat graphics
+    // with hard edges, where lossy WebP shows; they go lossless and are small
+    // anyway. The two app screenshots are photographic and by far the heaviest
+    // thing on the page — the dashboard alone was 329 KB lossless and the LCP
+    // element — so they go to quality 95, which the screenshot diff shows
+    // costs a handful of sub-pixel edges for a ~190 KB saving.
     if (isPng) {
       const webpName = f.replace(/\.png$/i, '.webp');
-      await sharp(join(srcDir, f)).webp({ lossless: true, effort: 6 }).toFile(join(outDir, webpName));
+      const photographic = /^screen-/.test(f);
+      const opts = photographic ? { quality: 95, effort: 6 } : { lossless: true, effort: 6 };
+      await sharp(join(srcDir, f)).webp(opts).toFile(join(outDir, webpName));
       webpSet.add(`/assets/${f}`);
-      report.webp.push(webpName);
+      report.webp.push(webpName + (photographic ? ' (q95)' : ' (lossless)'));
     }
   }
 
@@ -721,6 +783,11 @@ async function main() {
   const t0 = Date.now();
   const config = await import(join(SRC, 'site.config.mjs'));
   const data = await loadData();
+  // Inlined into every page: one fewer render-blocking request. The url()s are
+  // relative to the stylesheet's own folder, so they have to be rewritten to
+  // absolute paths once the rules live in the document instead.
+  const fontCss = (await readFile(join(VENDOR, 'outfit', 'outfit.css'), 'utf8'))
+    .replace(/url\(\.\//g, 'url(/assets/fonts/');
   log('data loaded:', data.phases.phases.length, 'phases,', data.reviews.reviews.length, 'reviews');
 
   const captures = await buildWorkspace(data);
@@ -770,11 +837,16 @@ async function main() {
     JSON.stringify({ phases: data.phases, rating: data.rating })
   );
   if (withData === appJs) throw new Error('app.js: the /*__DATA__*/null placeholder is missing');
-  await writeFile(join(DIST, 'assets', 'app.js'), PLAN_SRC + '\n' + withData);
+  const { minify } = await import('terser');
+  const bundled = PLAN_SRC + '\n' + withData;
+  const min = await minify(bundled, { compress: true, mangle: true, format: { comments: false } });
+  await writeFile(join(DIST, 'assets', 'app.js'), min.code || bundled);
+  log('app.js', kb(Buffer.byteLength(bundled)), '->', kb(Buffer.byteLength(min.code || bundled)), 'minified');
 
   for (const route of config.routes) {
-    const body = wrapPictures(cleanMarkup(bodies[route.source]), webpSet);
-    const html = page({ route, bodyHtml: body, css: cssFor[route.source], data: { config } });
+    let body = wrapPictures(cleanMarkup(bodies[route.source]), webpSet);
+    if (route.source === 'landing') body = labelStickyCta(splitHeaderCta(body));
+    const html = page({ route, bodyHtml: body, css: cssFor[route.source], data: { config }, fontCss });
     const outPath = join(DIST, route.out);
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html);

@@ -32,6 +32,8 @@ export const routes = [
       'Fasting windows, food, training and supplements that change with your cycle phase. Built for women with PCOS and endometriosis. Free 60-second check-in.',
     priority: '1.0',
     changefreq: 'weekly',
+    // the hero phone screenshot is the LCP element; tell the browser early
+    preloadImage: '/assets/screen-dashboard.webp',
   },
   {
     path: '/checkin/',

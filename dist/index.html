@@ -23,8 +23,33 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/outfit-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/fonts/outfit.css">
+<link rel="preload" href="/assets/fonts/outfit-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/assets/screen-dashboard.webp" type="image/webp" fetchpriority="high">
 <style>
+/* Outfit, self-hosted. Replaces the render-blocking Google Fonts request the
+   export used: one less third-party origin, and the site keeps working if
+   fonts.googleapis.com is unreachable. Files come from @fontsource/outfit. */
+@font-face{font-family:Outfit;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/outfit-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/outfit-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/outfit-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/outfit-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/outfit-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+
+
+  [data-ff="ctaNarrow"] { display: none; }
+  @media (max-width: 759px) {
+    [data-ff="nav"], [data-ff="getApp"] { display: none !important; }
+    [data-ff="ctaWide"] { display: none; }
+    [data-ff="ctaNarrow"] { display: inline; }
+  }
+
+
 .scp0:hover { color: rgb(141, 79, 131) !important; }
 .scp1:hover { background: rgb(69, 55, 72) !important; transform: translateY(-1px) !important; }
 .scp2:hover { background: rgb(69, 55, 72) !important; transform: translateY(-2px) !important; box-shadow: rgba(69, 55, 72, 0.5) 0px 20px 34px -12px !important; }
@@ -160,7 +185,7 @@ p { text-wrap: pretty; }
       </nav>
       <div style="display: flex; align-items: center; gap: 14px;">
         <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" data-ff="getApp" class="scp0" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s; display: block;">Get the app</a>
-        <a href="/checkin/" data-ff="headerCta" class="scp1" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 11px 20px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px; transition: background 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);"><span class="sc-interp">Take the check-in</span></a>
+        <a aria-label="Take the 60-second check-in" href="/checkin/" data-ff="headerCta" class="scp1" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 11px 20px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px; transition: background 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);"><span data-ff="ctaWide">Take the check-in</span><span data-ff="ctaNarrow">Start</span></a>
       </div>
     </div>
   </header>
@@ -967,7 +992,7 @@ p { text-wrap: pretty; }
         <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.015em; color: rgb(69, 55, 72);">See today's plan for your phase</div>
         <div style="font-size: 12.5px; color: rgb(95, 80, 98);">Free check-in · 60 seconds · no signup</div>
       </div>
-      <a href="/checkin/" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 15px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 14px 22px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px;">Start</a>
+      <a aria-label="Take the 60-second check-in" href="/checkin/" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 15px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 14px 22px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px;">Start</a>
     </div>
   </div>
 <script src="/assets/app.js" defer></script>

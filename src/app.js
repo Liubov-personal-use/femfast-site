@@ -244,37 +244,19 @@
 
   function initStickyBar() {
     var bar = ff('stickyBar');
-    var nav = ff('nav');
-    if (!bar && !nav) return;
+    if (!bar) return;
     var queued = false;
-    var getApp = ff('getApp');
-    var headerCta = ff('headerCta');
 
+    // Dropping the nav and shortening the CTA on phones is handled in CSS, not
+    // here: one prerendered document serves every width, so deciding it in JS
+    // would redraw the header after first paint and shove the page up.
     function read() {
       var narrow = window.innerWidth < 760;
-
-      // On phones the nav wraps onto a second row and eats a chunk of the
-      // viewport, so it is dropped and the sticky bar carries the CTA instead.
-      // The page is prerendered wide, so this has to be applied on load.
-      if (nav) {
-        nav.setAttribute('style',
-          'display:' + (narrow ? 'none' : 'flex') +
-          ';flex-wrap:wrap;gap:8px 22px;font-size:14.5px;font-weight:500;color:#5F5062');
-      }
-      if (getApp) {
-        getApp.setAttribute('style',
-          'font-family:Outfit,sans-serif;font-weight:600;font-size:14.5px;color:#5F5062;' +
-          'transition:color .16s;display:' + (narrow ? 'none' : 'block'));
-      }
-      if (headerCta) headerCta.textContent = narrow ? 'Start' : 'Take the check-in';
-
-      if (bar) {
-        var past = window.scrollY > Math.max(320, window.innerHeight * 0.75);
-        var want = narrow && past;
-        bar.style.display = want ? '' : 'none';
-        // keep the footer clear of the bar
-        document.body.style.paddingBottom = want ? '78px' : '';
-      }
+      var past = window.scrollY > Math.max(320, window.innerHeight * 0.75);
+      var want = narrow && past;
+      bar.style.display = want ? '' : 'none';
+      // keep the footer clear of the bar
+      document.body.style.paddingBottom = want ? '78px' : '';
     }
     function onScroll() {
       if (queued) return;
@@ -493,7 +475,8 @@
       if (isResult) paintResult();
 
       try { history.replaceState(null, '', '#check-in/' + (state.step + 1)); } catch (err) {}
-      panel.scrollTop = 0;
+      // the page scrolls with the window now, not inside the panel
+      window.scrollTo(0, 0);
       var heading = isQuestion ? ff('qTitle', blocks[state.step])
                   : isBuilding ? ff('buildingHeading')
                   : ff('resultHeadline');
