@@ -132,8 +132,9 @@ the hero phone mockup, which rasterises in a CSS `perspective` layer at
 fractional coordinates. That remains the floor for the untouched pixels.
 
 `npm run lighthouse` audits all six routes on both form factors. Everything
-scores 100 except the landing page, which is 93/100 performance
-(mobile/desktop) and 96 accessibility.
+scores 100 except the landing page: 96 accessibility, and mobile performance
+which lands between 90 and 93 depending on the run (LCP varies under the
+emulated throttling). Desktop is 100 across the board.
 
 `npm run contrast` is the audit behind that accessibility number. Body copy is
 `rgba(69,55,72,α)` — semi-transparent — so what lands on screen depends on what
@@ -146,20 +147,26 @@ fail text that is perfectly legible, because an element's box routinely
 overlaps something darker the letters never touch — the hero caption's box
 catches the phone's drop shadow.
 
-Three contrast findings remain on the landing page, none of them body copy:
+Two contrast findings remain on the landing page, both deliberate:
 
-- the phone mockup's supplements overlay, `#8A8790` at 10.4px — an opaque
-  colour that mimics the app's own UI inside the screenshot
-- the caption under the phone, `rgba(69,55,72,0.55)` — a lighter alpha than
-  the body ink, sitting partly in the phone's drop shadow, which measures
-  2.44:1 against the darkest pixel its glyphs touch
-- a paragraph caught mid-scroll-reveal, where the `[data-reveal]` animation's
-  partial opacity lightens the text for as long as it is animating
+- the phone mockup's supplements overlay, `#8A8790` at 10.4px. That is an
+  opaque colour imitating the app's own UI *inside* the screenshot, not site
+  chrome, so it is left alone.
+- two paragraphs caught mid-scroll-reveal. They sit inside `[data-reveal]`,
+  whose entry animation ramps opacity, and axe happened to sample while it was
+  running. At rest their effective opacity is 1.0 and they measure 4.97:1 —
+  the audit is catching a frame, not a static colour.
 
-The landing page also reports `label-content-name-mismatch`: the mobile CTA
-reads "Start the check-in" while its `aria-label` is "Take the 60-second
-check-in", and WCAG 2.5.3 wants the accessible name to contain the visible
-text. Making the `aria-label` begin with the visible words clears it.
+`npm run contrast` is stricter than axe, because it measures painted pixels
+rather than the computed CSS background. By that measure the caption under the
+phone ("Evelyn's Day 8…") is still 3.51:1: its glyphs fall inside the phone's
+drop shadow, which takes the backdrop to `#C6BCBD` — nowhere near cream. No
+alpha fixes that cheaply; the ink would have to go to ~0.90 to clear 4.5:1
+against that shadow, and even fully opaque only reaches 5.98:1.
+
+Body copy is `rgba(69,55,72,0.74)` throughout. On flat cream that clears AA
+everywhere except `#FFDDD0`, the very end of the hero gradient, where it is
+4.44:1; `0.75` would clear it.
 
 Pass a URL to audit a deployment instead of the local build:
 

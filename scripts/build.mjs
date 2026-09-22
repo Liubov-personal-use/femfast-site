@@ -379,24 +379,12 @@ function splitHeaderCta(html) {
     if (!text) throw new Error('header CTA has no label text');
     // "Start" on its own is not descriptive out of context, which both a
     // screen reader and Lighthouse's link-text audit object to
-    const labelled = open.includes('aria-label')
-      ? open
-      : open.replace('<a', `<a aria-label="${CTA_LABEL}"`);
-    return `${labelled}<span data-ff="ctaWide">${text}</span>` +
+    return `${open}<span data-ff="ctaWide">${text}</span>` +
            `<span data-ff="ctaNarrow">Start the check-in</span>${close}`;
   });
 }
 
-const CTA_LABEL = 'Take the 60-second check-in';
 
-/** Same problem in the sticky bar, whose only label is the word "Start". */
-function labelStickyCta(html) {
-  return html.replace(
-    /(<div data-ff="stickyBar"[\s\S]*?)(<a )([^>]*href="\/checkin\/")/,
-    (m, before, tag, attrs) =>
-      attrs.includes('aria-label') ? m : `${before}${tag}aria-label="${CTA_LABEL}" ${attrs}`
-  );
-}
 
 function cleanMarkup(html) {
   return html
@@ -845,7 +833,7 @@ async function main() {
 
   for (const route of config.routes) {
     let body = wrapPictures(cleanMarkup(bodies[route.source]), webpSet);
-    if (route.source === 'landing') body = labelStickyCta(splitHeaderCta(body));
+    if (route.source === 'landing') body = splitHeaderCta(body);
     const html = page({ route, bodyHtml: body, css: cssFor[route.source], data: { config }, fontCss });
     const outPath = join(DIST, route.out);
     await mkdir(dirname(outPath), { recursive: true });
