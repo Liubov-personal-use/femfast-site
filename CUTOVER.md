@@ -234,16 +234,26 @@ opened the site in, or a private window, so you are not reading cache.
 - [ ] `https://femfast.io/checkin/`
 - [ ] `https://femfast.io/help/`
 - [ ] `https://femfast.io/contact/`
-- [ ] `https://femfast.io/privacy/`
-- [ ] `https://femfast.io/terms/`
+- [ ] `https://femfast.io/privacypolicy` — **the App Store listing links here**
+- [ ] `https://femfast.io/termsofuse` — **the App Store listing links here**
 
-**The old Tilda links still work** (the App Store listing points at one of
-these — check the listing itself and confirm the exact path is covered)
+**The legal URLs the App Store depends on.** These are verified addresses,
+not guesses, and the App Store Connect fields are not changing — so they must
+answer 200 with the policy on them, not redirect anywhere.
 
-- [ ] `https://femfast.io/privacy-policy` lands on `/privacy/`
-- [ ] `https://femfast.io/terms-of-use` lands on `/terms/`
-- [ ] `https://femfast.io/contacts` lands on `/contact/`
+- [ ] `https://femfast.io/privacypolicy` → 200, shows the Privacy Policy
+- [ ] `https://femfast.io/privacypolicy/` → 200, same page
+- [ ] `https://femfast.io/termsofuse` → 200, shows the Terms of Use
+- [ ] `https://femfast.io/termsofuse/` → 200, same page
+- [ ] `https://femfast.io/privacy/` lands on `/privacypolicy`
+- [ ] `https://femfast.io/terms/` lands on `/termsofuse`
 - [ ] A path that genuinely does not exist shows the 404 page, not a blank
+
+All of the above in one command:
+
+```bash
+npm run urls -- https://femfast.io
+```
 
 **The site works**
 

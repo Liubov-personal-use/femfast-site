@@ -35,8 +35,8 @@ const ROUTES = [
   { name: 'checkin', ref: '/ref/index.html',         built: '/checkin/', full: false, openQuiz: true },
   { name: 'help',    ref: '/ref/Help.dc.html',       built: '/help/',    full: true },
   { name: 'contact', ref: '/ref/Contacts.dc.html',   built: '/contact/', full: true },
-  { name: 'privacy', ref: '/ref/Privacy.dc.html',    built: '/privacy/', full: true },
-  { name: 'terms',   ref: '/ref/Terms.dc.html',      built: '/terms/',   full: true },
+  { name: 'privacy', ref: '/ref/Privacy.dc.html',    built: '/privacypolicy', full: true },
+  { name: 'terms',   ref: '/ref/Terms.dc.html',      built: '/termsofuse',    full: true },
 ];
 
 const WIDTHS = [

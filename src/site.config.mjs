@@ -66,8 +66,14 @@ export const routes = [
     changefreq: 'yearly',
   },
   {
-    path: '/privacy/',
-    out: 'privacy/index.html',
+    // The App Store listing points at https://femfast.io/privacypolicy and
+    // those fields are not changing, so this is the canonical address — not a
+    // redirect to somewhere prettier. `alsoAt` publishes the same page as
+    // privacypolicy.html as well, so the extensionless URL Apple links to
+    // answers 200 directly instead of 301-ing to the trailing-slash form.
+    path: '/privacypolicy',
+    out: 'privacypolicy/index.html',
+    alsoAt: 'privacypolicy.html',
     source: 'privacy',
     title: 'Privacy Policy — FemFast',
     description:
@@ -76,8 +82,10 @@ export const routes = [
     changefreq: 'yearly',
   },
   {
-    path: '/terms/',
-    out: 'terms/index.html',
+    // Same again: https://femfast.io/termsofuse is the live App Store address.
+    path: '/termsofuse',
+    out: 'termsofuse/index.html',
+    alsoAt: 'termsofuse.html',
     source: 'terms',
     title: 'Terms of Use — FemFast',
     description:
@@ -87,22 +95,17 @@ export const routes = [
   },
 ];
 
-// Old Tilda paths that may still be linked from the App Store listing or
-// elsewhere. /404.html maps these to their new homes; each also gets a
-// meta-refresh stub so the redirect works even where 404.html is not served.
-// NOTE: this list is a best guess at Tilda's common spellings — the live site
-// could not be crawled to confirm. Add any real paths once they are known.
+// The only two redirects the site has.
+//
+// /privacy/ and /terms/ were this site's own paths for a while, so anything
+// that linked them in the meantime still resolves. Everything else that used
+// to live here was guesswork at Tilda's spellings and has been removed —
+// including /privacypolicy and /termsofuse, which are now real pages and
+// would have been shadowed by a redirect stub at the same path.
+//
+// Each key gets a meta-refresh stub page, and /404.html maps the same table
+// so a path lands correctly even where the stub is not served.
 export const redirects = {
-  '/privacy-policy': '/privacy/',
-  '/privacy-policy/': '/privacy/',
-  '/privacypolicy': '/privacy/',
-  '/policy': '/privacy/',
-  '/terms-of-use': '/terms/',
-  '/terms-of-use/': '/terms/',
-  '/termsofuse': '/terms/',
-  '/terms-and-conditions': '/terms/',
-  '/contacts': '/contact/',
-  '/contacts/': '/contact/',
-  '/support': '/help/',
-  '/faq': '/help/',
+  '/privacy/': '/privacypolicy',
+  '/terms/': '/termsofuse',
 };

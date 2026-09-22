@@ -87,8 +87,8 @@ const PATH_MAP = {
   './index.html': '/',
   './Help.dc.html': '/help/',
   './Contacts.dc.html': '/contact/',
-  './Privacy.dc.html': '/privacy/',
-  './Terms.dc.html': '/terms/',
+  './Privacy.dc.html': '/privacypolicy',
+  './Terms.dc.html': '/termsofuse',
 };
 const LINK_MAP = Object.entries(PATH_MAP).map(([from, to]) => [
   new RegExp('(["\'])' + from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\1', 'g'),
@@ -838,12 +838,38 @@ async function main() {
     const outPath = join(DIST, route.out);
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html);
-    log('emitted', route.path, `(${kb(Buffer.byteLength(html))})`);
+    // `alsoAt` publishes the identical bytes at the extensionless path too, so
+    // GitHub Pages answers /privacypolicy with 200 rather than 301-ing to
+    // /privacypolicy/. Same canonical tag on both, so there is one indexable
+    // URL regardless of which one is requested.
+    if (route.alsoAt) {
+      const twin = join(DIST, route.alsoAt);
+      await mkdir(dirname(twin), { recursive: true });
+      await writeFile(twin, html);
+    }
+    log('emitted', route.path, `(${kb(Buffer.byteLength(html))})`,
+      route.alsoAt ? `+ /${route.alsoAt}` : '');
   }
 
   // Nothing from the old routing scheme may survive into the output. This
   // catches paths that live somewhere rewriteLinks does not look — a component
   // script's lookup table, a prop the footer builds its links from.
+  // A redirect stub written at a real route's path would overwrite the page.
+  // That is exactly what would have happened to /privacypolicy, which used to
+  // be a guessed Tilda redirect and is now the canonical address.
+  {
+    const routePaths = new Set(config.routes.map((r) => r.path.replace(/\/+$/, '') || '/'));
+    const clashes = Object.keys(config.redirects)
+      .map((k) => k.replace(/\/+$/, '') || '/')
+      .filter((k) => routePaths.has(k));
+    if (clashes.length) {
+      throw new Error(
+        'these redirects would shadow a real page: ' + clashes.join(', ') +
+        '\n  a path can be a route or a redirect, not both'
+      );
+    }
+  }
+
   const stale = [];
   for (const route of config.routes) {
     const html = await readFile(join(DIST, route.out), 'utf8');

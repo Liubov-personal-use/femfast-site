@@ -2,8 +2,13 @@
 
 The marketing site and check-in funnel for [femfast.io](https://femfast.io).
 
-Six routes, all static: `/`, `/checkin/`, `/help/`, `/contact/`, `/privacy/`,
-`/terms/`.
+Six routes, all static: `/`, `/checkin/`, `/help/`, `/contact/`,
+`/privacypolicy`, `/termsofuse`.
+
+The two legal paths are the addresses in the App Store listing, which is why
+they are spelled that way. They are the pages themselves — 200, with a
+canonical tag pointing at themselves — not redirects. `/privacy/` and
+`/terms/` were this site's own paths for a while and now redirect to them.
 
 ```bash
 npm ci
@@ -13,6 +18,7 @@ npm run verify     # screenshot-diff /dist against the original export
 npm run lighthouse # audit all six routes, mobile and desktop
 npm run contrast   # worst-case WCAG contrast for the translucent body ink
 npm run deploy     # publish /dist to gh-pages, preserving the custom domain
+npm run urls       # path -> status -> final URL for every address that matters
 ```
 
 `npm run build` needs a Chromium (see [Requirements](#requirements)).
@@ -62,6 +68,7 @@ scripts/
   lighthouse.mjs  audits
   contrast.mjs    glyph-level contrast measurement
   deploy.mjs      publish to gh-pages without losing the CNAME
+  urls.mjs        resolve every address, locally or against a deployed site
 legal/          Privacy and Terms as markdown, plus the Tilda meta note
 reference/      the original export, frozen, only so verify has a baseline
 dist/           build output — this is what gets served
@@ -113,16 +120,21 @@ exactly what moved.
 
 ## Quality gates
 
-`npm run check` (31 assertions) covers: all six routes returning 200, every
+`npm run check` (52 assertions) covers: all six routes returning 200, every
 internal link resolving, no console errors, nothing clipped or overflowing at
 390px, the follicular plan identical in all four places, and the check-in's
-step counter, override chips, row tags, phase badge and fasting floor.
+step counter, override chips, row tags, phase badge and fasting floor. It
+also covers the legal URLs specifically: `/privacypolicy` and `/termsofuse`
+each answering 200 in both bare and trailing-slash form with the right
+canonical, their text matching the source verbatim paragraph for paragraph,
+`/privacy/` and `/terms/` landing on them, and no internal link still
+pointing at the old paths.
 
 `npm run verify` screenshots every route at 1440 and 390 against the frozen
 export and diffs them. A same-page-twice control diffs at zero pixels, so any
 figure it reports is real rather than measurement noise.
 
-`/help/`, `/contact/`, `/privacy/` and `/terms/` are byte-identical to the
+`/help/`, `/contact/`, `/privacypolicy` and `/termsofuse` are byte-identical to the
 export. `/` and `/checkin/` now differ on purpose: body copy was darkened from
 `rgba(69,55,72,0.6)` to `0.74` for contrast, and the mobile CTA reads "Start
 the check-in" rather than "Start". That accounts for 0.22%/0.47% on the

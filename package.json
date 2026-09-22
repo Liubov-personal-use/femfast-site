@@ -11,7 +11,8 @@
     "lighthouse": "node scripts/lighthouse.mjs",
     "check": "node scripts/check.mjs",
     "contrast": "node scripts/contrast.mjs",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "urls": "node scripts/urls.mjs"
   },
   "devDependencies": {
     "lighthouse": "^13.5.0",

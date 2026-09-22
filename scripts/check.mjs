@@ -27,7 +27,7 @@ const PORT = 8951;
 const BASE = `http://localhost:${PORT}`;
 const CHROME = process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
-const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacy/', '/terms/'];
+const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacypolicy', '/termsofuse'];
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
   '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp',
@@ -42,8 +42,16 @@ function serve() {
   const server = createServer(async (req, res) => {
     try {
       const url = decodeURIComponent(req.url.split('?')[0]);
+      // Resolve the way GitHub Pages does, so /privacypolicy answers 200 from
+      // privacypolicy.html rather than 301-ing to the trailing-slash form:
+      // exact file, then <path>.html, then <path>/index.html.
       let p = join(DIST, url);
-      if ((await stat(p).catch(() => null))?.isDirectory()) p = join(p, 'index.html');
+      const st = await stat(p).catch(() => null);
+      if (!st) {
+        p = join(DIST, url + '.html');
+      } else if (st.isDirectory()) {
+        p = join(p, 'index.html');
+      }
       const body = await readFile(p);
       res.writeHead(200, { 'content-type': TYPES[extname(p)] || 'application/octet-stream' });
       res.end(body);
@@ -360,6 +368,116 @@ async function checkCheckin(browser, want) {
   await page.close();
 }
 
+/* ------------------------------------------------- the legal URLs matter - */
+
+/**
+ * https://femfast.io/privacypolicy and /termsofuse are the addresses in the
+ * App Store listing, and those fields are not changing. They have to be the
+ * pages themselves — 200 with the policy on them — not redirects to a
+ * prettier path. Both the bare and trailing-slash forms have to work, and the
+ * text has to match the source verbatim.
+ */
+async function checkLegalRoutes(browser) {
+  const cases = [
+    { name: 'privacy', src: 'src/privacy.page.html', heading: 'Privacy Policy',
+      paths: ['/privacypolicy', '/privacypolicy/'], canonical: 'https://femfast.io/privacypolicy',
+      from: '/privacy/' },
+    { name: 'terms', src: 'src/terms.page.html', heading: 'Terms of Use',
+      paths: ['/termsofuse', '/termsofuse/'], canonical: 'https://femfast.io/termsofuse',
+      from: '/terms/' },
+  ];
+
+  for (const c of cases) {
+    // the verbatim source: the TEXT template literal the page renders from
+    const srcText = await readFile(join(ROOT, c.src), 'utf8');
+    const start = srcText.indexOf('const TEXT = `') + 'const TEXT = `'.length;
+    const body = srcText.slice(start, srcText.indexOf('`;', start));
+    const paragraphs = body.split('\n').map((x) => x.trim()).filter(Boolean);
+
+    for (const path of c.paths) {
+      const page = await newPage(browser);
+      const res = await page.goto(BASE + path, { waitUntil: 'networkidle' });
+      const status = res.status();
+      if (status !== 200) { fail(`${path} returns 200`, `got ${status}`); await page.close(); continue; }
+      pass(`${path} returns 200`);
+
+      const info = await page.evaluate(() => ({
+        h1: document.querySelector('h1')?.textContent.trim(),
+        canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+        text: document.body.innerText.replace(/\s+/g, ' '),
+      }));
+
+      if (info.h1 === c.heading) pass(`${path} shows "${c.heading}"`);
+      else fail(`${path} shows "${c.heading}"`, `h1 was "${info.h1}"`);
+
+      if (info.canonical === c.canonical) pass(`${path} canonical is ${c.canonical}`);
+      else fail(`${path} canonical`, `got ${info.canonical}`);
+
+      // verbatim: every source paragraph present, in order
+      const norm = (x) => x.replace(/\s+/g, ' ').trim();
+      let cursor = 0, missing = null;
+      for (const para of paragraphs) {
+        const at = info.text.indexOf(norm(para), cursor);
+        if (at < 0) { missing = para; break; }
+        cursor = at + norm(para).length;
+      }
+      if (missing) fail(`${path} text is verbatim`, `missing/out of order: "${missing.slice(0, 60)}…"`);
+      else pass(`${path} text is verbatim`, `${paragraphs.length} paragraphs, in order`);
+
+      await page.close();
+    }
+
+    // The old path must land on the new one. Read the served bytes rather than
+    // the DOM: a 0s meta refresh navigates away before the page can be
+    // inspected, which is the point of it.
+    const target = c.paths[0];
+    const page = await newPage(browser);
+    const raw = await (await page.request.get(BASE + c.from)).text();
+    const grab = (re) => (raw.match(re) || [])[1];
+    const stub = {
+      refresh: grab(/http-equiv="refresh"\s+content="([^"]*)"/),
+      canonical: grab(/rel="canonical"\s+href="([^"]*)"/),
+      link: grab(/<a href="([^"]*)"/),
+      noindex: /name="robots" content="noindex"/.test(raw),
+    };
+    if (stub.refresh === `0; url=${target}` && stub.link === target &&
+        stub.canonical === c.canonical && stub.noindex) {
+      pass(`${c.from} stub points at ${target}`, 'meta refresh 0s + canonical + fallback link + noindex');
+    } else {
+      fail(`${c.from} stub points at ${target}`, JSON.stringify(stub));
+    }
+
+    // and actually follow it, to prove where a browser ends up
+    await page.goto(BASE + c.from, { waitUntil: 'domcontentloaded' });
+    try {
+      await page.waitForURL(BASE + target, { timeout: 8000 });
+      const h1 = await page.evaluate(() => document.querySelector('h1')?.textContent.trim());
+      if (h1 === c.heading) pass(`${c.from} lands on ${target}`, `"${h1}"`);
+      else fail(`${c.from} lands on ${target}`, `h1 was "${h1}"`);
+    } catch {
+      fail(`${c.from} lands on ${target}`, `ended at ${page.url()}`);
+    }
+    await page.close();
+  }
+
+  // nothing anywhere should still point at the old paths
+  const page = await newPage(browser);
+  const stale = [];
+  for (const route of ROUTES) {
+    await page.goto(BASE + route, { waitUntil: 'networkidle' });
+    const hrefs = await page.evaluate(() =>
+      [...document.querySelectorAll('a[href]')].map((a) => a.getAttribute('href')));
+    for (const h of hrefs) {
+      if (h === '/privacy/' || h === '/terms/' || h === '/privacy' || h === '/terms') {
+        stale.push(`${route} -> ${h}`);
+      }
+    }
+  }
+  await page.close();
+  if (stale.length) fail('no internal link points at the old legal paths', stale.join('; '));
+  else pass('no internal link points at the old legal paths');
+}
+
 /* --------------------------------------------------------- wheel + FAQ --- */
 
 async function checkWheelAndFaq(browser) {
@@ -427,6 +545,7 @@ async function main() {
     await checkRoutesAndLinks(browser);
     const want = await checkPhaseData(browser);
     await checkCheckin(browser, want);
+    await checkLegalRoutes(browser);
     await checkWheelAndFaq(browser);
     await checkNarrow(browser);
   } finally {

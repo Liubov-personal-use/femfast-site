@@ -33,7 +33,7 @@ const DIST = join(ROOT, 'dist');
 const PORT = 8991;
 const CHROME = process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
-const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacy/', '/terms/'];
+const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacypolicy', '/termsofuse'];
 const WIDTHS = [{ label: '1440', w: 1440, h: 900 }, { label: '390', w: 390, h: 844 }];
 
 // The ink this audit is about: the body copy on cream. Light-on-dark

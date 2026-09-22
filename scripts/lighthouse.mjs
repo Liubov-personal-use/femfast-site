@@ -26,7 +26,7 @@ const OUT = join(ROOT, '.build', 'lighthouse');
 const PORT = 8961;
 const CHROME = process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
-const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacy/', '/terms/'];
+const ROUTES = ['/', '/checkin/', '/help/', '/contact/', '/privacypolicy', '/termsofuse'];
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
