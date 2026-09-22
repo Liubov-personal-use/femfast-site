@@ -12,6 +12,7 @@ npm run check      # drive the built site and assert it behaves
 npm run verify     # screenshot-diff /dist against the original export
 npm run lighthouse # audit all six routes, mobile and desktop
 npm run contrast   # worst-case WCAG contrast for the translucent body ink
+npm run deploy     # publish /dist to gh-pages, preserving the custom domain
 ```
 
 `npm run build` needs a Chromium (see [Requirements](#requirements)).
@@ -60,6 +61,7 @@ scripts/
   verify.mjs      screenshot diff against the export
   lighthouse.mjs  audits
   contrast.mjs    glyph-level contrast measurement
+  deploy.mjs      publish to gh-pages without losing the CNAME
 legal/          Privacy and Terms as markdown, plus the Tilda meta note
 reference/      the original export, frozen, only so verify has a baseline
 dist/           build output — this is what gets served
@@ -191,7 +193,22 @@ Otherwise `npx playwright install chromium` once.
 
 ## Deploying
 
-See [CUTOVER.md](CUTOVER.md) — it covers publishing to GitHub Pages, the
-Cloudflare DNS change, verification and rollback. The repository and both
-branches exist; no DNS change has been made and no custom domain is set, so
-the live Tilda site is untouched.
+Staging is live at <https://staging.femfast.io>.
+
+Publish a change with:
+
+```bash
+npm run build && npm run check && npm run verify
+npm run deploy
+```
+
+**Always `npm run deploy`; never rebuild `gh-pages` by hand.** A custom domain
+on GitHub Pages is stored as a `CNAME` file *in the served branch*, so any
+publish that rebuilds the branch from `/dist` deletes it and silently takes
+the site off its domain. `deploy.mjs` reads the domain already on the remote
+branch and writes it back on every push. `--dry-run` shows what would change.
+
+See [CUTOVER.md](CUTOVER.md) for the move to `femfast.io`: the Cloudflare DNS
+change, the custom-domain switch, verification, rollback, and retiring the
+staging record afterwards. No DNS change has been made — the live Tilda site
+still serves femfast.io.

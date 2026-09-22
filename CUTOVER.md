@@ -4,8 +4,9 @@
 Tilda site is untouched and keeps serving femfast.io until you change DNS
 yourself.
 
-Step 0 is done — the repository exists and both branches are pushed.
-Everything from Step 1 on is yours to do.
+Steps 0-2 are done: the repository exists, both branches are pushed, Pages is
+live, and staging is serving at https://staging.femfast.io. Everything from
+Step 3 on is yours to do.
 
 Read the whole thing once before starting. The DNS change is the only step
 that is visible to the public, and it is the last one.
@@ -18,7 +19,7 @@ that is visible to the public, and it is the last one.
 |---|---|
 | GitHub account | `Liubov-personal-use` |
 | Repository | [`femfast-site`](https://github.com/Liubov-personal-use/femfast-site) — `main` (source) + `gh-pages` (served) |
-| Staging URL (once Pages is on) | `https://liubov-personal-use.github.io/femfast-site/` |
+| Staging URL | <https://staging.femfast.io> — live |
 | Production domain | `femfast.io` |
 | DNS host | Cloudflare |
 | Current origin | Tilda |
@@ -37,22 +38,6 @@ dashboard for `femfast.io`.
 | `main` | the source: `/src`, `/data`, `/scripts`, `/dist`, docs |
 | `gh-pages` | the contents of `/dist` — this is what Pages serves |
 
-To publish a change later:
-
-```bash
-npm run build && npm run check && npm run verify   # in the source repo
-```
-
-then republish `gh-pages` from the rebuilt `/dist`:
-
-```bash
-cd /tmp && rm -rf ghp && mkdir ghp
-cp -r /path/to/femfast-site/dist/. ghp/
-cd ghp && git init -b gh-pages && git add -A && git commit -m "Publish built site"
-git remote add site https://github.com/Liubov-personal-use/femfast-site.git
-git push -f site gh-pages
-```
-
 Pages, when deploying from a branch, only serves the **root** of that branch
 or a `/docs` folder — it cannot be pointed at `/dist`. Hence the second
 branch. `/dist` on `main` stays the canonical build output; `gh-pages` is
@@ -61,66 +46,53 @@ only the serving copy.
 > The alternative is a GitHub Actions workflow that builds and deploys on
 > every push. That was deliberately not added — you asked for no Actions.
 
-### One thing to know about `CNAME`
+### Publishing a change
 
-`/dist/CNAME` contains `femfast.io`, as it should. It is **deliberately left
-out of the `gh-pages` branch for now.**
+```bash
+npm run build && npm run check && npm run verify
+npm run deploy
+```
 
-A `CNAME` file in the served branch *is* how GitHub Pages sets a custom
-domain. Publishing it today would make Pages claim `femfast.io` immediately
-and redirect the `github.io` URL there — and `femfast.io` still resolves to
-Tilda, so staging would be unreachable. You add it at cutover (Step 4 does it
-for you).
+**Use `npm run deploy`. Do not rebuild `gh-pages` by hand.**
+
+Setting a custom domain in the Pages UI works by committing a `CNAME` file to
+the served branch — so the domain is not held in settings somewhere safe, it
+lives in the branch. Any publish that rebuilds `gh-pages` from `/dist` deletes
+it, which unsets the custom domain and takes the site off its domain until
+someone notices.
+
+`npm run deploy` reads the `CNAME` already on the remote branch and writes it
+back, so the domain survives every push. It also commits on top of the branch
+instead of force-pushing a fresh history, so GitHub's own "Create CNAME"
+commit stays in the log. `npm run deploy -- --dry-run` shows what would change
+and pushes nothing.
+
+Note that `/dist/CNAME` holds `femfast.io`, the **production** domain, which
+is deliberately not what staging serves. The script never copies it — the
+domain already on the branch wins unless you pass `--domain` explicitly.
 
 ---
 
-## Step 1 — Turn on GitHub Pages — **you need to do this**
+## Step 1 — GitHub Pages — **done**
 
-This could not be done for you: the GitHub app this session runs under is not
-permitted to create repositories or change Pages settings (`403 Resource not
-accessible by integration`). It is four clicks:
-
-1. <https://github.com/Liubov-personal-use/femfast-site/settings/pages>
-2. **Build and deployment** → Source: **Deploy from a branch**
-3. Branch: **`gh-pages`**, folder: **`/ (root)`** → **Save**
-4. Leave **Custom domain empty.** Wait for the "Your site is live at …" banner
-   — usually under a minute.
-
-Staging URL: **`https://liubov-personal-use.github.io/femfast-site/`**
+Source is **Deploy from a branch**, branch `gh-pages`, folder `/ (root)`, with
+the custom domain set to `staging.femfast.io`.
 
 ---
 
-## Step 2 — Check staging
+## Step 2 — Staging — **live**
 
-The site is built for `femfast.io` at the domain root, so a few things read
-oddly on the project-path staging URL. **These are expected and disappear the
-moment the custom domain is set**, so do not try to fix them:
+<https://staging.femfast.io>
 
-- absolute links (`/help/`, `/assets/…`) resolve to
-  `liubov-personal-use.github.io/help/`, not under `/femfast-site/`, so pages
-  will look unstyled and internal links will 404
-- `<link rel="canonical">` and the OG tags point at `https://femfast.io/…`
+Because the custom domain is set, the site is served from the domain root, so
+absolute links, canonical tags and OG tags all resolve the way they will in
+production. The only difference from production is the hostname.
 
-In other words: staging confirms the deploy pipeline works, not that the site
-looks right. To see the site as it will actually ship, run it locally — that
-is byte-for-byte what `gh-pages` contains:
+Scores against staging:
 
 ```bash
-npm run build && npx serve dist
+npm run lighthouse -- https://staging.femfast.io
 ```
-
-Once the custom domain is set (Step 4), the staging path problems vanish and
-`https://femfast.io` is the real check.
-
-Scores against staging, if you want them:
-
-```bash
-npm run lighthouse -- https://liubov-personal-use.github.io/femfast-site
-```
-
-Expect performance to read lower there than locally, because every internal
-asset 404s on the project path. The meaningful run is against `femfast.io`
-after cutover.
 
 ---
 
@@ -185,7 +157,14 @@ For a static marketing site on Pages, the CDN benefit is small — Pages is
 already behind a CDN. **Grey cloud is a perfectly good permanent answer**, and
 it is the lower-risk one.
 
-### 3e. Leave everything else alone
+### 3e. Leave the staging record alone for now
+
+There is a DNS record for `staging.femfast.io` pointing at GitHub Pages.
+**Leave it in place through the cutover** — it is the fallback if you need to
+compare the new site against the old one while DNS is settling. It gets
+deleted in Step 8, after production is verified.
+
+### 3f. Leave everything else alone
 
 Do not touch MX, TXT (SPF/DKIM/DMARC) or any other records. Email and domain
 verification are unaffected by this cutover.
@@ -200,10 +179,12 @@ Only after the DNS records above are saved.
 2. Enter `femfast.io` → **Save**.
 3. GitHub runs a DNS check. Green tick = the A records resolve. If it errors,
    the records have not propagated yet — wait and press Save again.
-4. GitHub commits a `CNAME` file to `gh-pages` containing `femfast.io`. That
-   is expected — it was deliberately kept out until now (see Step 0). If you
-   later republish `gh-pages` from `/dist`, the `CNAME` in `/dist` carries the
-   same value, so the custom domain survives the republish.
+4. **The `CNAME` file on `gh-pages` changes from `staging.femfast.io` to
+   `femfast.io`** — GitHub rewrites it when you save the new custom domain.
+   From then on `npm run deploy` preserves `femfast.io` on every push, exactly
+   as it has been preserving `staging.femfast.io`. If you would rather set it
+   from the command line than the UI, `npm run deploy -- --domain femfast.io`
+   does the same thing.
 5. Wait for **"Certificate: issued"**. Minutes usually; up to an hour.
 6. Tick **Enforce HTTPS**. It stays greyed out until the certificate exists —
    that is the step to be patient about, not to work around.
@@ -301,6 +282,23 @@ The Tilda site is never modified by any of this and keeps working throughout.
 If you also want GitHub to stop claiming the domain, clear the **Custom
 domain** field in Settings → Pages. Not urgent; an unclaimed custom domain
 does no harm once DNS points elsewhere.
+
+---
+
+## Step 8 — Retire staging
+
+Once production is verified and you are no longer holding rollback open:
+
+1. **Delete the `staging.femfast.io` DNS record in Cloudflare.** Nothing
+   points at it after cutover — the custom domain moved to `femfast.io` in
+   Step 4, so `staging.femfast.io` would otherwise resolve to a Pages site
+   that no longer claims it and serve a 404.
+2. Optionally re-point it at Pages again later if you want a staging
+   environment back; that means a second repository, since one Pages site
+   serves one custom domain.
+
+Do this **after** Step 6 passes and after you are past the point of wanting
+the one-line rollback, not before.
 
 ---
 

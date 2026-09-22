@@ -10,7 +10,8 @@
     "verify": "node scripts/verify.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
     "check": "node scripts/check.mjs",
-    "contrast": "node scripts/contrast.mjs"
+    "contrast": "node scripts/contrast.mjs",
+    "deploy": "node scripts/deploy.mjs"
   },
   "devDependencies": {
     "lighthouse": "^13.5.0",
