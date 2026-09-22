@@ -1,7 +1,8 @@
 # Cutover — femfast.io from Tilda to GitHub Pages
 
 **Done.** `femfast.io` and `www.femfast.io` are live on GitHub Pages, confirmed
-22 September 2026. Tilda no longer serves the domain.
+22 September 2026, with both production checks run against the live host.
+Tilda no longer serves the domain.
 
 This was a runbook. It is now the record of what changed, the rollback while it
 is still worth holding open, and the one step left.
@@ -11,13 +12,22 @@ is still worth holding open, and the one step left.
 ## Still to do
 
 - [ ] **Delete the `staging.femfast.io` DNS record** in Cloudflare — [Step 8](#step-8--retire-staging)
-- [ ] Run the two production checks below, if you have not yet
 - [ ] Leave Tilda alive a week or two, so the rollback stays one DNS edit away
+
+Everything else is done:
+
+- [x] DNS cut over, certificate issued, Enforce HTTPS on
+- [x] Every address resolves on the live host — including `/privacypolicy` and
+      `/termsofuse`, which the App Store listing links to and which had to
+      answer 200 rather than redirect
+- [x] Lighthouse run against production
 
 ```bash
 npm run urls -- https://femfast.io        # every address, incl. the App Store's
 npm run lighthouse -- https://femfast.io
 ```
+
+Re-run both after any deploy.
 
 ---
 
