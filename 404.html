@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — FemFast</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/assets/fonts/outfit.css">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:#FDF9F6;color:#453748;
+       font-family:"SF Pro Text",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;}
+  main{max-width:34em;padding:32px;text-align:center}
+  h1{font-family:Outfit,sans-serif;font-weight:800;font-size:clamp(28px,5vw,40px);
+     line-height:1.1;letter-spacing:-0.02em;margin:0 0 16px}
+  p{font-size:17px;line-height:1.55;color:#5F5062;margin:0 0 28px}
+  a.cta{display:inline-block;font-family:Outfit,sans-serif;font-weight:600;font-size:16.5px;
+        color:#FDF9F6;background:#8D4F83;padding:15px 26px;border-radius:16px;text-decoration:none}
+</style>
+</head>
+<body>
+<main>
+  <h1>That page has moved.</h1>
+  <p>The link you followed points somewhere that no longer exists. Everything is still here — start from the beginning.</p>
+  <p><a class="cta" href="/">Go to FemFast</a></p>
+</main>
+<script>
+// Old Tilda paths still linked from elsewhere (the App Store listing among
+// them) land here on GitHub Pages. Send the known ones to their new home.
+(function () {
+  var MAP = {
+  "/privacy-policy": "/privacy/",
+  "/privacy-policy/": "/privacy/",
+  "/privacypolicy": "/privacy/",
+  "/policy": "/privacy/",
+  "/terms-of-use": "/terms/",
+  "/terms-of-use/": "/terms/",
+  "/termsofuse": "/terms/",
+  "/terms-and-conditions": "/terms/",
+  "/contacts": "/contact/",
+  "/contacts/": "/contact/",
+  "/support": "/help/",
+  "/faq": "/help/"
+};
+  var p = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  var to = MAP[p] || MAP[p + '/'];
+  if (to && to !== location.pathname) location.replace(to + location.search + location.hash);
+})();
+</script>
+</body>
+</html>

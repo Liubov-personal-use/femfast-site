@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FemFast — Daily guidance built around your cycle</title>
+<meta name="description" content="Fasting windows, food, training and supplements that change with your cycle phase. Built for women with PCOS and endometriosis. Free 60-second check-in.">
+<link rel="canonical" href="https://femfast.io/">
+<meta name="theme-color" content="#FDF9F6">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FemFast">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://femfast.io/">
+<meta property="og:title" content="FemFast — Daily guidance built around your cycle">
+<meta property="og:description" content="Fasting windows, food, training and supplements that change with your cycle phase. Built for women with PCOS and endometriosis. Free 60-second check-in.">
+<meta property="og:image" content="https://femfast.io/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FemFast — Daily guidance built around your cycle">
+<meta name="twitter:description" content="Fasting windows, food, training and supplements that change with your cycle phase. Built for women with PCOS and endometriosis. Free 60-second check-in.">
+<meta name="twitter:image" content="https://femfast.io/assets/og-default.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/outfit-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/outfit-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/assets/screen-dashboard.webp" type="image/webp" fetchpriority="high">
+<style>
+/* Outfit, self-hosted. Replaces the render-blocking Google Fonts request the
+   export used: one less third-party origin, and the site keeps working if
+   fonts.googleapis.com is unreachable. Files come from @fontsource/outfit. */
+@font-face{font-family:Outfit;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/outfit-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/outfit-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/outfit-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/outfit-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Outfit;font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/outfit-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Outfit;font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/outfit-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+
+
+  [data-ff="ctaNarrow"] { display: none; }
+  @media (max-width: 759px) {
+    [data-ff="nav"], [data-ff="getApp"] { display: none !important; }
+    [data-ff="ctaWide"] { display: none; }
+    [data-ff="ctaNarrow"] { display: inline; }
+  }
+
+
+.scp0:hover { color: rgb(141, 79, 131) !important; }
+.scp1:hover { background: rgb(69, 55, 72) !important; transform: translateY(-1px) !important; }
+.scp2:hover { background: rgb(69, 55, 72) !important; transform: translateY(-2px) !important; box-shadow: rgba(69, 55, 72, 0.5) 0px 20px 34px -12px !important; }
+.scp3:hover { color: rgb(69, 55, 72) !important; }
+.scp4:active { cursor: grabbing !important; }
+.scp5:hover { border-color: rgb(141, 79, 131) !important; }
+.scp6:focus-visible { outline: rgba(141, 79, 131, 0.3) solid 3px !important; outline-offset: 2px !important; }
+.scp7:hover { background: rgb(69, 55, 72) !important; transform: translateY(-2px) !important; }
+.scp8:hover { transform: translateY(-2px) !important; border-color: rgb(227, 207, 223) !important; box-shadow: rgba(69, 55, 72, 0.4) 0px 12px 28px -18px !important; }
+.scp9:hover { text-decoration: underline !important; }
+.scpa:hover { transform: translateY(-2px) !important; }
+.scpb:hover { background: rgb(141, 79, 131) !important; color: rgb(253, 249, 246) !important; border-color: rgb(141, 79, 131) !important; }
+
+html, body { height: 100%; margin: 0px; }
+#dc-root, #dc-root > .sc-host { height: 100%; }
+
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+@media (max-width: 767px) {
+  [data-hero-cta] { flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
+}
+@media (min-width: 768px) {
+  [data-hero-left] { margin-top: -40px; }
+  [data-hero-cta] > a:first-child { flex: 0 0 auto; white-space: nowrap; }
+}
+@media (min-width: 1240px) {
+  [data-hero-cta] { flex-wrap: nowrap !important; gap: 20px !important; }
+  [data-hero-cta] a:last-child { white-space: nowrap; }
+}
+[data-opt]:focus { outline: none; }
+[data-opt]:focus-visible { outline: none; border-color: rgb(141, 79, 131) !important; box-shadow: rgba(141, 79, 131, 0.3) 0px 0px 0px 3px !important; }
+body { margin: 0px; background: rgb(253, 249, 246); color: rgb(69, 55, 72); font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+* { box-sizing: border-box; }
+a { color: rgb(141, 79, 131); text-decoration: none; }
+a:hover { color: rgb(69, 55, 72); }
+p { text-wrap: pretty; }
+@keyframes ff-rise { 
+  0% { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-quiz-in { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@media (max-width: 767px) {
+  [data-bridge] { top: 0px !important; }
+  #phases { padding-bottom: 209px !important; }
+  #how { padding-top: 209px !important; }
+}
+@media (min-width: 1024px) {
+  [data-phase-cols] { flex-direction: row !important; align-items: center !important; gap: 56px !important; }
+  [data-phase-left] { flex: 0 0 45%; }
+  [data-phase-right] { flex: 1 1 55%; min-width: 0px; }
+}
+@media (max-width: 1024px) {
+  [data-how-label] { flex-basis: 120px !important; }
+  [data-how-why] { flex-basis: 240px !important; }
+}
+@media (min-width: 701px) {
+  [data-h1line] { display: block; }
+}
+@media (max-width: 767px) {
+  [data-how-overlay] { display: none !important; }
+  [data-how-axis] { display: none !important; }
+  [data-how-row] { flex-direction: column; align-items: stretch !important; }
+  [data-how-row] [data-how-label], [data-how-row] [data-how-why] { flex: 1 1 auto !important; }
+  [data-how-values] { grid-template-columns: repeat(2, minmax(0px, 1fr)) !important; }
+  [data-sci-left] { display: contents; }
+  [data-sci-left] > p:last-of-type { order: 3; margin-top: 40px !important; }
+  [data-sci-findings] { order: 2; }
+}
+@media (min-width: 768px) {
+  [data-sci-left] { display: flex; flex-direction: column; }
+}
+@keyframes ff-bar-in { 
+  0% { opacity: 0; transform: translateY(100%); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-hero-float { 
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-46px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-hero-float] { animation-duration: auto; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: 1; animation-direction: normal; animation-fill-mode: both; animation-play-state: running; animation-name: ff-hero-float; animation-timeline: scroll(root); animation-range: 0px 720px; }
+}
+@keyframes ff-pulse { 
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes ff-step-in { 
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes ff-hint-pulse { 
+  0%, 100% { opacity: 0.62; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes ff-hint-pulse { 
+  0%, 100% { opacity: 1; }
+}
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes ff-quiz-in { 
+  0% { opacity: 1; }
+  100% { opacity: 1; }
+}
+  @keyframes ff-step-in { 
+  0% { opacity: 1; transform: none; }
+  100% { opacity: 1; transform: none; }
+}
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] { animation-duration: auto; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: 1; animation-direction: normal; animation-fill-mode: both; animation-play-state: running; animation-name: ff-rise; animation-timeline: view(); animation-range: entry 2% cover 26%; }
+  [data-reveal-now] { animation: 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-rise; }
+  [data-reveal-now="2"] { animation-delay: 0.12s; }
+  [data-reveal-now="3"] { animation-delay: 0.24s; }
+}
+</style>
+</head>
+<body>
+<div style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, sans-serif; color: rgb(69, 55, 72); background: rgb(253, 249, 246); overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0px; z-index: 50; background: rgba(251, 244, 239, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgb(249, 242, 239);">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 14px clamp(20px, 3vw, 32px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;">
+      <a href="#" aria-label="FemFast" style="margin-right: auto; display: block;">
+        <picture style="display:block"><source srcset="/assets/femfast-lockup.webp" type="image/webp"><img src="/assets/femfast-lockup.png" alt="FemFast" width="158" height="22" style="display: block; width: 158px; height: 22px;"></picture>
+      </a>
+      <nav data-ff="nav" style="display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14.5px; font-weight: 500; color: rgb(95, 80, 98);">
+        <a href="#why" style="color: rgb(95, 80, 98);">Why timing</a>
+        <a href="#how" style="color: rgb(95, 80, 98);">How it works</a>
+        <a href="#phases" style="color: rgb(95, 80, 98);">Your phases</a>
+        <a href="#assistant" style="color: rgb(95, 80, 98);">Ask anything</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" data-ff="getApp" class="scp0" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s; display: block;">Get the app</a>
+        <a href="/checkin/" data-ff="headerCta" class="scp1" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 14.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 11px 20px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px; transition: background 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);"><span data-ff="ctaWide">Take the check-in</span><span data-ff="ctaNarrow">Start the check-in</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section style="position: relative; isolation: isolate; overflow: hidden; min-height: min(-58px + 100svh, 900px); display: flex; align-items: center; background: linear-gradient(160deg, rgb(253, 249, 246) 0%, rgb(254, 240, 232) 55%, rgb(255, 221, 208) 100%);">
+    <canvas data-ff="shader" width="605" height="354" style="position: absolute; inset: 0px; width: 100%; height: 100%; z-index: -2; display: block;"></canvas>
+    <div style="position: absolute; inset: 0px; z-index: -1; pointer-events: none; background-image: url(&quot;./assets/grain.png&quot;); background-size: 220px 220px; opacity: 0.5; mix-blend-mode: multiply;"></div>
+    <div style="max-width: 1240px; width: 100%; margin: 0px auto; padding: 32px 32px 40px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center;">
+      <div data-hero-left="1" data-reveal-now="1" style="flex: 1.08 1 380px; max-width: 620px;">
+        <h1 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 70px); line-height: 1; letter-spacing: -0.02em; margin: 0px 0px 24px;"><span data-h1line="1">Your hormones run </span><span data-h1line="1">your weight <span style="color: rgb(141, 79, 131);">more</span> </span><span style="color: rgb(141, 79, 131);">than calories&nbsp;do.</span></h1>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); max-width: 30em; margin: 0px 0px 40px;">
+          Every morning FemFast reads your cycle and hands you one plan: when to eat, when to fast, how to train.</p>
+        <div data-hero-cta="1" style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center;">
+          <a href="/checkin/" class="scp2" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.55) 0px 14px 28px -12px; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.18s, box-shadow 0.18s;">Take the 60-second check-in</a>
+          <a href="#phases" class="scp3" style="font-family: Outfit, sans-serif; font-weight: 500; font-size: 17px; color: rgb(141, 79, 131); transition: color 0.16s;">See your plan on any day of your cycle <span aria-hidden="true">↓</span></a>
+        </div>
+        <p style="margin: 16px 0px 0px; font-size: 15px; line-height: 1.5; color: rgba(69, 55, 72, 0.74);">Free<span aria-hidden="true" style="padding: 0px 10px;">·</span>no signup<span aria-hidden="true" style="padding: 0px 10px;">·</span><span style="font-weight: 600; color: rgb(141, 79, 131);"><span class="sc-interp">4.8</span></span> from <span class="sc-interp">2,100</span>+ App Store ratings</p>
+      </div>
+
+      <div data-reveal-now="3" style="flex: 0.95 1 330px; min-width: 292px; display: flex; justify-content: center; align-items: center;">
+        <div>
+          <div data-ff="heroTilt" style="perspective: 1700px;">
+            <div data-hero-device="" style="position: relative; width: 318px; height: 618px; border-radius: 54px; padding: 10px; background: linear-gradient(150deg, rgb(74, 60, 80) 0%, rgb(27, 20, 33) 34%, rgb(54, 43, 59) 62%, rgb(22, 17, 28) 100%); box-shadow: rgba(69, 55, 72, 0.6) 0px 48px 92px -34px, rgba(69, 55, 72, 0.18) 0px 4px 10px, rgba(255, 255, 255, 0.16) 0px 0px 0px 1px inset; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); transform-style: preserve-3d;">
+              <div style="position: absolute; left: -2px; top: 129px; width: 2.5px; height: 35px; border-radius: 2px 0px 0px 2px; background: rgb(58, 47, 64);"></div>
+              <div style="position: absolute; left: -2px; top: 191px; width: 2.5px; height: 60px; border-radius: 2px 0px 0px 2px; background: rgb(58, 47, 64);"></div>
+              <div style="position: absolute; left: -2px; top: 265px; width: 2.5px; height: 60px; border-radius: 2px 0px 0px 2px; background: rgb(58, 47, 64);"></div>
+              <div style="position: absolute; right: -2px; top: 226px; width: 2.5px; height: 88px; border-radius: 0px 2px 2px 0px; background: rgb(58, 47, 64);"></div>
+              <div style="position: relative; width: 298px; height: 598px; border-radius: 45px; overflow: hidden; background: rgb(253, 249, 246);">
+                <picture style="display:block"><source srcset="/assets/screen-dashboard.webp" type="image/webp"><img src="/assets/screen-dashboard.png" alt="The FemFast daily dashboard: today's phase, fasting window, meals, training and supplements" width="298" height="820" style="display: block; width: 298px; height: 820px;"></picture>
+                <div style="position: absolute; top: 10px; left: 50%; width: 94px; height: 29px; margin-left: -47px; border-radius: 15px; background: rgb(11, 7, 16);"></div>
+                <div aria-hidden="true" style="position: absolute; left: 123.6px; top: 56px; width: 10.4px; height: 16px; background: rgb(253, 249, 246); font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 16px; letter-spacing: -0.01em; text-align: center; color: rgb(69, 55, 72);"><span class="sc-interp">8</span></div>
+                <div aria-hidden="true" style="position: absolute; left: 105.9px; top: 461px; width: 169px; height: 28px; background: rgb(255, 255, 255); font-family: Outfit, sans-serif; font-weight: 400; font-size: 10.4px; line-height: 14px; color: rgb(138, 135, 144); padding-top: 4px;"><span class="sc-interp">B-complex, vitamin D, omega-3</span></div>
+              </div>
+            </div>
+          </div>
+          <p style="margin: 18px 0px 0px; text-align: center; font-size: 14px; line-height: 1.45; color: rgba(69, 55, 72, 0.74);">Evelyn's Day 8. Yours won't look like this.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: rgb(253, 249, 246); border-top: 1px solid rgb(243, 231, 225); border-bottom: 1px solid rgb(243, 231, 225);">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 40px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(226px, 1fr)); gap: 30px 36px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: rgb(141, 79, 131);">28</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);">days in a cycle that almost no weight-loss plan accounts for</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: rgb(141, 79, 131);">4</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);">metabolic phases a month — most plans are written for one of them</span>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <span style="flex: 0 0 auto; white-space: nowrap; font-family: Outfit, sans-serif; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.04em; color: rgb(141, 79, 131);">60s</span>
+        <span style="flex: 1 1 auto; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);">to see your phase and the plan that fits it</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="max-width: 1240px; margin: 0px auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.85 1 300px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Most women don't fail at diets. Diets fail their hormones.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); margin: 0px; max-width: 24em;">Never a willpower problem. A timing problem.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0px; border-bottom: 1px solid rgb(243, 231, 225);">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0px; border-top: 1px solid rgb(243, 231, 225);">
+          <div style="flex: 1 1 240px; min-width: 0px;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0px 0px 6px;">You do everything right and the scale holds still.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0px; border-top: 1px solid rgb(243, 231, 225);">
+          <div style="flex: 1 1 240px; min-width: 0px;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0px 0px 6px;">Some weeks you have no appetite. Some weeks you can’t stop.</p>
+        
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 20px 0px; border-top: 1px solid rgb(243, 231, 225);">
+          <div style="flex: 1 1 240px; min-width: 0px;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(18px, 16.51px + 0.38vw, 22px); line-height: 1.3; letter-spacing: -0.02em; margin: 0px 0px 6px;">Your energy for training changes. Your programme doesn’t.</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phases" style="position: relative; background: rgb(253, 249, 246); border-top: 1px solid rgb(240, 226, 219); padding: clamp(32px, 26.06px + 1.52vw, 48px) 0px calc(75px + clamp(64px, 52.11px + 3.05vw, 96px));">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 0px 32px;">
+      <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 40px; max-width: 26ch;">One month is four different bodies. FemFast plans for each one.</h2>
+      <div data-phase-cols="1" style="display: flex; flex-direction: column; gap: 40px;">
+        <div data-phase-left="1" style="display: flex; justify-content: center; min-width: 0px;">
+        <div style="position: relative; width: 100%; max-width: 420px;">
+          <div style="position: absolute; inset: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; pointer-events: none; text-align: center;">
+            <div data-ff="day" style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 52px); line-height: 1; letter-spacing: -0.03em; color: rgb(69, 55, 72);">Day <span class="sc-interp">6</span></div>
+            <div data-ff="phasePill" style="margin-top: 14px; padding: 11px 26px; border-radius: 14px; background: rgb(245, 237, 246); font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgb(141, 79, 131);"><span class="sc-interp">Follicular</span></div>
+            <div data-ff="dragHint" style="display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; padding: 7px 14px; border-radius: 100px; font-size: 12.5px; color: rgb(95, 80, 98); background: rgba(255, 255, 255, 0.82); border: 1px solid rgb(239, 220, 211); animation: 2.6s ease-in-out 0s infinite normal none running ff-hint-pulse;"><span style="font-size: 14px; line-height: 1;">↺</span>Drag to explore any day</div>
+          </div>
+          <div data-ff="wheelDrag" class="scp4" style="touch-action: none; cursor: grab; display: block; border-radius: 50%;">
+            <div class="sc-host" data-sc-name="PhaseWheel"><svg viewBox="0 0 100 100" aria-hidden="true" style="display: block; width: 100%; height: auto; overflow: visible;">
+  <defs>
+    
+      <linearGradient id="fw1-menstrual" gradientUnits="userSpaceOnUse" x1="50.00" y1="8.00" x2="87.84" y2="31.78">
+        <stop offset="0" stop-color="#F995A6"></stop>
+        <stop offset="1" stop-color="#F9BBC1"></stop>
+      </linearGradient>
+    
+      <linearGradient id="fw1-follicular" gradientUnits="userSpaceOnUse" x1="87.84" y1="31.78" x2="59.35" y2="90.95">
+        <stop offset="0" stop-color="#D6ECCA"></stop>
+        <stop offset="1" stop-color="#E7EBBF"></stop>
+      </linearGradient>
+    
+      <linearGradient id="fw1-ovulatory" gradientUnits="userSpaceOnUse" x1="59.35" y1="90.95" x2="31.78" y2="87.84">
+        <stop offset="0" stop-color="#FEF1C2"></stop>
+        <stop offset="1" stop-color="#FDDDCE"></stop>
+      </linearGradient>
+    
+      <linearGradient id="fw1-luteal" gradientUnits="userSpaceOnUse" x1="31.78" y1="87.84" x2="50.00" y2="8.00">
+        <stop offset="0" stop-color="#EBC5D3"></stop>
+        <stop offset="1" stop-color="#BB86B2"></stop>
+      </linearGradient>
+    
+  </defs>
+  <g transform="rotate(-90 50 50)" fill="none">
+    <circle cx="50" cy="50" r="30" stroke="#E2D2DC" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.9 5.83"></circle>
+    <g stroke-width="9.5" stroke-linecap="round">
+      
+        <circle cx="50" cy="50" r="42" stroke="url(#fw1-menstrual)" stroke-dasharray="35.42 228.47" stroke-dashoffset="-5.85" stroke-opacity="1" style="transition: stroke-opacity 0.4s;"></circle>
+      
+        <circle cx="50" cy="50" r="42" stroke="url(#fw1-follicular)" stroke-dasharray="63.70 200.20" stroke-dashoffset="-52.97" stroke-opacity="1" style="transition: stroke-opacity 0.4s;"></circle>
+      
+        <circle cx="50" cy="50" r="42" stroke="url(#fw1-ovulatory)" stroke-dasharray="16.57 247.32" stroke-dashoffset="-128.37" stroke-opacity="1" style="transition: stroke-opacity 0.4s;"></circle>
+      
+        <circle cx="50" cy="50" r="42" stroke="url(#fw1-luteal)" stroke-dasharray="101.40 162.50" stroke-dashoffset="-156.65" stroke-opacity="1" style="transition: stroke-opacity 0.4s;"></circle>
+      
+    </g>
+  </g>
+  <g transform="rotate(70.71 50 50)" style="transition: transform 0.55s cubic-bezier(0.33, 0, 0.15, 1);">
+    <circle cx="50" cy="8" r="7" fill="none" stroke="none" stroke-width="0"></circle>
+    
+      <g transform="rotate(-70.71 50 8)">
+        <image href="/assets/phase-follicular.png" x="42.15" y="0.15" width="15.7" height="15.7" style="transition: opacity 0.35s;"></image>
+      </g>
+    
+    
+  </g></svg></div>
+          </div>
+        </div>
+        </div>
+
+        <div data-phase-right="1" style="display: flex; flex-direction: column; gap: 0px;">
+        <div role="group" aria-label="Jump to a cycle phase" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0px 28px;">
+          
+            <button type="button" data-ff="legend" data-phase="menstrual" aria-pressed="false" class="scp5 scp6" style="cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, sans-serif; font-size: 14px; font-weight: 600; padding: 11px 18px; min-height: 44px; border-radius: 100px; transition: background 0.2s, color 0.2s, border-color 0.2s; border: 1px solid rgb(239, 220, 211); background: transparent; color: rgb(95, 80, 98);"><span class="sc-interp">Menstrual</span></button>
+          
+            <button type="button" data-ff="legend" data-phase="follicular" aria-pressed="true" class="scp5 scp6" style="cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, sans-serif; font-size: 14px; font-weight: 600; padding: 11px 18px; min-height: 44px; border-radius: 100px; transition: background 0.2s, color 0.2s, border-color 0.2s; border: 1px solid rgb(59, 127, 94); background: rgb(59, 127, 94); color: rgb(253, 249, 246);"><span class="sc-interp">Follicular</span></button>
+          
+            <button type="button" data-ff="legend" data-phase="ovulatory" aria-pressed="false" class="scp5 scp6" style="cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, sans-serif; font-size: 14px; font-weight: 600; padding: 11px 18px; min-height: 44px; border-radius: 100px; transition: background 0.2s, color 0.2s, border-color 0.2s; border: 1px solid rgb(239, 220, 211); background: transparent; color: rgb(95, 80, 98);"><span class="sc-interp">Ovulatory</span></button>
+          
+            <button type="button" data-ff="legend" data-phase="luteal" aria-pressed="false" class="scp5 scp6" style="cursor: pointer; font-family: &quot;SF Pro Text&quot;, -apple-system, sans-serif; font-size: 14px; font-weight: 600; padding: 11px 18px; min-height: 44px; border-radius: 100px; transition: background 0.2s, color 0.2s, border-color 0.2s; border: 1px solid rgb(239, 220, 211); background: transparent; color: rgb(95, 80, 98);"><span class="sc-interp">Luteal</span></button>
+          
+        </div>
+
+
+        <div style="min-height: 92px; margin-bottom: 40px;">
+          <div data-ff="phaseRange" style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; letter-spacing: 0.1em; color: rgb(141, 79, 131); margin-bottom: 8px;"><span class="sc-interp">DAY 6–13 OF 28</span></div>
+          <p data-ff="phaseBody" style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(69, 55, 72); margin: 0px; max-width: 34em;"><span class="sc-interp">Insulin sensitivity is on your side. Your longest fast, your hardest sessions.</span></p>
+        </div>
+
+        <div data-phase-tiles="" style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 24px 32px; width: 100%;">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0px 0px; border-top: 1px solid rgb(239, 220, 211);">
+            <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(141, 79, 131);">Fasting</span>
+            <span data-ff="fast" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">16:8 — your longest window</span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0px 0px; border-top: 1px solid rgb(239, 220, 211);">
+            <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(141, 79, 131);">Food</span>
+            <span data-ff="food" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Higher carb, high fibre</span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0px 0px; border-top: 1px solid rgb(239, 220, 211);">
+            <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(141, 79, 131);">Training</span>
+            <span data-ff="train" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Strength and HIIT</span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0px 0px; border-top: 1px solid rgb(239, 220, 211);">
+            <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(141, 79, 131);">Supplements</span>
+            <span data-ff="supp" style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 15.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">B-complex, vitamin D, omega-3</span></span>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <div style="position: relative; z-index: 3; max-width: 1240px; margin: 0px auto; height: 0px;">
+  <div data-bridge="1" style="position: absolute; left: 32px; right: 32px; top: 0px; transform: translateY(-50%); min-height: 150px; display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; justify-content: space-between; padding: 30px; border-radius: 16px; background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 219); box-shadow: rgba(0, 0, 0, 0.06) 0px 8px 32px;">
+        <div style="flex: 1 1 320px;">
+          <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; margin: 0px 0px 16px; max-width: 24em;">Which phase are you in today?</h3>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); margin: 0px; max-width: 34em;">Six questions. Then the fasting window, food and training that fit it.</p>
+        </div>
+        <a href="/checkin/" class="scp7" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 16.5px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 17px 30px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 14px 28px -12px; transition: background 0.18s, transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);">Take the check-in</a>
+      </div>
+  </div>
+  <section id="how" style="max-width: 1240px; margin: 0px auto; padding: calc(75px + clamp(64px, 52.11px + 3.05vw, 96px)) 32px 0px;">
+    <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">One plan, rewritten every morning.</h2>
+    <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); margin: 0px 0px 40px; max-width: 30em;">Four things move with your phase. Here's the whole month.</p>
+
+    <div data-how-row="" data-how-axis="" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 20px; padding: 22px 0px 10px;">
+      <div data-how-label="" style="flex: 0 0 160px;"></div>
+      <div style="flex: 1 1 260px; min-width: 0px; display: grid; grid-template-columns: 5fr 8fr 3fr 12fr;">
+        
+          <div style="min-width: 0px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 1.3; white-space: nowrap; padding: 0px 6px; color: rgb(184, 64, 90);"><span class="sc-interp">Menstrual</span></div>
+            <div style="font-size: 12px; line-height: 1.3; color: rgb(95, 80, 98); white-space: nowrap;"><span class="sc-interp">Day 1–5</span></div>
+          </div>
+        
+          <div style="min-width: 0px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 1.3; white-space: nowrap; padding: 0px 6px; color: rgb(59, 127, 94);"><span class="sc-interp">Follicular</span></div>
+            <div style="font-size: 12px; line-height: 1.3; color: rgb(95, 80, 98); white-space: nowrap;"><span class="sc-interp">Day 6–13</span></div>
+          </div>
+        
+          <div style="min-width: 0px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 1.3; white-space: nowrap; padding: 0px 6px; color: rgb(150, 97, 10);"><span class="sc-interp">Ovulatory</span></div>
+            <div style="font-size: 12px; line-height: 1.3; color: rgb(95, 80, 98); white-space: nowrap;"><span class="sc-interp">Day 14–16</span></div>
+          </div>
+        
+          <div style="min-width: 0px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14px; line-height: 1.3; white-space: nowrap; padding: 0px 6px; color: rgb(133, 88, 158);"><span class="sc-interp">Luteal</span></div>
+            <div style="font-size: 12px; line-height: 1.3; color: rgb(95, 80, 98); white-space: nowrap;"><span class="sc-interp">Day 17–28</span></div>
+          </div>
+        
+      </div>
+      <div data-how-why="" style="flex: 0 0 300px;"></div>
+    </div>
+
+    
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0px; border-top: 1px solid rgb(240, 226, 219);">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: rgb(69, 55, 72);"><span class="sc-interp">Fasting</span></div>
+
+        <div style="flex: 1 1 260px; min-width: 0px;">
+          
+            <div data-how-overlay="" style="position: relative; margin-bottom: 4px;">
+            <svg viewBox="0 0 280 48" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 48px;">
+              
+                <rect x="1" y="18" width="48" height="30" rx="1.5" fill="#F0788E"></rect>
+              
+                <rect x="51" y="8" width="78" height="40" rx="1.5" fill="#A8CC8A"></rect>
+              
+                <rect x="131" y="13" width="28" height="35" rx="1.5" fill="#F4CE7A"></rect>
+              
+                <rect x="161" y="18" width="118" height="30" rx="1.5" fill="#BB86B2"></rect>
+              
+              
+            </svg>
+            
+            </div>
+          
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            
+              <div style="flex: 5 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(249, 149, 166), rgb(249, 187, 193));"></div>
+            
+              <div style="flex: 8 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(214, 236, 202), rgb(231, 235, 191));"></div>
+            
+              <div style="flex: 3 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(254, 241, 194), rgb(253, 221, 206));"></div>
+            
+              <div style="flex: 12 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(235, 197, 211), rgb(187, 134, 178));"></div>
+            
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(184, 64, 90);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">12:12 — gentle</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(59, 127, 94);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">16:8 — your longest window</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(150, 97, 10);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">14:10 — moderate</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(133, 88, 158);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">12:12 — pulled back</span></span>
+              </div>
+            
+          </div>
+          <div style="display: none;"><span class="sc-interp"></span></div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);"><span class="sc-interp">Your longest window lands where insulin sensitivity is highest. It shortens before cravings peak.</span></div>
+      </div>
+    
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0px; border-top: 1px solid rgb(240, 226, 219);">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: rgb(69, 55, 72);"><span class="sc-interp">Food</span></div>
+
+        <div style="flex: 1 1 260px; min-width: 0px;">
+          
+            <div data-how-overlay="" style="position: relative; margin-bottom: 4px;">
+            <svg viewBox="0 0 280 48" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 48px;">
+              
+              
+                <path d="M 0 28.6 C 12.5 28.6, 12.5 28.6, 25.0 28.6 C 57.5 28.6, 57.5 16.4, 90.0 16.4 C 117.5 16.4, 117.5 23.4, 145.0 23.4 C 182.5 23.4, 182.5 14.5, 220.0 14.5 L 280 14.5" fill="none" stroke="#6E3A66" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+              
+            </svg>
+            
+              <span style="position: absolute; right: 4px; top: 30.2%; transform: translateY(-135%); font-size: 12px; font-weight: 500; white-space: nowrap; color: rgb(95, 80, 98);"><span class="sc-interp">Carbs</span></span>
+            
+            </div>
+          
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            
+              <div style="flex: 5 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(249, 149, 166), rgb(249, 187, 193));"></div>
+            
+              <div style="flex: 8 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(214, 236, 202), rgb(231, 235, 191));"></div>
+            
+              <div style="flex: 3 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(254, 241, 194), rgb(253, 221, 206));"></div>
+            
+              <div style="flex: 12 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(235, 197, 211), rgb(187, 134, 178));"></div>
+            
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(184, 64, 90);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Iron, warmth, steady carbs</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(59, 127, 94);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Higher carb, high fibre</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(150, 97, 10);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Protein forward, anti-inflammatory</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(133, 88, 158);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">More carbs, more salt, magnesium</span></span>
+              </div>
+            
+          </div>
+          <div style="display: none;"><span class="sc-interp"></span></div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);"><span class="sc-interp">Targets move with your phase. Nothing is banned.</span></div>
+      </div>
+    
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0px; border-top: 1px solid rgb(240, 226, 219);">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: rgb(69, 55, 72);"><span class="sc-interp">Training</span></div>
+
+        <div style="flex: 1 1 260px; min-width: 0px;">
+          
+            <div data-how-overlay="" style="position: relative; margin-bottom: 4px;">
+            <svg viewBox="0 0 280 48" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 48px;">
+              
+                <rect x="1" y="32" width="48" height="16" rx="1.5" fill="#F0788E"></rect>
+              
+                <rect x="51" y="8" width="78" height="40" rx="1.5" fill="#A8CC8A"></rect>
+              
+                <rect x="131" y="8" width="28" height="40" rx="1.5" fill="#F4CE7A"></rect>
+              
+                <rect x="161" y="22" width="118" height="26" rx="1.5" fill="#BB86B2"></rect>
+              
+              
+            </svg>
+            
+            </div>
+          
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            
+              <div style="flex: 5 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(249, 149, 166), rgb(249, 187, 193));"></div>
+            
+              <div style="flex: 8 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(214, 236, 202), rgb(231, 235, 191));"></div>
+            
+              <div style="flex: 3 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(254, 241, 194), rgb(253, 221, 206));"></div>
+            
+              <div style="flex: 12 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(235, 197, 211), rgb(187, 134, 178));"></div>
+            
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(184, 64, 90);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Walking, mobility, light lifts</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(59, 127, 94);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Strength and HIIT</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(150, 97, 10);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Heavy strength, sprints</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(133, 88, 158);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Steady-state, moderate lifts</span></span>
+              </div>
+            
+          </div>
+          <div style="display: none;"><span class="sc-interp"></span></div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);"><span class="sc-interp">Build weeks two and three. Weeks one and four are for recovery.</span></div>
+      </div>
+    
+      <div data-how-row="" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 18px 0px; border-top: 1px solid rgb(240, 226, 219);">
+        <div data-how-label="" style="flex: 0 0 160px; font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(18px, 16.51px + 0.38vw, 22px); letter-spacing: -0.015em; color: rgb(69, 55, 72);"><span class="sc-interp">Supplements</span></div>
+
+        <div style="flex: 1 1 260px; min-width: 0px;">
+          
+
+          <div style="display: flex; gap: 4px; height: 14px; margin-bottom: 2px;">
+            
+              <div style="flex: 5 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(249, 149, 166), rgb(249, 187, 193));"></div>
+            
+              <div style="flex: 8 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(214, 236, 202), rgb(231, 235, 191));"></div>
+            
+              <div style="flex: 3 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(254, 241, 194), rgb(253, 221, 206));"></div>
+            
+              <div style="flex: 12 1 0px; border-radius: 7px; background: linear-gradient(90deg, rgb(235, 197, 211), rgb(187, 134, 178));"></div>
+            
+          </div>
+
+          <div data-how-values="" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 8px 14px; margin-top: 8px;">
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(184, 64, 90);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Magnesium, iron</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(59, 127, 94);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">B-complex, vitamin D</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(150, 97, 10);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Zinc, vitamin C</span></span>
+              </div>
+            
+              <div style="display: flex; align-items: flex-start; gap: 8px; min-width: 0px;">
+                <span style="flex: 0 0 auto; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: rgb(133, 88, 158);"></span>
+                <span style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.35; color: rgb(69, 55, 72);"><span class="sc-interp">Magnesium glycinate, B6, calcium</span></span>
+              </div>
+            
+          </div>
+          <div style="margin-top: 10px; font-size: 13px; line-height: 1.4; color: rgb(95, 80, 98);"><span class="sc-interp">Omega-3 daily, all month.</span></div>
+        </div>
+
+        <div data-how-why="" style="flex: 0 0 300px; font-size: 14.5px; line-height: 1.45; color: rgb(95, 80, 98);"><span class="sc-interp">What to take and when, each with its source in the app.</span></div>
+      </div>
+    
+  </section>
+
+  <section id="assistant" style="max-width: 1240px; margin: 0px auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px 0px;">
+    <div data-reveal="" style="position: relative; overflow: hidden; border-radius: 16px; background: rgb(254, 240, 232); color: rgb(69, 55, 72); padding: clamp(30px, 4vw, 46px);">
+      <div style="position: relative; display: flex; flex-wrap: wrap; gap: 44px 56px; align-items: flex-start;">
+        <div style="flex: 1 1 320px;">
+          <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Ask it anything, any hour.</h2>
+          <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); margin: 0px 0px 40px; max-width: 30em;">It already knows your phase, so you never explain yourself twice. And it's awake at 2am.</p>
+          <div style="display: grid; gap: 0px; margin: 0px 0px 20px; max-width: 30em;">
+            
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0px; border-top: 1px solid rgb(240, 220, 208);">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: rgb(141, 79, 131);"><span class="sc-interp">07:15</span></span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: rgb(69, 55, 72);"><span class="sc-interp">What should I eat today?</span></span>
+              </div>
+            
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0px; border-top: 1px solid rgb(240, 220, 208);">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: rgb(141, 79, 131);"><span class="sc-interp">13:20</span></span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: rgb(69, 55, 72);"><span class="sc-interp">Work dinner Thursday — can I move my eating window?</span></span>
+              </div>
+            
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0px; border-top: 1px solid rgb(240, 220, 208);">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: rgb(141, 79, 131);"><span class="sc-interp">18:05</span></span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: rgb(69, 55, 72);"><span class="sc-interp">How can I improve my mood?</span></span>
+              </div>
+            
+              <div style="display: flex; gap: 14px; align-items: baseline; padding: 11px 0px; border-top: 1px solid rgb(240, 220, 208);">
+                <span style="flex: 0 0 42px; font-size: 11.5px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.04em; color: rgb(141, 79, 131);"><span class="sc-interp">22:40</span></span>
+                <span style="flex: 1 1 auto; font-size: 15px; line-height: 1.45; color: rgb(69, 55, 72);"><span class="sc-interp">I'm exhausted. Is this my phase, or is this me?</span></span>
+              </div>
+            
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.55; color: rgb(95, 80, 98); margin: 0px; max-width: 30em;">Ask anything. It won't diagnose — that stays your doctor's job.</p>
+        </div>
+        <div style="flex: 0 1 360px; min-width: 260px; display: flex; justify-content: center;">
+          <div style="width: 100%; max-width: 330px; border-radius: 16px; overflow: hidden; background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.4) 0px 24px 44px -26px;">
+            <div style="padding: 14px 18px; border-bottom: 1px solid rgb(243, 231, 225); display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+              <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.01em; color: rgb(69, 55, 72);">Ask FemFast</span>
+              <span style="font-size: 11px; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(141, 79, 131);">In app</span>
+            </div>
+            <picture style="display:block"><source srcset="/assets/screen-assistant.webp" type="image/webp"><img src="/assets/screen-assistant.png" alt="FemFast AI assistant: it opens by naming her follicular phase, then answers what to eat today with protein suggestions" width="330" height="282" style="display: block; width: 100%; height: auto;"></picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="proof" style="max-width: 1240px; margin: 0px auto; padding: clamp(64px, 52.11px + 3.05vw, 96px) 32px clamp(32px, 26.06px + 1.52vw, 48px);">
+    <h2 data-reveal="" style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Women who stopped blaming themselves.</h2>
+    <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0px 0px 40px;">
+      <span aria-hidden="true" style="display: inline-flex; gap: 3px;">
+        
+          <span style="font-size: 17px; line-height: 1; color: rgb(141, 79, 131);">★</span>
+        
+          <span style="font-size: 17px; line-height: 1; color: rgb(141, 79, 131);">★</span>
+        
+          <span style="font-size: 17px; line-height: 1; color: rgb(141, 79, 131);">★</span>
+        
+          <span style="font-size: 17px; line-height: 1; color: rgb(141, 79, 131);">★</span>
+        
+          <span style="font-size: 17px; line-height: 1; color: rgb(141, 79, 131);">★</span>
+        
+      </span>      <span style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74);"><span class="sc-interp">4.8 · 2,100+ ratings on the App Store</span></span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" data-reveal="" class="scp8" style="display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px; border-radius: 16px; background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72); transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.18s, border-color 0.18s;">
+          <span role="img" aria-label="5 out of 5" style="display: inline-flex; gap: 2px;">
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+          </span>
+          <span style="display: none;"><span class="sc-interp">Moni_ca1863</span></span>
+          <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em;"><span class="sc-interp">Exactly what I need</span></span>
+          <span style="font-size: 17px; line-height: 1.55; color: rgb(69, 55, 72);"><span class="sc-interp">My cycle is crazy irregular but FemFast still gives me clear steps. No other fasting app did that. Total gamechanger.</span></span>
+          <span style="margin-top: auto; padding-top: 6px; font-size: 13px; line-height: 1.45; color: rgba(69, 55, 72, 0.74);"><span class="sc-interp">Moni_ca1863 · Aug 2025 · App Store review</span></span>
+        </a>
+      
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" data-reveal="" class="scp8" style="display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px; border-radius: 16px; background: rgb(255, 255, 255); border: 1px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.04) 0px 1px 2px; color: rgb(69, 55, 72); transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.18s, border-color 0.18s;">
+          <span role="img" aria-label="5 out of 5" style="display: inline-flex; gap: 2px;">
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+              <span aria-hidden="true" style="font-size: 14px; line-height: 1; letter-spacing: 1px; color: rgb(141, 79, 131);">★</span>
+            
+          </span>
+          <span style="display: none;"><span class="sc-interp">Marilli5</span></span>
+          <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.01em;"><span class="sc-interp">Really nice app!</span></span>
+          <span style="font-size: 17px; line-height: 1.55; color: rgb(69, 55, 72);"><span class="sc-interp">I have PCOS and it’s tough finding advice that doesn’t make me feel broken. This app is gentle but also science-based. Exactly what I needed.</span></span>
+          <span style="margin-top: auto; padding-top: 6px; font-size: 13px; line-height: 1.45; color: rgba(69, 55, 72, 0.74);"><span class="sc-interp">Marilli5 · Aug 2025 · App Store review</span></span>
+        </a>
+      
+    </div>
+  </section>
+
+
+  <section id="science" style="position: relative; overflow: hidden; background: radial-gradient(120% 160% at 12% -20%, rgb(92, 74, 96) 0%, rgb(69, 55, 72) 55%, rgb(56, 44, 58) 100%); color: rgb(253, 249, 246); padding: clamp(32px, 26.06px + 1.52vw, 48px) 0px;">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 0px 32px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch;">
+      <div data-sci-left="" data-reveal="" style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Three findings the calorie model leaves out.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253, 249, 246, 0.78); margin: 0px 0px 40px; max-width: 28em;">What the research shows, and how sure we are. Every recommendation in the app is sourced.</p>
+        <p style="font-size: 15px; line-height: 1.5; color: rgba(253, 249, 246, 0.65); margin: auto 0px 0px; padding-top: 24px; border-top: 1px solid rgba(253, 249, 246, 0.15); max-width: 28em;">General guidance only. Your clinician stays your clinician.</p>
+      </div>
+      <div data-sci-findings="" data-reveal="" style="flex: 1.15 1 340px; display: grid; gap: 0px;">
+        <div style="display: flex; gap: 18px; align-items: flex-start;">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253, 249, 246, 0.5); padding-top: 4px;">01</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0px 0px 8px;">Insulin sensitivity shifts weekly</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: rgb(239, 231, 239); margin: 0px 0px 12px; max-width: 32em;">Higher in week two, lower in week four. So your carbs move with the week.</p>
+            <p style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253, 249, 246, 0.6); margin: 0px 0px 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/20843950" target="_blank" rel="noopener" class="scp9" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253, 249, 246, 0.6); text-decoration: none;">Yeung et al., J Clin Endocrinol Metab, 2010</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253, 249, 246, 0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253, 249, 246, 0.5); padding-top: 4px;">02</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0px 0px 8px;">Metabolism rises before your period</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: rgb(239, 231, 239); margin: 0px 0px 12px; max-width: 32em;">A little higher, with real hunger to match. Your body is doing more work.</p>
+            <p style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253, 249, 246, 0.6); margin: 0px 0px 6px;">Supported</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/32658929" target="_blank" rel="noopener" class="scp9" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253, 249, 246, 0.6); text-decoration: none;">Benton et al., PLoS One, 2020</a>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(253, 249, 246, 0.12);">
+          <span style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; color: rgba(253, 249, 246, 0.5); padding-top: 4px;">03</span>
+          <div>
+            <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.02em; margin: 0px 0px 8px;">Long fasts cost women more</h3>
+            <p style="font-size: 15px; line-height: 1.5; color: rgb(239, 231, 239); margin: 0px 0px 12px; max-width: 32em;">Most fasting research was run on men. Early evidence suggests women’s stress response to long fasts differs, so we keep windows shorter.</p>
+            <p style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253, 249, 246, 0.6); margin: 0px 0px 6px;">Emerging</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/15833943" target="_blank" rel="noopener" class="scp9" style="display: inline-block; font-size: 13px; line-height: 1.5; color: rgba(253, 249, 246, 0.6); text-decoration: none;">Heilbronn et al., Obesity Research, 2005</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width: 1240px; margin: 0px auto; padding: clamp(32px, 26.06px + 1.52vw, 48px) 32px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div data-reveal="" style="flex: 0.8 1 280px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Will this work for me?</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(69, 55, 72, 0.74); margin: 0px; max-width: 24em;">The honest answers.</p>
+      </div>
+      <div data-reveal="" style="flex: 1.2 1 360px; display: grid; gap: 0px;">
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="0" aria-expanded="true" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">My cycle is irregular. Can I still use it?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(141, 79, 131); color: rgb(253, 249, 246); transform: rotate(45deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 340px; opacity: 1;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">Yes — that's the case we built hardest around. Tell us roughly where you are, or that you don't know. It sharpens over the first six weeks.</span></p>
+            </div>
+          </div>
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="1" aria-expanded="false" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">Why does the plan change every week?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(248, 237, 245); color: rgb(141, 79, 131); transform: rotate(0deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 0px; opacity: 0;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">Because your body does. A plan that stays flat is wrong three weeks out of four.</span></p>
+            </div>
+          </div>
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="2" aria-expanded="false" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">Do I have to fast?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(248, 237, 245); color: rgb(141, 79, 131); transform: rotate(0deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 0px; opacity: 0;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">No. Turn it off and FemFast still times your food, training and supplements. The timing is the point.</span></p>
+            </div>
+          </div>
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="3" aria-expanded="false" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">Is fasting right for everyone?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(248, 237, 245); color: rgb(141, 79, 131); transform: rotate(0deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 0px; opacity: 0;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">No. Not if you're pregnant or breastfeeding, have any history of disordered eating, or take medication that needs food. FemFast asks first and won't suggest it. When in doubt, ask your clinician.</span></p>
+            </div>
+          </div>
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="4" aria-expanded="false" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">What do you do with my data?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(248, 237, 245); color: rgb(141, 79, 131); transform: rotate(0deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 0px; opacity: 0;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">Nothing on this page is stored. In the app it builds your plan and nothing else — never sold, never shared. Delete it all in one tap.</span></p>
+            </div>
+          </div>
+        
+          <div style="border-top: 1px solid rgb(240, 226, 219);">
+            <button type="button" data-ff="faqBtn" data-i="5" aria-expanded="false" class="scp0" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; text-align: left; cursor: pointer; border: none; background: transparent; padding: 20px 0px; font-family: Outfit, sans-serif; font-weight: 600; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em; color: rgb(69, 55, 72); transition: color 0.16s;">
+              <span style="flex: 1 1 auto;"><span class="sc-interp">How fast will I see results?</span></span>
+              <span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; line-height: 1; transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.2s, color 0.2s; background: rgb(248, 237, 245); color: rgb(141, 79, 131); transform: rotate(0deg);">+</span>
+            </button>
+            <div style="overflow: hidden; transition: max-height 0.34s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.28s; max-height: 0px; opacity: 0;">
+              <p style="font-size: clamp(16px, 15.26px + 0.19vw, 18px); line-height: 1.55; color: rgb(95, 80, 98); margin: 0px 0px 22px; max-width: 36em;"><span class="sc-interp">Energy and cravings usually shift within one cycle. Weight follows over two or three.</span></p>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="start" style="position: relative; overflow: hidden; isolation: isolate; background-color: rgb(94, 51, 87); background-image: radial-gradient(120% 150% at 78% 0%, rgb(122, 66, 114) 0%, rgb(94, 51, 87) 55%, rgb(74, 40, 68) 100%); color: rgb(253, 249, 246); padding: clamp(32px, 26.06px + 1.52vw, 48px) 0px clamp(64px, 52.11px + 3.05vw, 96px);">
+    <div style="position: absolute; inset: 0px; z-index: -1; pointer-events: none; background-image: url(&quot;./assets/grain.png&quot;); background-size: 220px 220px; opacity: 0.4; mix-blend-mode: overlay;"></div>
+    <div style="max-width: 1240px; margin: 0px auto; padding: 0px 32px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start;">
+      <div style="flex: 1 1 320px;">
+        <h2 style="font-family: Outfit, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.01em; margin: 0px 0px 16px; max-width: 26ch;">Risk-free for five days.</h2>
+        <p style="font-size: clamp(17px, 15.89px + 0.29vw, 20px); line-height: 1.55; color: rgba(253, 249, 246, 0.7); margin: 0px 0px 40px; max-width: 26em;">Not for you? Money back in five days. No form, no questions.</p>
+      </div>
+
+      <div style="flex: 0 1 420px; min-width: 300px; perspective: 1400px;">
+        <div style="transform-style: preserve-3d;">
+          <div style="display: grid; gap: 16px;">
+            
+              <div style="position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 27px 22px 17px; border-radius: 16px; color: rgb(253, 249, 246); transform-style: preserve-3d; backdrop-filter: blur(14px) saturate(1.15); outline: none; transition: background 0.22s, border-color 0.22s, box-shadow 0.22s, transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgba(38, 26, 40, 0.54); border: 1.5px solid rgb(253, 249, 246); box-shadow: rgba(0, 0, 0, 0.6) 0px 26px 50px -20px, rgba(255, 255, 255, 0.38) 0px 1px 0px inset; transform: translateY(-3px);">
+                <div style="position: absolute; inset: 0px; overflow: hidden; border-radius: 16px; pointer-events: none; transition: opacity 0.25s; opacity: 0;"></div>
+                <div style="position: relative; flex: 1 1 auto; min-width: 0px; display: flex; align-items: center; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px; text-align: left; min-width: 0px;">
+                    <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em;"><span class="sc-interp">3 months</span></span>
+                    <span style="font-size: 13.5px; color: rgb(243, 227, 238);"><span class="sc-interp">Try a full reset</span></span>
+                  </div>
+                </div>
+                <div style="position: relative; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; white-space: nowrap;"><span class="sc-interp">$17.99</span></span>
+                  <span style="font-size: 12.5px; color: rgb(243, 227, 238); white-space: nowrap;"><span class="sc-interp">$6.00 / month</span></span>
+                </div>
+                <div style="position: absolute; top: 0px; right: 0px; z-index: 1; font-family: Outfit, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px 6px; border-radius: 0px 16px; pointer-events: none; color: rgb(74, 34, 68); background: rgb(249, 189, 194);"><span class="sc-interp">Most popular</span></div>
+              </div>
+            
+              <div style="position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 27px 22px 17px; border-radius: 16px; color: rgb(253, 249, 246); transform-style: preserve-3d; backdrop-filter: blur(14px) saturate(1.15); outline: none; transition: background 0.22s, border-color 0.22s, box-shadow 0.22s, transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgba(38, 26, 40, 0.42); border: 1.5px solid rgba(253, 249, 246, 0.2); box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 20px -18px, rgba(255, 255, 255, 0.12) 0px 1px 0px inset; transform: none;">
+                <div style="position: absolute; inset: 0px; overflow: hidden; border-radius: 16px; pointer-events: none; transition: opacity 0.25s; opacity: 0;"></div>
+                <div style="position: relative; flex: 1 1 auto; min-width: 0px; display: flex; align-items: center; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px; text-align: left; min-width: 0px;">
+                    <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em;"><span class="sc-interp">12 months</span></span>
+                    <span style="font-size: 13.5px; color: rgb(243, 227, 238);"><span class="sc-interp">Support every phase, all year</span></span>
+                  </div>
+                </div>
+                <div style="position: relative; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; white-space: nowrap;"><span class="sc-interp">$47.99</span></span>
+                  <span style="font-size: 12.5px; color: rgb(243, 227, 238); white-space: nowrap;"><span class="sc-interp">$4.00 / month</span></span>
+                </div>
+                <div style="position: absolute; top: 0px; right: 0px; z-index: 1; font-family: Outfit, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px 6px; border-radius: 0px 16px; pointer-events: none; color: rgb(74, 34, 68); background: rgb(254, 194, 171);"><span class="sc-interp">Biggest saving</span></div>
+              </div>
+            
+              <div style="position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; text-align: left; font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; padding: 27px 22px 17px; border-radius: 16px; color: rgb(253, 249, 246); transform-style: preserve-3d; backdrop-filter: blur(14px) saturate(1.15); outline: none; transition: background 0.22s, border-color 0.22s, box-shadow 0.22s, transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1); background: rgba(38, 26, 40, 0.42); border: 1.5px solid rgba(253, 249, 246, 0.2); box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 20px -18px, rgba(255, 255, 255, 0.12) 0px 1px 0px inset; transform: none;">
+                <div style="position: absolute; inset: 0px; overflow: hidden; border-radius: 16px; pointer-events: none; transition: opacity 0.25s; opacity: 0;"></div>
+                <div style="position: relative; flex: 1 1 auto; min-width: 0px; display: flex; align-items: center; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 3px; text-align: left; min-width: 0px;">
+                    <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(22px, 19.77px + 0.57vw, 28px); line-height: 1.2; letter-spacing: -0.015em;"><span class="sc-interp">1 month</span></span>
+                    <span style="font-size: 13.5px; color: rgb(243, 227, 238);"><span class="sc-interp">Explore FemFast</span></span>
+                  </div>
+                </div>
+                <div style="position: relative; flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;">
+                  <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; white-space: nowrap;"><span class="sc-interp">$9.99</span></span>
+                  <span style="font-size: 12.5px; color: rgb(243, 227, 238); white-space: nowrap;"><span class="sc-interp">$9.99 / month</span></span>
+                </div>
+                <div style="display: none;"><span class="sc-interp"></span></div>
+              </div>
+            
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px 20px; align-items: center; margin-top: 22px;">
+            <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" class="scpa" style="display: block; flex: 0 0 auto; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);">
+              <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" style="display: block; width: 150px; height: 50px;">
+            </a>
+            <span style="flex: 1 1 180px; font-size: 13.5px; line-height: 1.5; color: rgb(243, 227, 238);">Choose your plan in the app — Apple handles the payment.</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.5; color: rgb(231, 207, 226); margin: 18px 0px 0px;">Hormones take 90+ days. We price for a real run at it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sc-host" data-sc-name="SiteFooter"><footer style="border-top: 1px solid rgb(243, 231, 225); background: rgb(255, 251, 248);">
+  <div style="max-width: 1240px; margin: 0px auto; padding: 52px clamp(20px, 5vw, 32px) 40px; display: flex; flex-wrap: wrap; gap: 44px 56px; align-items: flex-start;">
+    <div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+      <picture style="display:block"><source srcset="/assets/femfast-lockup.webp" type="image/webp"><img src="/assets/femfast-lockup.png" alt="FemFast" width="146" height="20" style="display: block; width: 146px; height: 20px;"></picture>
+      <p style="font-size: 14.5px; line-height: 1.55; color: rgb(95, 80, 98); margin: 0px; max-width: 26em;">A daily plan that moves with your cycle.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <a href="https://apps.apple.com/pl/app/femfast-hormonal-weight-loss/id6744979369" target="_blank" rel="noopener" class="scpa" style="display: block; flex: 0 0 auto; transition: transform 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);">
+          <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" style="display: block; width: 150px; height: 50px;">
+        </a>
+        <a href="https://www.instagram.com/femfast.app" target="_blank" rel="noopener" aria-label="FemFast on Instagram" class="scpb" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgb(235, 217, 228); color: rgb(141, 79, 131); transition: background 0.18s, color 0.18s, border-color 0.18s;">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" style="display: block;"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+      </div>
+    </div>
+
+    <div style="flex: 0 1 170px; display: flex; flex-direction: column; gap: 13px; align-items: flex-start;">
+      <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(95, 80, 98);">Product</span>
+      <a href="#why" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Why timing</a>
+      <a href="#how" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">How it works</a>
+      <a href="#phases" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Your phases</a>
+      <a href="#faq" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Questions</a>
+    </div>
+
+    <div style="flex: 0 1 170px; display: flex; flex-direction: column; gap: 13px; align-items: flex-start;">
+      <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(95, 80, 98);">Support</span>
+      <a href="/help/" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Help</a>
+      <a href="/contact/" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Contact</a>
+      <a href="mailto:support@femfast.io" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">support@femfast.io</a>
+    </div>
+
+    <div style="flex: 0 1 170px; display: flex; flex-direction: column; gap: 13px; align-items: flex-start;">
+      <span style="font-family: &quot;SF Pro Text&quot;, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(95, 80, 98);">Legal</span>
+      <a href="/privacy/" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Privacy Policy</a>
+      <a href="/terms/" class="scp0" style="font-size: 14.5px; color: rgb(95, 80, 98); transition: color 0.16s;">Terms of Use</a>
+    </div>
+  </div>
+
+  <div style="max-width: 1240px; margin: 0px auto; padding: 0px clamp(20px, 5vw, 32px) 56px;">
+    <div style="border-top: 1px solid rgb(243, 231, 225); padding-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 40px; align-items: flex-start; justify-content: space-between;">
+      <p style="font-size: 13px; line-height: 1.55; color: rgb(95, 80, 98); margin: 0px; max-width: 44em;">Built on your hormones — not a medical device. FemFast provides general nutrition and training guidance and does not diagnose, treat or prevent any condition. Speak to your clinician about symptoms.</p>
+      <p style="font-size: 12.5px; line-height: 1.6; color: rgb(95, 80, 98); margin: 0px; max-width: 32em;">© 2026 V-TREE CONSULT. All rights reserved.<br>Registered in Poland · NIP 9512602793 · REGON 529395569</p>
+    </div>
+  </div></footer></div></div><div data-ff="stickyBar" style="position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 300; background: rgba(253, 249, 246, 0.96); backdrop-filter: blur(14px); border-top: 1px solid rgb(240, 226, 219); box-shadow: rgba(69, 55, 72, 0.18) 0px -8px 24px -12px; animation: 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) 0s 1 normal both running ff-bar-in; display: none;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 12px clamp(16px, 4vw, 24px) calc(12px + env(safe-area-inset-bottom));">
+      <div style="flex: 1 1 auto; min-width: 0px;">
+        <div style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: -0.015em; color: rgb(69, 55, 72);">See today's plan for your phase</div>
+        <div style="font-size: 12.5px; color: rgb(95, 80, 98);">Free check-in · 60 seconds · no signup</div>
+      </div>
+      <a href="/checkin/" style="flex: 0 0 auto; font-family: Outfit, sans-serif; font-weight: 700; font-size: 15px; color: rgb(253, 249, 246); background: rgb(141, 79, 131); padding: 14px 22px; border-radius: 16px; box-shadow: rgba(141, 79, 131, 0.5) 0px 10px 20px -10px;">Start the check-in</a>
+    </div>
+  </div>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>
