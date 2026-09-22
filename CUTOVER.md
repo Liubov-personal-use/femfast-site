@@ -1,8 +1,11 @@
 # Cutover — moving femfast.io from Tilda to GitHub Pages
 
-**Nothing in this document has been performed.** It is the runbook for you to
-work through when you are ready. The live Tilda site is untouched and keeps
-serving femfast.io until you change DNS yourself.
+**No DNS change has been made and no custom domain has been set.** The live
+Tilda site is untouched and keeps serving femfast.io until you change DNS
+yourself.
+
+Step 0 is done — the repository exists and both branches are pushed.
+Everything from Step 1 on is yours to do.
 
 Read the whole thing once before starting. The DNS change is the only step
 that is visible to the public, and it is the last one.
@@ -14,8 +17,8 @@ that is visible to the public, and it is the last one.
 | | |
 |---|---|
 | GitHub account | `Liubov-personal-use` |
-| Repository | `femfast-site` (see *Step 0* — it does not exist yet) |
-| Staging URL (after Step 2) | `https://liubov-personal-use.github.io/femfast-site/` |
+| Repository | [`femfast-site`](https://github.com/Liubov-personal-use/femfast-site) — `main` (source) + `gh-pages` (served) |
+| Staging URL (once Pages is on) | `https://liubov-personal-use.github.io/femfast-site/` |
 | Production domain | `femfast.io` |
 | DNS host | Cloudflare |
 | Current origin | Tilda |
@@ -25,105 +28,99 @@ dashboard for `femfast.io`.
 
 ---
 
-## Step 0 — Create the repository and push
+## Step 0 — Repository and branches — **done**
+
+`femfast-site` exists and both branches are pushed:
+
+| Branch | Contents |
+|---|---|
+| `main` | the source: `/src`, `/data`, `/scripts`, `/dist`, docs |
+| `gh-pages` | the contents of `/dist` — this is what Pages serves |
+
+To publish a change later:
+
+```bash
+npm run build && npm run check && npm run verify   # in the source repo
+```
+
+then republish `gh-pages` from the rebuilt `/dist`:
+
+```bash
+cd /tmp && rm -rf ghp && mkdir ghp
+cp -r /path/to/femfast-site/dist/. ghp/
+cd ghp && git init -b gh-pages && git add -A && git commit -m "Publish built site"
+git remote add site https://github.com/Liubov-personal-use/femfast-site.git
+git push -f site gh-pages
+```
+
+Pages, when deploying from a branch, only serves the **root** of that branch
+or a `/docs` folder — it cannot be pointed at `/dist`. Hence the second
+branch. `/dist` on `main` stays the canonical build output; `gh-pages` is
+only the serving copy.
+
+> The alternative is a GitHub Actions workflow that builds and deploys on
+> every push. That was deliberately not added — you asked for no Actions.
+
+### One thing to know about `CNAME`
+
+`/dist/CNAME` contains `femfast.io`, as it should. It is **deliberately left
+out of the `gh-pages` branch for now.**
+
+A `CNAME` file in the served branch *is* how GitHub Pages sets a custom
+domain. Publishing it today would make Pages claim `femfast.io` immediately
+and redirect the `github.io` URL there — and `femfast.io` still resolves to
+Tilda, so staging would be unreachable. You add it at cutover (Step 4 does it
+for you).
+
+---
+
+## Step 1 — Turn on GitHub Pages — **you need to do this**
 
 This could not be done for you: the GitHub app this session runs under is not
-permitted to create repositories (`403 Resource not accessible by
-integration`). The built site is instead on a branch of the existing
-`femfast-landing-page` repository.
+permitted to create repositories or change Pages settings (`403 Resource not
+accessible by integration`). It is four clicks:
 
-Either **(a)** create the new repository:
-
-1. <https://github.com/new> → name `femfast-site`, **Public**, no README, no
-   `.gitignore`, no licence. Public matters: GitHub Pages only serves private
-   repositories on a paid plan.
-2. Push this work to it:
-
-   ```bash
-   git remote add site https://github.com/Liubov-personal-use/femfast-site.git
-   git push site claude/laughing-sagan-56ryqy:main
-   ```
-
-Or **(b)** skip the new repository and publish from `femfast-landing-page`,
-which already has the branch. Merge it to `main` first:
-
-```bash
-git checkout main
-git merge claude/laughing-sagan-56ryqy
-git push origin main
-```
-
-Everything below assumes **(a)**. For **(b)**, read `femfast-site` as
-`femfast-landing-page` and the staging URL as
-`https://liubov-personal-use.github.io/femfast-landing-page/`.
-
----
-
-## Step 1 — Publish the built site to a branch Pages can serve
-
-GitHub Pages, when deploying from a branch, will only serve the **root** of
-that branch or a `/docs` folder. It cannot be pointed at `/dist`. Since the
-built site lives in `/dist`, publish that folder's *contents* to the root of a
-`gh-pages` branch:
-
-```bash
-npm ci
-npm run build          # regenerate /dist from source
-
-git checkout --orphan gh-pages
-git rm -rf --cached .
-cp -r dist/. .
-git add -A
-git commit -m "Publish built site"
-git push -f site gh-pages     # or `origin gh-pages` under option (b)
-git checkout main
-```
-
-Repeat that block whenever you want to publish a change. `/dist` on `main`
-stays the canonical build output; `gh-pages` is only the serving copy.
-
-> If you would rather not maintain two branches, the alternative is a GitHub
-> Actions workflow that builds and deploys `/dist` on every push to `main`.
-> That was deliberately not added — you asked for no GitHub Actions.
-
----
-
-## Step 2 — Turn on GitHub Pages (staging, no custom domain yet)
-
-1. `femfast-site` → **Settings** → **Pages**.
-2. **Build and deployment** → Source: **Deploy from a branch**.
-3. Branch: **`gh-pages`**, folder: **`/ (root)`** → **Save**.
-4. Wait for the green "Your site is live at …" banner (usually under a minute,
-   occasionally a few).
-5. Leave **Custom domain empty for now.**
+1. <https://github.com/Liubov-personal-use/femfast-site/settings/pages>
+2. **Build and deployment** → Source: **Deploy from a branch**
+3. Branch: **`gh-pages`**, folder: **`/ (root)`** → **Save**
+4. Leave **Custom domain empty.** Wait for the "Your site is live at …" banner
+   — usually under a minute.
 
 Staging URL: **`https://liubov-personal-use.github.io/femfast-site/`**
 
-### Check staging before going further
+---
+
+## Step 2 — Check staging
 
 The site is built for `femfast.io` at the domain root, so a few things read
-oddly on the project-path staging URL. **These are expected and disappear once
-the custom domain is set**, so do not fix them:
+oddly on the project-path staging URL. **These are expected and disappear the
+moment the custom domain is set**, so do not try to fix them:
 
-- `CNAME` in the repository root already contains `femfast.io`. GitHub may
-  warn about the mismatch.
-- Absolute links (`/help/`, `/assets/…`) resolve to
+- absolute links (`/help/`, `/assets/…`) resolve to
   `liubov-personal-use.github.io/help/`, not under `/femfast-site/`, so pages
-  will look unstyled and links will 404.
-- `<link rel="canonical">` and the OG tags point at `https://femfast.io/…`.
+  will look unstyled and internal links will 404
+- `<link rel="canonical">` and the OG tags point at `https://femfast.io/…`
 
-To see the site properly on staging, set the custom domain (Step 4) — or just
-run it locally, which is exactly what ships:
+In other words: staging confirms the deploy pipeline works, not that the site
+looks right. To see the site as it will actually ship, run it locally — that
+is byte-for-byte what `gh-pages` contains:
 
 ```bash
-npm run build && npx serve dist        # or: python3 -m http.server -d dist 8080
+npm run build && npx serve dist
 ```
 
-Re-run the quality gates against staging once it is up:
+Once the custom domain is set (Step 4), the staging path problems vanish and
+`https://femfast.io` is the real check.
+
+Scores against staging, if you want them:
 
 ```bash
 npm run lighthouse -- https://liubov-personal-use.github.io/femfast-site
 ```
+
+Expect performance to read lower there than locally, because every internal
+asset 404s on the project path. The meaningful run is against `femfast.io`
+after cutover.
 
 ---
 
@@ -203,8 +200,10 @@ Only after the DNS records above are saved.
 2. Enter `femfast.io` → **Save**.
 3. GitHub runs a DNS check. Green tick = the A records resolve. If it errors,
    the records have not propagated yet — wait and press Save again.
-4. GitHub will commit a `CNAME` file to the serving branch. One is already
-   in `/dist`, so this should be a no-op.
+4. GitHub commits a `CNAME` file to `gh-pages` containing `femfast.io`. That
+   is expected — it was deliberately kept out until now (see Step 0). If you
+   later republish `gh-pages` from `/dist`, the `CNAME` in `/dist` carries the
+   same value, so the custom domain survives the republish.
 5. Wait for **"Certificate: issued"**. Minutes usually; up to an hour.
 6. Tick **Enforce HTTPS**. It stays greyed out until the certificate exists —
    that is the step to be patient about, not to work around.
