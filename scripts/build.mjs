@@ -453,7 +453,9 @@ function head({ route, css, data, fontCss }) {
 <meta name="twitter:title" content="${esc(route.title)}">
 <meta name="twitter:description" content="${esc(route.description)}">
 <meta name="twitter:image" content="${site.origin}${site.ogImage}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/outfit-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/outfit-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -588,6 +590,36 @@ async function collectSourceAssets(data) {
   return found;
 }
 
+/**
+ * A .ico wrapping PNGs — the format is a 6-byte header, a 16-byte directory
+ * entry per image, then the image data. sharp cannot write .ico, and every
+ * browser that reads .ico has accepted PNG-in-ICO since IE11, so this is a
+ * few lines rather than a dependency.
+ */
+async function buildIco(pngs, sizes) {
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0);            // reserved
+  header.writeUInt16LE(1, 2);            // 1 = icon
+  header.writeUInt16LE(pngs.length, 4);
+
+  const dir = Buffer.alloc(16 * pngs.length);
+  let offset = header.length + dir.length;
+  pngs.forEach((data, i) => {
+    const at = i * 16;
+    dir.writeUInt8(sizes[i] >= 256 ? 0 : sizes[i], at);      // width  (0 means 256)
+    dir.writeUInt8(sizes[i] >= 256 ? 0 : sizes[i], at + 1);  // height
+    dir.writeUInt8(0, at + 2);           // palette size
+    dir.writeUInt8(0, at + 3);           // reserved
+    dir.writeUInt16LE(1, at + 4);        // colour planes
+    dir.writeUInt16LE(32, at + 6);       // bits per pixel
+    dir.writeUInt32LE(data.length, at + 8);
+    dir.writeUInt32LE(offset, at + 12);
+    offset += data.length;
+  });
+
+  return Buffer.concat([header, dir, ...pngs]);
+}
+
 async function buildAssets({ usedAssets }) {
   const sharp = (await import('sharp')).default;
   const srcDir = join(ROOT, 'assets');
@@ -633,17 +665,23 @@ async function buildAssets({ usedAssets }) {
   // self-hosted font files
   await cp(join(VENDOR, 'outfit'), join(outDir, 'fonts'), { recursive: true });
 
-  // favicon + touch icon + share image, all drawn from the brand mark
-  const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-<rect width="100" height="100" rx="22" fill="#FDF9F6"/>
-<g transform="rotate(-90 50 50)" fill="none" stroke-width="13" stroke-linecap="round">
-<circle cx="50" cy="50" r="34" stroke="#F0788E" pathLength="28" stroke-dasharray="4 24"/>
-<circle cx="50" cy="50" r="34" stroke="#A8CC8A" pathLength="28" stroke-dasharray="7 21" stroke-dashoffset="-4"/>
-<circle cx="50" cy="50" r="34" stroke="#F4CE7A" pathLength="28" stroke-dasharray="2 26" stroke-dashoffset="-11"/>
-<circle cx="50" cy="50" r="34" stroke="#BB86B2" pathLength="28" stroke-dasharray="11 17" stroke-dashoffset="-13"/>
-</g></svg>`;
-  await writeFile(join(outDir, 'favicon.svg'), favicon);
-  await sharp(Buffer.from(favicon)).resize(180, 180).png().toFile(join(outDir, 'apple-touch-icon.png'));
+  // Favicons, from the app icon in src/app-icon.png — the same mark the App
+  // Store listing uses, so a tab and the app read as the same product.
+  //
+  // The source is a raster square with a gradient, so there is no sensible SVG
+  // form of it; these are PNGs plus a real multi-size .ico. The .ico matters
+  // because browsers and crawlers request /favicon.ico from the site root
+  // whether or not a <link> points there, so it is written at the root too.
+  const icon = join(SRC, 'app-icon.png');
+  const png = (size) => sharp(icon).resize(size, size, { fit: 'cover' }).png({ compressionLevel: 9 });
+
+  await png(180).toFile(join(outDir, 'apple-touch-icon.png'));
+  await png(32).toFile(join(outDir, 'favicon-32.png'));
+  await png(16).toFile(join(outDir, 'favicon-16.png'));
+
+  const ico = await buildIco(await Promise.all([16, 32, 48].map((n) => png(n).toBuffer())), [16, 32, 48]);
+  await writeFile(join(outDir, 'favicon.ico'), ico);
+  await writeFile(join(DIST, 'favicon.ico'), ico);   // the path browsers guess
 
   const lockup = join(srcDir, 'femfast-lockup.png');
   const logo = await sharp(lockup).resize({ width: 560 }).toBuffer();
