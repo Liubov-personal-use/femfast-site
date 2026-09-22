@@ -9,7 +9,8 @@
     "serve": "node scripts/serve.mjs",
     "verify": "node scripts/verify.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "contrast": "node scripts/contrast.mjs"
   },
   "devDependencies": {
     "lighthouse": "^13.5.0",

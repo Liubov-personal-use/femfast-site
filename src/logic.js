@@ -418,7 +418,7 @@ class Component extends DCLogic {
       canGoBack: step > 0,
       stepCount: isBuilding ? "" : isResult ? "Done" : "Step " + (step + 1) + " of " + this.TOTAL,
       qHelpStyle: q.help
-        ? "font-size:clamp(17px, 15.89px + 0.29vw, 20px);line-height:1.55;color:rgba(69,55,72,0.6);margin:0 0 24px;max-width:32em"
+        ? "font-size:clamp(17px, 15.89px + 0.29vw, 20px);line-height:1.55;color:rgba(69,55,72,0.74);margin:0 0 24px;max-width:32em"
         : "display:none",
       continueStyle: hasAns ? cont : cont + ";opacity:0.45;cursor:not-allowed;box-shadow:none",
       continueDisabled: !hasAns,

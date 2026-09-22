@@ -4,7 +4,7 @@
       <div style="max-width: 720px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 32px); display: flex; align-items: center; gap: 20px;">
         <img src="./assets/femfast-lockup.png" alt="FemFast" width="118" height="16" style="display: block; width: 118px; height: 16px; flex: 0 0 auto;">
         <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px;">
-          <span style="align-self: flex-end; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-variant-numeric: tabular-nums; color: rgba(69,55,72,0.6);" data-ff="stepCount">{{ stepCount }}</span>
+          <span style="align-self: flex-end; font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-variant-numeric: tabular-nums; color: rgba(69,55,72,0.74);" data-ff="stepCount">{{ stepCount }}</span>
           <div style="height: 5px; border-radius: 100px; background: #F3E7E1; overflow: hidden;">
             <div data-ff="progress" style="{{ progressStyle }}"></div>
           </div>
@@ -31,13 +31,13 @@
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 32px; max-width: 640px;">
             <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
-              <button type="button" data-ff="back" onClick="{{ back }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69,55,72,0.6); cursor: pointer; padding: 10px 0;" style-hover="color: #453748;">← Back</button>
+              <button type="button" data-ff="back" onClick="{{ back }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 600; font-size: 15px; color: rgba(69,55,72,0.74); cursor: pointer; padding: 10px 0;" style-hover="color: #453748;">← Back</button>
             </sc-if>
             <sc-if value="{{ showContinue }}" hint-placeholder-val="{{ true }}">
               <button type="button" data-ff="continue" onClick="{{ next }}" disabled="{{ continueDisabled }}" aria-disabled="{{ continueAria }}" style="{{ continueStyle }}">Continue</button>
             </sc-if>
             <sc-if value="{{ showSkipLink }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onClick="{{ next }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 500; font-size: 15px; color: rgba(69,55,72,0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 10px 0;" style-hover="color: #8D4F83;" data-ff="skip">Skip for now</button>
+              <button type="button" onClick="{{ next }}" style="border: none; background: transparent; font-family: Outfit, sans-serif; font-weight: 500; font-size: 15px; color: rgba(69,55,72,0.74); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 10px 0;" style-hover="color: #8D4F83;" data-ff="skip">Skip for now</button>
             </sc-if>
           </div>
         </div>
@@ -73,7 +73,7 @@
 
           <sc-if value="{{ hasAdjust }}" hint-placeholder-val="{{ false }}">
             <div data-ff="adjustWrap" style="display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 16px;">
-              <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(69,55,72,0.6);">Adjusted for:</span>
+              <span style="font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(69,55,72,0.74);">Adjusted for:</span>
               <sc-for list="{{ adjustChips }}" as="chip" hint-placeholder-count="2">
                 <span data-ff="chip" style="{{ chip.style }}">{{ chip.label }}</span>
               </sc-for>

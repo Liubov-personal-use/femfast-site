@@ -383,7 +383,7 @@ function splitHeaderCta(html) {
       ? open
       : open.replace('<a', `<a aria-label="${CTA_LABEL}"`);
     return `${labelled}<span data-ff="ctaWide">${text}</span>` +
-           `<span data-ff="ctaNarrow">Start</span>${close}`;
+           `<span data-ff="ctaNarrow">Start the check-in</span>${close}`;
   });
 }
 

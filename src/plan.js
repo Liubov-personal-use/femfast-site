@@ -181,7 +181,7 @@ const QUESTIONS = [
         tagStyle: tags[k].length ? tagStyle : "display:none",
         note: k === "Food" ? foodNote : "",
         noteStyle: (k === "Food" && foodNote)
-          ? "flex:1 1 100%;margin:2px 0 0;font-size:14px;line-height:1.5;color:rgba(69,55,72,0.6)"
+          ? "flex:1 1 100%;margin:2px 0 0;font-size:14px;line-height:1.5;color:rgba(69,55,72,0.74)"
           : "display:none"
       }))
     };
