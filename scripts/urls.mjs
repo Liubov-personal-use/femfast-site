@@ -3,7 +3,7 @@
  * path -> status -> final URL, for every address that has to work.
  *
  *   npm run urls                                 # against the local /dist
- *   npm run urls -- https://staging.femfast.io   # against a deployed site
+ *   npm run urls -- https://femfast.io           # against the live site
  *
  * Navigations run in a real browser, so a meta-refresh stub is followed the
  * way a visitor's browser follows it, not just reported as a 200.

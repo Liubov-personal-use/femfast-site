@@ -15,10 +15,9 @@
  * /dist will delete it and unset the custom domain, taking the site off its
  * domain until someone notices.
  *
- * /dist/CNAME holds the *production* domain, which is deliberately not the
- * same as the one staging is served on. So this script does not copy it:
- * it reads the CNAME already on the remote branch and writes that one back,
- * unless --domain or --no-domain says otherwise.
+ * So this script never copies /dist/CNAME: it reads the CNAME already on the
+ * remote branch and writes that one back, unless --domain or --no-domain says
+ * otherwise. The branch is the source of truth for the domain, not the build.
  *
  * It also commits on top of the existing branch rather than force-pushing a
  * fresh history, so GitHub's own "Create CNAME" commit stays in the log.

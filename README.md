@@ -205,7 +205,10 @@ Otherwise `npx playwright install chromium` once.
 
 ## Deploying
 
-Staging is live at <https://staging.femfast.io>.
+The site is live at <https://femfast.io>, served by GitHub Pages from the
+`gh-pages` branch of
+[`femfast-site`](https://github.com/Liubov-personal-use/femfast-site).
+`www.femfast.io` redirects to it.
 
 Publish a change with:
 
@@ -220,7 +223,13 @@ publish that rebuilds the branch from `/dist` deletes it and silently takes
 the site off its domain. `deploy.mjs` reads the domain already on the remote
 branch and writes it back on every push. `--dry-run` shows what would change.
 
-See [CUTOVER.md](CUTOVER.md) for the move to `femfast.io`: the Cloudflare DNS
-change, the custom-domain switch, verification, rollback, and retiring the
-staging record afterwards. No DNS change has been made — the live Tilda site
-still serves femfast.io.
+[CUTOVER.md](CUTOVER.md) records the move from Tilda: the DNS that is now in
+place, the rollback while Tilda is still alive, and the one step outstanding —
+deleting the `staging.femfast.io` record, which 404s now that the custom domain
+has moved.
+
+Verify a deployment with:
+
+```bash
+npm run urls -- https://femfast.io
+```

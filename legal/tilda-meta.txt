@@ -10,6 +10,11 @@ https://femfast.io is blocked by this environment's network egress policy
 HTTPS request and a fetch through the assistant's web tooling were refused, so
 neither the homepage HTML nor any Tilda URL could be retrieved.
 
+NOTE (22 Sep 2026): femfast.io has since been cut over to GitHub Pages, so the
+old metadata can no longer be read from that address at all — it now serves this
+site's own tags. Recover it from the Tilda dashboard while the account is still
+open, or from the Wayback Machine.
+
 What is still needed (fill these in by hand)
 --------------------------------------------
 meta title        :
