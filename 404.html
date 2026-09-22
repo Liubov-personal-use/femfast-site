@@ -29,18 +29,8 @@
 // them) land here on GitHub Pages. Send the known ones to their new home.
 (function () {
   var MAP = {
-  "/privacy-policy": "/privacy/",
-  "/privacy-policy/": "/privacy/",
-  "/privacypolicy": "/privacy/",
-  "/policy": "/privacy/",
-  "/terms-of-use": "/terms/",
-  "/terms-of-use/": "/terms/",
-  "/termsofuse": "/terms/",
-  "/terms-and-conditions": "/terms/",
-  "/contacts": "/contact/",
-  "/contacts/": "/contact/",
-  "/support": "/help/",
-  "/faq": "/help/"
+  "/privacy/": "/privacypolicy",
+  "/terms/": "/termsofuse"
 };
   var p = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
   var to = MAP[p] || MAP[p + '/'];
