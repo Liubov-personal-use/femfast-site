@@ -236,9 +236,9 @@ the site off its domain. `deploy.mjs` reads the domain already on the remote
 branch and writes it back on every push. `--dry-run` shows what would change.
 
 [CUTOVER.md](CUTOVER.md) records the move from Tilda: the DNS that is now in
-place, the rollback while Tilda is still alive, and the one step outstanding —
-deleting the `staging.femfast.io` record, which 404s now that the custom domain
-has moved.
+place and the rollback, which stays one edit away until Tilda is cancelled.
+Staging is retired — one Pages site serves one custom domain, so bringing it
+back would mean a second repository.
 
 Verify a deployment with:
 
