@@ -30,9 +30,10 @@
 (function () {
   var MAP = {
   "/privacy/": "/privacypolicy",
+  "/privacy-policy/": "/privacypolicy",
   "/terms/": "/termsofuse"
 };
-  var p = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  var p = location.pathname.replace(/\.html$/i, '').replace(/\/+$/, '').toLowerCase() || '/';
   var to = MAP[p] || MAP[p + '/'];
   if (to && to !== location.pathname) location.replace(to + location.search + location.hash);
 })();
