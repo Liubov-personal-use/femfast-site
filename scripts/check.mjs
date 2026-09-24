@@ -381,10 +381,10 @@ async function checkLegalRoutes(browser) {
   const cases = [
     { name: 'privacy', src: 'src/privacy.page.html', heading: 'Privacy Policy',
       paths: ['/privacypolicy', '/privacypolicy/'], canonical: 'https://femfast.io/privacypolicy',
-      from: '/privacy/' },
+      froms: ['/privacy/', '/privacy-policy', '/privacy-policy/', '/privacy-policy.html'] },
     { name: 'terms', src: 'src/terms.page.html', heading: 'Terms of Use',
       paths: ['/termsofuse', '/termsofuse/'], canonical: 'https://femfast.io/termsofuse',
-      from: '/terms/' },
+      froms: ['/terms/'] },
   ];
 
   for (const c of cases) {
@@ -431,33 +431,37 @@ async function checkLegalRoutes(browser) {
     // the DOM: a 0s meta refresh navigates away before the page can be
     // inspected, which is the point of it.
     const target = c.paths[0];
-    const page = await newPage(browser);
-    const raw = await (await page.request.get(BASE + c.from)).text();
-    const grab = (re) => (raw.match(re) || [])[1];
-    const stub = {
-      refresh: grab(/http-equiv="refresh"\s+content="([^"]*)"/),
-      canonical: grab(/rel="canonical"\s+href="([^"]*)"/),
-      link: grab(/<a href="([^"]*)"/),
-      noindex: /name="robots" content="noindex"/.test(raw),
-    };
-    if (stub.refresh === `0; url=${target}` && stub.link === target &&
-        stub.canonical === c.canonical && stub.noindex) {
-      pass(`${c.from} stub points at ${target}`, 'meta refresh 0s + canonical + fallback link + noindex');
-    } else {
-      fail(`${c.from} stub points at ${target}`, JSON.stringify(stub));
-    }
+    for (const from of c.froms) {
+      const page = await newPage(browser);
+      const res = await page.request.get(BASE + from);
+      const raw = await res.text();
+      const grab = (re) => (raw.match(re) || [])[1];
+      const stub = {
+        status: res.status(),
+        refresh: grab(/http-equiv="refresh"\s+content="([^"]*)"/),
+        canonical: grab(/rel="canonical"\s+href="([^"]*)"/),
+        link: grab(/<a href="([^"]*)"/),
+        noindex: /name="robots" content="noindex"/.test(raw),
+      };
+      if (stub.status === 200 && stub.refresh === `0; url=${target}` && stub.link === target &&
+          stub.canonical === c.canonical && stub.noindex) {
+        pass(`${from} stub points at ${target}`, '200, meta refresh 0s + canonical + fallback link + noindex');
+      } else {
+        fail(`${from} stub points at ${target}`, JSON.stringify(stub));
+      }
 
-    // and actually follow it, to prove where a browser ends up
-    await page.goto(BASE + c.from, { waitUntil: 'domcontentloaded' });
-    try {
-      await page.waitForURL(BASE + target, { timeout: 8000 });
-      const h1 = await page.evaluate(() => document.querySelector('h1')?.textContent.trim());
-      if (h1 === c.heading) pass(`${c.from} lands on ${target}`, `"${h1}"`);
-      else fail(`${c.from} lands on ${target}`, `h1 was "${h1}"`);
-    } catch {
-      fail(`${c.from} lands on ${target}`, `ended at ${page.url()}`);
+      // and actually follow it, to prove where a browser ends up
+      await page.goto(BASE + from, { waitUntil: 'domcontentloaded' });
+      try {
+        await page.waitForURL(BASE + target, { timeout: 8000 });
+        const h1 = await page.evaluate(() => document.querySelector('h1')?.textContent.trim());
+        if (h1 === c.heading) pass(`${from} lands on ${target}`, `"${h1}"`);
+        else fail(`${from} lands on ${target}`, `h1 was "${h1}"`);
+      } catch {
+        fail(`${from} lands on ${target}`, `ended at ${page.url()}`);
+      }
+      await page.close();
     }
-    await page.close();
   }
 
   // nothing anywhere should still point at the old paths

@@ -95,17 +95,21 @@ export const routes = [
   },
 ];
 
-// The only two redirects the site has.
+// The redirects the site has. Everything else that used to live here was
+// guesswork at Tilda's spellings and has been removed — including
+// /privacypolicy and /termsofuse, which are now real pages and would have been
+// shadowed by a redirect stub at the same path. The build refuses to emit a
+// redirect whose path is also a route, so that cannot happen by accident.
 //
-// /privacy/ and /terms/ were this site's own paths for a while, so anything
-// that linked them in the meantime still resolves. Everything else that used
-// to live here was guesswork at Tilda's spellings and has been removed —
-// including /privacypolicy and /termsofuse, which are now real pages and
-// would have been shadowed by a redirect stub at the same path.
+// /privacy/ and /terms/ were this site's own paths for a while.
+// /privacy-policy is the hyphenated spelling people and other sites guess at.
 //
-// Each key gets a meta-refresh stub page, and /404.html maps the same table
-// so a path lands correctly even where the stub is not served.
+// Write each key in its trailing-slash form. The build emits a meta-refresh
+// stub for all three shapes a visitor might arrive on — /x, /x/ and /x.html —
+// and /404.html maps the same table, so a path still lands even on a shape
+// nothing was emitted for.
 export const redirects = {
   '/privacy/': '/privacypolicy',
+  '/privacy-policy/': '/privacypolicy',
   '/terms/': '/termsofuse',
 };

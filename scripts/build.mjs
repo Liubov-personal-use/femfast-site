@@ -732,16 +732,19 @@ async function writeExtras(config, routes) {
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemap s.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`.replace('sitemap s', 'sitemaps')
   );
 
-  // Old Tilda paths: a meta-refresh stub at each known path, plus a 404 that
-  // maps anything else that looks like an old legal URL.
+  // Old paths: a meta-refresh stub at each known one, plus a 404 that maps
+  // anything else that looks like a legal URL.
+  //
+  // Two files per redirect, because a visitor can arrive on three shapes and
+  // Pages resolves them differently: <clean>/index.html answers /x/ (and /x,
+  // by directory resolution), and <clean>.html answers /x.html — and, since
+  // Pages tries <path>.html before <path>/index.html, it answers a bare /x
+  // with 200 rather than a 301 to the trailing-slash form. The route guard
+  // above keeps this from ever landing on a real page's alsoAt twin.
   for (const [from, to] of Object.entries(redirects)) {
     const clean = from.replace(/^\/|\/$/g, '');
     if (!clean) continue;
-    const dir = join(DIST, clean);
-    await mkdir(dir, { recursive: true });
-    await writeFile(
-      join(dir, 'index.html'),
-      `<!DOCTYPE html>
+    const stub = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -754,8 +757,11 @@ async function writeExtras(config, routes) {
 <p>This page has moved to <a href="${to}">${site.origin}${to}</a>.</p>
 </body>
 </html>
-`
-    );
+`;
+    const dir = join(DIST, clean);
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, 'index.html'), stub);
+    await writeFile(join(DIST, clean + '.html'), stub);
   }
 
   const map = JSON.stringify(redirects, null, 2);
@@ -792,7 +798,7 @@ async function writeExtras(config, routes) {
 // them) land here on GitHub Pages. Send the known ones to their new home.
 (function () {
   var MAP = ${map};
-  var p = location.pathname.replace(/\\/+$/, '').toLowerCase() || '/';
+  var p = location.pathname.replace(/\\.html$/i, '').replace(/\\/+$/, '').toLowerCase() || '/';
   var to = MAP[p] || MAP[p + '/'];
   if (to && to !== location.pathname) location.replace(to + location.search + location.hash);
 })();

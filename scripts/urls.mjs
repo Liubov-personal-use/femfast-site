@@ -37,6 +37,9 @@ const CASES = [
   { path: '/termsofuse/', expect: '/termsofuse/' },
   { path: '/privacy/', expect: '/privacypolicy', note: 'old path' },
   { path: '/terms/', expect: '/termsofuse', note: 'old path' },
+  { path: '/privacy-policy', expect: '/privacypolicy', note: 'hyphenated' },
+  { path: '/privacy-policy/', expect: '/privacypolicy', note: 'hyphenated' },
+  { path: '/privacy-policy.html', expect: '/privacypolicy', note: 'hyphenated' },
 ];
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
