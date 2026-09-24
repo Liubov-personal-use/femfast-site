@@ -52,6 +52,7 @@ data/           the site's content, edit these rather than markup
   phases.json     every cycle-phase value + the check-in's override copy
   reviews.json    App Store reviews, rendered verbatim
   rating.json     rating figures — manual, see the note inside
+sitemap-lastmod.json  when each page last changed, by content hash — generated
 src/
   site.config.mjs routes, titles, descriptions, redirects
   plan.js         the check-in's logic (shared, see below)
@@ -107,10 +108,21 @@ To change what the site says about a phase, edit that file and rebuild.
 | The reviews section | `data/reviews.json` |
 | The rating line | `data/rating.json` |
 | Titles, descriptions, OG tags, redirects | `src/site.config.mjs` |
+| The sitemap's `lastmod` dates | nothing — the build tracks them, see below |
 | Page copy and layout | the matching file in `src/` |
 | Client behaviour | `src/app.js` |
 
 After any edit: `npm run build && npm run check && npm run verify`.
+
+The build reports whether any page's `lastmod` moved. `sitemap-lastmod.json`
+records when each route's content last changed, keyed by a hash of its built
+HTML, so a stamp moves only when that page's bytes do — rebuilding on a new day
+no longer tells crawlers that all six pages changed. The build is
+byte-deterministic, which is what makes the hashes stable across runs. Commit
+that file along with your change; it is the only record of those dates, and a
+fresh clone would otherwise stamp every page with its own build day. One
+wrinkle worth knowing: reverting a page to a previous state counts as a change,
+because its content moved on that day even though it moved back.
 
 `verify` will flag it if a change moved something visually — that is the
 point. If the change was intentional, the diff images in `.build/diff/` show
