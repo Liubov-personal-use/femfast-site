@@ -4,23 +4,22 @@
 22 September 2026, with both production checks run against the live host.
 Tilda no longer serves the domain.
 
-This was a runbook. It is now the record of what changed, the rollback while it
-is still worth holding open, and the one step left.
+This was a runbook. Every step is done. It is now the record of what changed
+and of the rollback, which stays available until Tilda is cancelled.
 
 ---
 
 ## Still to do
 
-- [ ] **Delete the `staging.femfast.io` DNS record** in Cloudflare — [Step 8](#step-8--retire-staging)
-- [ ] Leave Tilda alive a week or two, so the rollback stays one DNS edit away
-
-Everything else is done:
+Nothing. The one call left is when to cancel Tilda — see
+[Rollback](#rollback--open-while-tilda-lives).
 
 - [x] DNS cut over, certificate issued, Enforce HTTPS on
 - [x] Every address resolves on the live host — including `/privacypolicy` and
       `/termsofuse`, which the App Store listing links to and which had to
       answer 200 rather than redirect
 - [x] Lighthouse run against production
+- [x] `staging.femfast.io` DNS record deleted — [Step 8](#step-8--retire-staging--done)
 
 ```bash
 npm run urls -- https://femfast.io        # every address, incl. the App Store's
@@ -40,7 +39,7 @@ Re-run both after any deploy.
 | Custom domain | `femfast.io` — the `CNAME` file on `gh-pages` |
 | DNS | Cloudflare |
 | Previous origin | Tilda — still running, no longer pointed at |
-| Staging | retired; `staging.femfast.io` now 404s until its record is deleted |
+| Staging | retired; the `staging.femfast.io` record has been deleted |
 
 `femfast-site` is the only repository that matters. The session repo
 `femfast-landing-page` held the same commits and has no Pages configuration.
@@ -101,7 +100,7 @@ is a perfectly good permanent answer**, and it is the lower-risk one.
 
 ---
 
-## Rollback — still open
+## Rollback — open while Tilda lives
 
 **One line: in Cloudflare, delete the four GitHub A records, restore the Tilda
 A record(s) and the original `www` record.**
@@ -119,17 +118,14 @@ no harm once DNS points elsewhere.
 
 ---
 
-## Step 8 — Retire staging
+## Step 8 — Retire staging — **done**
 
-`staging.femfast.io` still has a DNS record pointing at GitHub Pages, but the
-custom domain moved to `femfast.io`, so Pages no longer claims that hostname
-and serves a 404 on it.
+The `staging.femfast.io` record has been deleted in Cloudflare. It pointed at
+GitHub Pages, but the custom domain moved to `femfast.io` at cutover, so Pages
+no longer claimed that hostname and served a 404 on it.
 
-1. **Delete the `staging.femfast.io` record in Cloudflare.**
-2. If you want a staging environment back later, that means a second
-   repository — one Pages site serves one custom domain.
-
-Do this once you are past wanting the one-line rollback.
+If you want a staging environment back later, that means a second repository —
+one Pages site serves one custom domain.
 
 ---
 
